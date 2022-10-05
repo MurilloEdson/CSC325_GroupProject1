@@ -7,6 +7,7 @@ import javafx.scene.control.*;
 public class PrimaryController {
     @FXML
     private Button primaryButton;
+    
     @FXML
     private void switchToSecondary() throws IOException {
         App.setRoot("Menu");
