@@ -27,8 +27,8 @@ public class PrimaryController implements Initializable{
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        //Image img = new Image("./OIP.jpg");
-        //logoView.setImage(img);
+        Image img = new Image("/pics/OIP.jpg");
+        logoView.setImage(img);
     }
     
    
