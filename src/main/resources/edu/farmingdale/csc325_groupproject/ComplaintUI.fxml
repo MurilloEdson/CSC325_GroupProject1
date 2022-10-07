@@ -3,12 +3,15 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.farmingdale.csc325_groupproject.QuaternaryController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.farmingdale.csc325_groupproject.QuaternaryController">
    <children>
-      <Label layoutX="257.0" layoutY="14.0" text="Complaint Input" />
+      <Label layoutX="257.0" layoutY="50.0" text="Complaint Input" />
       <Button layoutX="460.0" layoutY="325.0" mnemonicParsing="false" onAction="#InputData" text="Input Data" />
       <TextField layoutX="65.0" layoutY="124.0">
          <opaqueInsets>
@@ -82,6 +85,26 @@
          </opaqueInsets>
       </TextField>
       <Label layoutX="227.0" layoutY="249.0" text="Criminal Name" />
+      <MenuBar layoutY="2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <Button layoutX="67.0" layoutY="325.0" mnemonicParsing="false" onAction="#switchToSecondary" text="Back to Menu" />
    </children>
    <opaqueInsets>
       <Insets />

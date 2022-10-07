@@ -1,4 +1,3 @@
-
 package edu.farmingdale.csc325_groupproject;
 
 import java.io.IOException;
@@ -21,5 +20,9 @@ public class QuaternaryController implements Initializable {
     @FXML
     void InputData(ActionEvent event) {
 
+    }
+    @FXML
+    private void switchToSecondary() throws IOException {
+        App.setRoot("Menu");
     }
 }
