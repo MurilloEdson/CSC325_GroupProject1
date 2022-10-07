@@ -15,4 +15,8 @@ public class SecondaryController {
     private void switchToTertiary() throws IOException {
         App.setRoot("CriminalUI");
     }
+    @FXML
+    private void switchToQuaternary() throws IOException {
+        App.setRoot("ComplaintUI");
+    }
 }
