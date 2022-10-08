@@ -42,6 +42,12 @@ public class PrimaryController implements Initializable{
         //TODO: Read the person credentials with the Admin class
         //TODo: Correlate with the person that has the database to search for credentials in database 
         
+        
+        String user;
+        String password;
+        user = userInput.getText();
+        password = userPassword.getText();
+        
      
         Stage stage;
         Parent root;
