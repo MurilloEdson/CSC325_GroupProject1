@@ -5,11 +5,12 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.farmingdale.csc325_groupproject.SecondaryController">
+<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.farmingdale.csc325_groupproject.SecondaryController">
     <children>
-        <Label text="Secondary View" />
-        <Button fx:id="secondaryButton" onAction="#switchToPrimary" text="Switch to Primary View" />
-      <Button mnemonicParsing="false" onAction="#switchToTertiary" text="Switch to Tertiary View" />
+        <Label text="Menu" />
+        <Button fx:id="secondaryButton" onAction="#switchToPrimary" text="Log Out" />
+      <Button mnemonicParsing="false" onAction="#switchToQuaternary" text="Complaint Management" />
+      <Button mnemonicParsing="false" onAction="#switchToTertiary" text="Criminal Management" />
     </children>
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />

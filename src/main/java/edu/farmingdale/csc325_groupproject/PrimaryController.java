@@ -1,41 +1,12 @@
 package edu.farmingdale.csc325_groupproject;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.*;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.stage.Stage;
 
-public class PrimaryController implements Initializable{
-    
+public class PrimaryController {
     @FXML
-    private Button loginButton;
-
-    @FXML
-    private ImageView logoView;
-
-    @FXML
-    private TextField userInput;
-
-    @FXML
-    private TextField userPassword;
-    
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        Image img = new Image("/pics/OIP.jpg");
-        logoView.setImage(img);
-    }
-
+    private Button primaryButton;
     @FXML
     private void verifyCredentials(ActionEvent event) throws IOException {
         //TODO: Switch scenes between the Authentication screen and the Menu screen
@@ -57,10 +28,5 @@ public class PrimaryController implements Initializable{
         Scene scene = new Scene(root, 640, 480); //creates the new Scene 
         stage.setScene(scene); //sets the scene to the stage
         stage.show();//displays Menu Window
-   
-        
-    }
-    
-    
    
 }

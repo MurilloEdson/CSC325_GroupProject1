@@ -20,8 +20,4 @@ public class TertiaryController implements Initializable {
     private void switchToSecondary() throws IOException {
         App.setRoot("Menu");
     }
-    @FXML
-    private void switchToQuaternary() throws IOException {
-        App.setRoot("ComplaintUI");
-    }
 }
