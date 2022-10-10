@@ -9,19 +9,16 @@ import javafx.event.ActionEvent;
 
 public class QuaternaryController implements Initializable {
 
-    /**
-     * Initializes the controller class.
-     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     } 
     @FXML
     void InputData(ActionEvent event) {
-
+        
     }
     @FXML
-    private void switchToSecondary() throws IOException {
+    private void switchToMenu() throws IOException {
         App.setRoot("Menu");
     }
 }
