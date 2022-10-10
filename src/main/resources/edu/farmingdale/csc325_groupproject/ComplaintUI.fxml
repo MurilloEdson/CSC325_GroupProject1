@@ -13,57 +13,57 @@
    <children>
       <Label layoutX="257.0" layoutY="50.0" text="Complaint Input" />
       <Button layoutX="460.0" layoutY="325.0" mnemonicParsing="false" onAction="#InputData" text="Input Data" />
-      <TextField layoutX="65.0" layoutY="124.0">
+      <TextField fx:id="dateTxt" layoutX="65.0" layoutY="124.0">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
       </TextField>
-      <TextField layoutX="385.0" layoutY="269.0">
+      <TextField fx:id="totTxt" layoutX="385.0" layoutY="269.0">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
       </TextField>
-      <TextField layoutX="65.0" layoutY="269.0">
+      <TextField fx:id="loc1Txt" layoutX="65.0" layoutY="269.0">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
       </TextField>
-      <TextField layoutX="385.0" layoutY="223.0">
+      <TextField fx:id="neighTxt" layoutX="385.0" layoutY="223.0">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
       </TextField>
-      <TextField layoutX="225.0" layoutY="223.0">
+      <TextField fx:id="distTxt" layoutX="225.0" layoutY="223.0">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
       </TextField>
-      <TextField layoutX="65.0" layoutY="223.0">
+      <TextField fx:id="postTxt" layoutX="65.0" layoutY="223.0">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
       </TextField>
-      <TextField layoutX="65.0" layoutY="173.0">
+      <TextField fx:id="locTxt" layoutX="65.0" layoutY="173.0">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
       </TextField>
-      <TextField layoutX="225.0" layoutY="173.0">
+      <TextField fx:id="descTxt" layoutX="225.0" layoutY="173.0">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
       </TextField>
-      <TextField layoutX="385.0" layoutY="173.0">
+      <TextField fx:id="weapTxt" layoutX="385.0" layoutY="173.0">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
       </TextField>
-      <TextField layoutX="385.0" layoutY="124.0">
+      <TextField fx:id="codeTxt" layoutX="385.0" layoutY="124.0">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
       </TextField>
-      <TextField layoutX="225.0" layoutY="125.0">
+      <TextField fx:id="timeTxt" layoutX="225.0" layoutY="125.0">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
@@ -79,7 +79,7 @@
       <Label layoutX="385.0" layoutY="106.0" text="Crime Code" />
       <Label layoutX="225.0" layoutY="106.0" text="Crime Time" />
       <Label layoutX="65.0" layoutY="106.0" text="Crime Date" />
-      <TextField layoutX="225.0" layoutY="269.0">
+      <TextField fx:id="nameTxt" layoutX="225.0" layoutY="269.0">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
@@ -104,7 +104,7 @@
           </Menu>
         </menus>
       </MenuBar>
-      <Button layoutX="67.0" layoutY="325.0" mnemonicParsing="false" onAction="#switchToSecondary" text="Back to Menu" />
+      <Button layoutX="67.0" layoutY="325.0" mnemonicParsing="false" onAction="#switchToMenu" text="Back to Menu" />
    </children>
    <opaqueInsets>
       <Insets />
