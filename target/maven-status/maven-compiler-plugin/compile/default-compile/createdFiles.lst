@@ -1,0 +1,6 @@
+module-info.class
+edu\farmingdale\csc325_groupproject\TertiaryController.class
+edu\farmingdale\csc325_groupproject\SecondaryController.class
+edu\farmingdale\csc325_groupproject\QuaternaryController.class
+edu\farmingdale\csc325_groupproject\App.class
+edu\farmingdale\csc325_groupproject\PrimaryController.class

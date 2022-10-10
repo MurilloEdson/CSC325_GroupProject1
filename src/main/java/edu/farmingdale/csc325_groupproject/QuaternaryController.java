@@ -4,10 +4,10 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
+import javafx.event.ActionEvent;
 
 public class QuaternaryController implements Initializable {
     
@@ -54,8 +54,7 @@ public class QuaternaryController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-    
+    } 
     @FXML
     void InputData(ActionEvent event) {
         Complaints b = new Complaints();
@@ -76,7 +75,7 @@ public class QuaternaryController implements Initializable {
     
     
     @FXML
-    private void switchToSecondary() throws IOException {
+    private void switchToMenu() throws IOException {
         App.setRoot("Menu");
     }
 }
