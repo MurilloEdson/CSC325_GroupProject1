@@ -7,84 +7,85 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.farmingdale.csc325_groupproject.QuaternaryController">
+<AnchorPane id="AnchorPane" prefHeight="442.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.farmingdale.csc325_groupproject.QuaternaryController">
    <children>
-      <Label layoutX="257.0" layoutY="50.0" text="Complaint Input" />
-      <Button layoutX="460.0" layoutY="325.0" mnemonicParsing="false" onAction="#InputData" text="Input Data" />
-      <TextField fx:id="dateTxt" layoutX="65.0" layoutY="124.0">
+      <Label layoutX="227.0" layoutY="106.0" text="Complaint Input" />
+      <Button layoutX="460.0" layoutY="381.0" mnemonicParsing="false" onAction="#InputData" text="Input Data" />
+      <TextField fx:id="dateTxt" layoutX="65.0" layoutY="180.0">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
       </TextField>
-      <TextField fx:id="totTxt" layoutX="385.0" layoutY="269.0">
+      <TextField fx:id="totTxt" layoutX="385.0" layoutY="325.0">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
       </TextField>
-      <TextField fx:id="loc1Txt" layoutX="65.0" layoutY="269.0">
+      <TextField fx:id="loc1Txt" layoutX="65.0" layoutY="325.0">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
       </TextField>
-      <TextField fx:id="neighTxt" layoutX="385.0" layoutY="223.0">
+      <TextField fx:id="neighTxt" layoutX="385.0" layoutY="279.0">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
       </TextField>
-      <TextField fx:id="distTxt" layoutX="225.0" layoutY="223.0">
+      <TextField fx:id="distTxt" layoutX="225.0" layoutY="279.0">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
       </TextField>
-      <TextField fx:id="postTxt" layoutX="65.0" layoutY="223.0">
+      <TextField fx:id="postTxt" layoutX="65.0" layoutY="279.0">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
       </TextField>
-      <TextField fx:id="locTxt" layoutX="65.0" layoutY="173.0">
+      <TextField fx:id="locTxt" layoutX="65.0" layoutY="229.0">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
       </TextField>
-      <TextField fx:id="descTxt" layoutX="225.0" layoutY="173.0">
+      <TextField fx:id="descTxt" layoutX="225.0" layoutY="229.0">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
       </TextField>
-      <TextField fx:id="weapTxt" layoutX="385.0" layoutY="173.0">
+      <TextField fx:id="weapTxt" layoutX="385.0" layoutY="229.0">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
       </TextField>
-      <TextField fx:id="codeTxt" layoutX="385.0" layoutY="124.0">
+      <TextField fx:id="codeTxt" layoutX="385.0" layoutY="180.0">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
       </TextField>
-      <TextField fx:id="timeTxt" layoutX="225.0" layoutY="125.0">
+      <TextField fx:id="timeTxt" layoutX="225.0" layoutY="181.0">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
       </TextField>
-      <Label layoutX="385.0" layoutY="249.0" text="Total Incidents" />
-      <Label layoutX="65.0" layoutY="249.0" text="Location 1" />
-      <Label layoutX="385.0" layoutY="205.0" text="Neighborhood" />
-      <Label layoutX="225.0" layoutY="205.0" text="District" />
-      <Label layoutX="65.0" layoutY="205.0" text="Post" />
-      <Label layoutX="385.0" layoutY="155.0" text="Weapon" />
-      <Label layoutX="225.0" layoutY="155.0" text="Description" />
-      <Label layoutX="65.0" layoutY="155.0" text="Location" />
-      <Label layoutX="385.0" layoutY="106.0" text="Crime Code" />
-      <Label layoutX="225.0" layoutY="106.0" text="Crime Time" />
-      <Label layoutX="65.0" layoutY="106.0" text="Crime Date" />
-      <TextField fx:id="nameTxt" layoutX="225.0" layoutY="269.0">
+      <Label layoutX="385.0" layoutY="305.0" text="Total Incidents" />
+      <Label layoutX="65.0" layoutY="305.0" text="Location 1" />
+      <Label layoutX="385.0" layoutY="261.0" text="Neighborhood" />
+      <Label layoutX="225.0" layoutY="261.0" text="District" />
+      <Label layoutX="65.0" layoutY="261.0" text="Post" />
+      <Label layoutX="385.0" layoutY="211.0" text="Weapon" />
+      <Label layoutX="225.0" layoutY="211.0" text="Description" />
+      <Label layoutX="65.0" layoutY="211.0" text="Location" />
+      <Label layoutX="385.0" layoutY="162.0" text="Crime Code" />
+      <Label layoutX="225.0" layoutY="162.0" text="Crime Time" />
+      <Label layoutX="65.0" layoutY="162.0" text="Crime Date" />
+      <TextField fx:id="nameTxt" layoutX="225.0" layoutY="325.0">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
       </TextField>
-      <Label layoutX="227.0" layoutY="249.0" text="Criminal Name" />
+      <Label layoutX="227.0" layoutY="305.0" text="Criminal Name" />
       <MenuBar layoutY="2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <menus>
           <Menu mnemonicParsing="false" text="File">
@@ -104,7 +105,9 @@
           </Menu>
         </menus>
       </MenuBar>
-      <Button layoutX="67.0" layoutY="325.0" mnemonicParsing="false" onAction="#switchToMenu" text="Back to Menu" />
+      <Button layoutX="67.0" layoutY="381.0" mnemonicParsing="false" onAction="#switchToMenu" text="Back to Menu" />
+      <ImageView fx:id="logoView" fitHeight="118.0" fitWidth="161.0" layoutX="11.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="logoViewHelp" fitHeight="75.0" fitWidth="89.0" layoutX="385.0" layoutY="31.0" onMouseClicked="#helpWindow" pickOnBounds="true" preserveRatio="true" />
    </children>
    <opaqueInsets>
       <Insets />

@@ -12,6 +12,10 @@ import java.util.logging.Logger;
 import javafx.fxml.*;
 import javafx.scene.control.TextField;
 import javafx.event.ActionEvent;
+import javafx.scene.control.Alert;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 
 public class QuaternaryController implements Initializable {
     
@@ -40,14 +44,34 @@ public class QuaternaryController implements Initializable {
     @FXML
     private TextField weapTxt;
     
+    @FXML
+    private ImageView logoView;
+    
+    @FXML
+    private ImageView logoViewHelp;
+    
     private ArrayList<Complaint> comps = new ArrayList<Complaint>();
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        Image img = new Image("/pics/OIP.jpg");
+        logoView.setImage(img);
+        Image img1 = new Image("/pics/helpIMG.png");
+        logoViewHelp.setImage(img1);
     } 
+    
+    @FXML
+    void helpWindow(MouseEvent event) {
+        System.out.println("pressed");
+                
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Help:");
+        alert.setContentText("Please Input the data of your complaint where you can, \n it is okay to leave fields blank.");
+        alert.show();
+    }
+    
     @FXML
     void InputData(ActionEvent event) {
         
