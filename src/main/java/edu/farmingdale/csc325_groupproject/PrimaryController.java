@@ -8,15 +8,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.image.*;
+import javafx.scene.input.MouseEvent;
 
 public class PrimaryController implements Initializable{
-    @FXML
-    private Button primaryButton;
     @FXML
     private ImageView logoView;
     
@@ -25,6 +26,8 @@ public class PrimaryController implements Initializable{
 
     @FXML
     private TextField userPassword;
+    @FXML
+    private Button loginButton;
     
     @FXML
     private void verifyCredentials(ActionEvent event) throws IOException {
@@ -67,6 +70,16 @@ public class PrimaryController implements Initializable{
     public void initialize(URL url, ResourceBundle rb) {
         Image img = new Image("/pics/OIP.jpg");
         logoView.setImage(img);           
+    }
+
+    @FXML
+    private void toCreateWinodw(MouseEvent event) {
+        try {
+            App.setRoot("SignUp");
+        } catch (IOException ex) {
+            System.out.println("Can't load window");
+            
+        }
     }
     
 }

@@ -11,9 +11,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.farmingdale.csc325_groupproject.PrimaryController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.farmingdale.csc325_groupproject.PrimaryController">
    <children>
-      <Button fx:id="loginButton" layoutX="250.0" layoutY="322.0" onAction="#verifyCredentials" prefHeight="40.0" prefWidth="101.0" text="LOGIN">
+      <Button fx:id="loginButton" layoutX="249.0" layoutY="308.0" onAction="#verifyCredentials" prefHeight="40.0" prefWidth="101.0" text="LOGIN">
          <font>
             <Font size="18.0" />
          </font>
@@ -22,18 +22,18 @@
          <image>
             <Image url="@../../../pics/OIP.jpg" />
          </image></ImageView>
-      <Label layoutX="187.0" layoutY="239.0" prefHeight="20.0" prefWidth="70.0" text="Username:">
+      <Label layoutX="186.0" layoutY="227.0" prefHeight="20.0" prefWidth="70.0" text="Username:">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="187.0" layoutY="283.0" prefHeight="20.0" prefWidth="69.0" text="Password:">
+      <Label layoutX="186.0" layoutY="269.0" prefHeight="20.0" prefWidth="69.0" text="Password:">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="userInput" layoutX="265.0" layoutY="237.0" />
-      <TextField fx:id="userPassword" layoutX="265.0" layoutY="279.0" />
+      <TextField fx:id="userInput" layoutX="265.0" layoutY="224.0" />
+      <TextField fx:id="userPassword" layoutX="265.0" layoutY="266.0" />
       <MenuBar layoutY="1.0" prefHeight="26.0" prefWidth="590.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <menus>
           <Menu mnemonicParsing="false" text="File">
@@ -53,5 +53,7 @@
           </Menu>
         </menus>
       </MenuBar>
+      <Label layoutX="301.0" layoutY="369.0" onMouseClicked="#toCreateWinodw" text="Click here to Sign-Up" textFill="#191cdf" />
+      <Label layoutX="200.0" layoutY="369.0" text="Need an Account?" />
    </children>
 </AnchorPane>
