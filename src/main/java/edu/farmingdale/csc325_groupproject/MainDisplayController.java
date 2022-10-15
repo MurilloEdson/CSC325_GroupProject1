@@ -1,15 +1,19 @@
 package edu.farmingdale.csc325_groupproject;
 
-import java.io.IOException;
-import java.net.URL;
+import com.google.gson.*;
+import java.io.*;
 import java.sql.*;
 import javafx.fxml.*;
-import java.util.ResourceBundle;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
+import java.util.*;
 import javafx.scene.control.*;
+import javafx.collections.*;
 
-public class TertiaryController implements Initializable {
+import com.google.gson.reflect.TypeToken;
+import java.net.URL;
+import javafx.event.ActionEvent;
+
+
+public class MainDisplayController implements Initializable {
 
     @FXML
     private ListView<String> criminalNames;
@@ -17,22 +21,18 @@ public class TertiaryController implements Initializable {
     private ChoiceBox<String> locations;
 
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        //ObservableList<String> criminals = (ObservableList<String>) criminalNames.getItems();
-        String databaseURL;
-        Connection conn;
+    public void initialize(URL url, ResourceBundle rb){
+        GsonBuilder builder = new GsonBuilder();
+        builder.setPrettyPrinting();
+        Gson gson = builder.create();
+        ArrayList<String> list;
         try {
-            databaseURL = "jdbc:ucanaccess://.//Crime Management.accdb";
-            conn = DriverManager.getConnection(databaseURL);
-            String tableName = "Criminal";
-            Statement stmt = conn.createStatement();
-            ResultSet result = stmt.executeQuery("select distinct Neighborhood from " + tableName);
-            while (result.next()) {
-                String location = result.getString("Neighborhood"); 
-                locations.getItems().add(location);
-            }
-        }catch (SQLException e) {
-        }
+            FileReader fr = new FileReader("Locations.json");
+            list = gson.fromJson(fr, new TypeToken<ArrayList<String>>(){}.getType());
+             for(String curr : list){
+                locations.getItems().add(curr);}
+        } catch (FileNotFoundException ex) {
+        }  
         locations.setOnAction(this::setListView);
     }
 
@@ -55,6 +55,16 @@ public class TertiaryController implements Initializable {
             catch (SQLException e) {
         }
     }
+    /*    
+    public void inputDataToJSon() throws FileNotFoundException{
+        GsonBuilder builder = new GsonBuilder();
+        builder.setPrettyPrinting();
+        Gson gson = builder.create();
+        FileReader fr = new FileReader("Locations.json");
+        String jsonString = gson.toJson(place);
+        PrintStream ps = new PrintStream("Locations.json");
+        ps.println(jsonString);
+    }*/
 
     @FXML
     private void switchToMenu() throws IOException {

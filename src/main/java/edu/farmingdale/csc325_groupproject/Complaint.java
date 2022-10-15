@@ -9,7 +9,7 @@ public class Complaint {
     public String CrimeWeap;
     public int CrimePost;
     public String CrimeDist;
-    public String CrimeNeigh;
+    public String Neighborhood;
     public String CrimeLoc1;
     public int CrimeTot;
     public String CrimeName;
@@ -23,7 +23,7 @@ public class Complaint {
        this.CrimeWeap = null;
        this.CrimePost = -1;
        this.CrimeDist = null;
-       this.CrimeNeigh = null;
+       this.Neighborhood = null;
        this.CrimeLoc1 = null;
        this.CrimeTot = -1;
        this.CrimeName = null;
@@ -85,11 +85,11 @@ public class Complaint {
         this.CrimeDist = CrimeDist;
     }
 
-    public String getCrimeNeigh() {
-        return CrimeNeigh;
+    public String getNeighborhood() {
+        return Neighborhood;
     }
-    public void setCrimeNeigh(String CrimeNeigh) {
-        this.CrimeNeigh = CrimeNeigh;
+    public void setNeighborhood(String Neighborhood) {
+        this.Neighborhood = Neighborhood;
     }
 
     public String getCrimeLoc1() {
@@ -118,7 +118,7 @@ public class Complaint {
                "\nCrime Code: " + this.getCrimeCode() + "\nCrime Location: " + this.getCrimeLoc() +
                 "\nCrime Description: " + this.getCrimeDesc() + "\nCrime Weapon: " + this.getCrimeWeap() +
                "\nCrime Post: " + this.getCrimePost() + "\nCrime Disttrict: " + this.getCrimeDist() + 
-               "\nCrime Neighborhood: " + this.getCrimeNeigh() + "\nCrime Location Coords: " + this.getCrimeLoc1() + 
+               "\nCrime Neighborhood: " + this.getNeighborhood() + "\nCrime Location Coords: " + this.getCrimeLoc1() + 
                "\nCriminal Name: " + this.getCrimeName() + "\nCrime Incident Count: " + this.getCrimeTot(); 
    }
 }

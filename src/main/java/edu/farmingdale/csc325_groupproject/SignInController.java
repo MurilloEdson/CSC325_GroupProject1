@@ -9,7 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.image.*;
 
-public class PrimaryController implements Initializable{
+public class SignInController implements Initializable{
     @FXML
     private Button primaryButton;
     @FXML
