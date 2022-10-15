@@ -10,7 +10,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="442.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.farmingdale.csc325_groupproject.QuaternaryController">
+<AnchorPane id="AnchorPane" prefHeight="442.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.farmingdale.csc325_groupproject.NewComplaintController">
    <children>
       <Label layoutX="227.0" layoutY="106.0" text="Complaint Input" />
       <Button layoutX="460.0" layoutY="381.0" mnemonicParsing="false" onAction="#InputData" text="Input Data" />

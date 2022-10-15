@@ -13,7 +13,7 @@ import java.net.URL;
 import javafx.event.ActionEvent;
 
 
-public class TertiaryController implements Initializable {
+public class MainDisplayController implements Initializable {
 
     @FXML
     private ListView<String> criminalNames;

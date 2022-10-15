@@ -17,7 +17,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
-public class QuaternaryController implements Initializable {
+public class NewComplaintController implements Initializable {
     
     @FXML
     private TextField codeTxt;

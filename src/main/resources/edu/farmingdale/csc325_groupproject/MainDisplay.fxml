@@ -11,7 +11,7 @@
 <?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.farmingdale.csc325_groupproject.TertiaryController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.farmingdale.csc325_groupproject.MainDisplayController">
    <children>
       <Label layoutX="223.0" layoutY="45.0" text="Crimal Records Manegement" />
       <Button layoutX="72.0" layoutY="361.0" mnemonicParsing="false" onAction="#switchToMenu" text="Back to Menu" />

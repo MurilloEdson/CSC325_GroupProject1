@@ -3,7 +3,7 @@ package edu.farmingdale.csc325_groupproject;
 import java.io.IOException;
 import javafx.fxml.FXML;
 
-public class SecondaryController {
+public class MenuController {
     
     @FXML
     private void logout() throws IOException {
