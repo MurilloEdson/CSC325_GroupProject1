@@ -7,16 +7,16 @@ public class SecondaryController {
     
     @FXML
     private void logout() throws IOException {
-        App.setRoot("Authentication");
+        App.setRoot("SignIn");
     }
     
     @FXML
-    private void switchToCrimeDB() throws IOException{
-       App.setRoot("CriminalUI");
+    private void switchToMainDisplay() throws IOException{
+       App.setRoot("MainDisplay");
     }
     
     @FXML
-    private void switchToComplaintDB() throws IOException{
-        App.setRoot("ComplaintUI");
+    private void switchToNewComplaint() throws IOException{
+        App.setRoot("NewComplaint");
     }
 }

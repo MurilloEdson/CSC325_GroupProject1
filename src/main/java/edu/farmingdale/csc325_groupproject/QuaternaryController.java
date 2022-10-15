@@ -86,7 +86,7 @@ public class QuaternaryController implements Initializable {
         b.CrimeWeap = weapTxt.getText();
         b.CrimePost = Integer.parseInt(postTxt.getText());
         b.CrimeDist = distTxt.getText();
-        b.CrimeNeigh = neighTxt.getText();
+        b.Neighborhood = neighTxt.getText();
         b.CrimeLoc1 = loc1Txt.getText();
         b.CrimeTot = Integer.parseInt(totTxt.getText());
         b.CrimeName = nameTxt.getText();
@@ -109,7 +109,7 @@ public class QuaternaryController implements Initializable {
             preparedStatement.setString(6, b.getCrimeWeap());
             preparedStatement.setInt(7, b.getCrimePost());
             preparedStatement.setString(8, b.getCrimeDist());
-            preparedStatement.setString(9, b.getCrimeNeigh());
+            preparedStatement.setString(9, b.getNeighborhood());
             preparedStatement.setString(10, b.getCrimeLoc1());
             preparedStatement.setInt(11, b.getCrimeTot());
             preparedStatement.setString(12, b.getCrimeName());
