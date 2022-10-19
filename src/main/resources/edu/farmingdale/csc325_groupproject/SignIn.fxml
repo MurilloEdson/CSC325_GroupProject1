@@ -53,5 +53,7 @@
           </Menu>
         </menus>
       </MenuBar>
+      <Label layoutX="34.0" layoutY="334.0" text="Need an Account?" />
+      <Label layoutX="131.0" layoutY="334.0" onMouseClicked="#toCreateWinodw" text="Click here to Sign-Up" textFill="#006aff" />
    </children>
 </AnchorPane>
