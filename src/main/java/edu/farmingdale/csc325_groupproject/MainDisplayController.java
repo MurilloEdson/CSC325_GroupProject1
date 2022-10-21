@@ -55,19 +55,10 @@ public class MainDisplayController implements Initializable {
             catch (SQLException e) {
         }
     }
-    /*    
-    public void inputDataToJSon() throws FileNotFoundException{
-        GsonBuilder builder = new GsonBuilder();
-        builder.setPrettyPrinting();
-        Gson gson = builder.create();
-        FileReader fr = new FileReader("Locations.json");
-        String jsonString = gson.toJson(place);
-        PrintStream ps = new PrintStream("Locations.json");
-        ps.println(jsonString);
-    }*/
 
     @FXML
     private void switchToMenu() throws IOException {
         App.setRoot("Menu");
     }
+    
 }

@@ -15,18 +15,7 @@ public class Complaint {
     public String CrimeName;
     
    public Complaint(){
-       this.CrimeDate = null;
-       this.CrimeTime = null;
-       this.CrimeCode = null;
-       this.CrimeLoc = null;
-       this.CrimeDesc = null;
-       this.CrimeWeap = null;
-       this.CrimePost = -1;
-       this.CrimeDist = null;
-       this.Neighborhood = null;
-       this.CrimeLoc1 = null;
-       this.CrimeTot = -1;
-       this.CrimeName = null;
+       
    }
 
     public String getCrimeDate() {

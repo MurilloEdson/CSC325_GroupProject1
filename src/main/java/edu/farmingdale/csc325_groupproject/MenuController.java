@@ -9,7 +9,6 @@ public class MenuController {
     private void logout() throws IOException {
         App.setRoot("SignIn");
     }
-    
     @FXML
     private void switchToMainDisplay() throws IOException{
        App.setRoot("MainDisplay");
@@ -18,5 +17,9 @@ public class MenuController {
     @FXML
     private void switchToNewComplaint() throws IOException{
         App.setRoot("NewComplaint");
+    }
+    @FXML
+    private void switchToNewCriminal() throws IOException{
+        App.setRoot("NewCriminal");
     }
 }
