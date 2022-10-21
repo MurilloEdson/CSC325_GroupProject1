@@ -6,32 +6,31 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17" fx:controller="edu.farmingdale.csc325_groupproject.SignUpController">
+<AnchorPane id="AnchorPane" prefHeight="440.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.farmingdale.csc325_groupproject.SignUpController">
    <children>
-      <TextField fx:id="fName" layoutX="116.0" layoutY="93.0" />
-      <TextField fx:id="lName" layoutX="396.0" layoutY="92.0" prefHeight="26.0" prefWidth="150.0" />
-      <TextField fx:id="Email" layoutX="216.0" layoutY="138.0" prefHeight="26.0" prefWidth="222.0" />
-      <Label layoutX="20.0" layoutY="97.0" text="Enter First Name:" />
-      <Label layoutX="300.0" layoutY="97.0" text="Enter Last Name:" />
-      <Button fx:id="createBtn" layoutX="258.0" layoutY="310.0" mnemonicParsing="false" onAction="#createAccount" prefHeight="50.0" prefWidth="90.0" text="Create">
+      <TextField fx:id="fName" layoutX="156.0" layoutY="113.0" />
+      <TextField fx:id="lName" layoutX="436.0" layoutY="112.0" prefHeight="26.0" prefWidth="150.0" />
+      <TextField fx:id="Email" layoutX="256.0" layoutY="158.0" prefHeight="26.0" prefWidth="222.0" />
+      <Label layoutX="60.0" layoutY="117.0" text="Enter First Name:" />
+      <Label layoutX="340.0" layoutY="117.0" text="Enter Last Name:" />
+      <Button fx:id="createBtn" layoutX="298.0" layoutY="339.0" mnemonicParsing="false" onAction="#createAccount" prefHeight="50.0" prefWidth="90.0" text="Create">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <TextField fx:id="userPW" layoutX="156.0" layoutY="221.0" prefHeight="26.0" prefWidth="377.0" />
-      <Label layoutX="143.0" layoutY="143.0" text="Enter Email:" />
-      <Label layoutX="48.0" layoutY="226.0" text="Enter Password: " />
-      <TextField fx:id="confirmPW" layoutX="156.0" layoutY="269.0" prefHeight="26.0" prefWidth="377.0" />
-      <Label layoutX="41.0" layoutY="273.0" text="Confirm Password: " />
-      <Label layoutX="14.0" layoutY="14.0" text="Create Account">
+      <TextField fx:id="userPW" layoutX="196.0" layoutY="241.0" prefHeight="26.0" prefWidth="377.0" />
+      <Label layoutX="183.0" layoutY="163.0" text="Enter Email:" />
+      <Label layoutX="88.0" layoutY="246.0" text="Enter Password: " />
+      <TextField fx:id="confirmPW" layoutX="196.0" layoutY="289.0" prefHeight="26.0" prefWidth="377.0" />
+      <Label layoutX="81.0" layoutY="293.0" text="Confirm Password: " />
+      <Label layoutX="54.0" layoutY="34.0" text="Create Account">
          <font>
             <Font size="36.0" />
          </font>
       </Label>
-      <Label layoutX="14.0" layoutY="360.0" onMouseClicked="#returnLoginIn" text="Click to return to Login-In" textFill="#0c34e7" />
-      <Label layoutX="48.0" layoutY="182.0" text="Enter Username:" />
-      <TextField fx:id="UserInput" layoutX="156.0" layoutY="178.0" prefHeight="26.0" prefWidth="378.0" />
-      <Label fx:id="errorMessage" layoutX="286.0" layoutY="369.0" />
+      <Label layoutX="54.0" layoutY="356.0" onMouseClicked="#returnLoginIn" text="Click to return to Login-In" textFill="#0c34e7" />
+      <Label layoutX="88.0" layoutY="202.0" text="Enter Username:" />
+      <TextField fx:id="UserInput" layoutX="196.0" layoutY="198.0" prefHeight="26.0" prefWidth="378.0" />
+      <Label fx:id="errorMessage" layoutX="326.0" layoutY="389.0" />
    </children>
 </AnchorPane>
