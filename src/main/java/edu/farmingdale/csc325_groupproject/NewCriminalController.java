@@ -21,12 +21,8 @@ public class NewCriminalController implements Initializable {
     
     @FXML
     private TextField codeTxt,dateTxt,descTxt,distTxt,loc1Txt,locTxt,nameTxt,neighTxt,postTxt,timeTxt,totTxt,weapTxt;
-    
     @FXML
-    private ImageView logoView;
-    
-    @FXML
-    private ImageView logoViewHelp;
+    private ImageView logoView,logoViewHelp;
     
     private ArrayList<Criminal> comps = new ArrayList<Criminal>();
     /**
@@ -93,11 +89,9 @@ public class NewCriminalController implements Initializable {
             if (row > 0) {
                 System.out.println("Row inserted");
             }
-    
         } catch (SQLException ex) {
             Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
     }
     
     @FXML

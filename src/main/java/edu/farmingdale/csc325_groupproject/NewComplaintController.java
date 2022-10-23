@@ -2,15 +2,11 @@ package edu.farmingdale.csc325_groupproject;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.*;
 import javafx.fxml.*;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.event.ActionEvent;
-import javafx.scene.control.Alert;
 import javafx.scene.input.MouseEvent;
 
 public class NewComplaintController implements Initializable {

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
@@ -11,49 +12,61 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="388.0" prefWidth="641.0" spacing="20.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.farmingdale.csc325_groupproject.MenuController">
-    <children>
-      <AnchorPane prefHeight="367.0" prefWidth="610.0">
-         <VBox.margin>
-            <Insets />
-         </VBox.margin>
-         <children>
-              <Label layoutX="63.0" layoutY="55.0" prefHeight="50.0" prefWidth="104.0" text="Menu" textFill="#0e29e5">
-               <font>
-                  <Font size="33.0" />
-               </font>
-            </Label>
-              <Button layoutX="363.0" layoutY="106.0" onAction="#logout" text="Log Out" />
-            <Button layoutX="326.0" layoutY="158.0" mnemonicParsing="false" onAction="#switchToMainDisplay" text="Criminal Management" />
-            <Button layoutX="320.0" layoutY="200.0" mnemonicParsing="false" onAction="#switchToNewComplaint" text="Complaint Management" />
-            <ImageView fx:id="menuLogo" fitHeight="150.0" fitWidth="200.0" layoutX="42.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../pics/OIP.jpg" />
-               </image></ImageView>
-            <MenuBar layoutX="9.0" layoutY="-13.0" prefHeight="26.0" prefWidth="602.0">
-              <menus>
-                <Menu mnemonicParsing="false" text="File">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="Close" />
-                  </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Edit">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="Delete" />
-                  </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Help">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="About" />
-                  </items>
-                </Menu>
-              </menus>
-            </MenuBar>
-         </children>
-      </AnchorPane>
-    </children>
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-    </padding>
-</VBox>
 
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="440.0" minWidth="640.0" prefHeight="440.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.farmingdale.csc325_groupproject.MenuController">
+   <children>
+      <Label layoutX="138.0" layoutY="101.0" prefHeight="50.0" prefWidth="104.0" text="Menu" textFill="#0e29e5">
+         <font>
+            <Font size="33.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="menuLogo" fitHeight="150.0" fitWidth="200.0" layoutX="117.0" layoutY="171.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../pics/OIP.jpg" />
+         </image>
+      </ImageView>
+      <MenuBar layoutX="199.0" layoutY="2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <VBox alignment="CENTER" layoutX="343.0" layoutY="101.0" prefHeight="225.0" prefWidth="200.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#switchToMainDisplay" text="View Main Display">
+               <VBox.margin>
+                  <Insets bottom="15.0" />
+               </VBox.margin>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#switchToNewCriminal" text="Register New Criminal">
+               <VBox.margin>
+                  <Insets bottom="15.0" top="15.0" />
+               </VBox.margin>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#switchToNewComplaint" text="Create New Complaint">
+               <VBox.margin>
+                  <Insets bottom="15.0" top="15.0" />
+               </VBox.margin>
+            </Button>
+            <Button onAction="#logout" text="Log Out">
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
