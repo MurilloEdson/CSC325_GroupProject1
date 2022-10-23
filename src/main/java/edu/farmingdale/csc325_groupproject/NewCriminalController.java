@@ -20,29 +20,7 @@ import javafx.scene.input.MouseEvent;
 public class NewCriminalController implements Initializable {
     
     @FXML
-    private TextField codeTxt;
-    @FXML
-    private TextField dateTxt;
-    @FXML
-    private TextField descTxt;
-    @FXML
-    private TextField distTxt;
-    @FXML
-    private TextField loc1Txt;
-    @FXML
-    private TextField locTxt;
-    @FXML
-    private TextField nameTxt;
-    @FXML
-    private TextField neighTxt;
-    @FXML
-    private TextField postTxt;
-    @FXML
-    private TextField timeTxt;
-    @FXML
-    private TextField totTxt;
-    @FXML
-    private TextField weapTxt;
+    private TextField codeTxt,dateTxt,descTxt,distTxt,loc1Txt,locTxt,nameTxt,neighTxt,postTxt,timeTxt,totTxt,weapTxt;
     
     @FXML
     private ImageView logoView;
