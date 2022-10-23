@@ -7,7 +7,6 @@ import javafx.fxml.*;
 import java.util.*;
 import javafx.scene.control.*;
 import javafx.collections.*;
-
 import com.google.gson.reflect.TypeToken;
 import java.net.URL;
 import javafx.event.ActionEvent;
@@ -19,6 +18,10 @@ public class MainDisplayController implements Initializable {
     private ListView<String> criminalNames;
     @FXML
     private ChoiceBox<String> locations;
+    @FXML
+    private ToggleButton permissions;
+    @FXML
+    private Button addCrime,addCriminal;
 
     @Override
     public void initialize(URL url, ResourceBundle rb){
@@ -34,6 +37,8 @@ public class MainDisplayController implements Initializable {
         } catch (FileNotFoundException ex) {
         }  
         locations.setOnAction(this::setListView);
+        permissions.selectedProperty().set(true);
+        testAdminOrViewer();
     }
 
     public void setListView(ActionEvent event){
@@ -55,19 +60,23 @@ public class MainDisplayController implements Initializable {
             catch (SQLException e) {
         }
     }
-    /*    
-    public void inputDataToJSon() throws FileNotFoundException{
-        GsonBuilder builder = new GsonBuilder();
-        builder.setPrettyPrinting();
-        Gson gson = builder.create();
-        FileReader fr = new FileReader("Locations.json");
-        String jsonString = gson.toJson(place);
-        PrintStream ps = new PrintStream("Locations.json");
-        ps.println(jsonString);
-    }*/
+    public void testAdminOrViewer(){
+        if(permissions.isSelected()){
+            permissions.setText("ViewOnly");
+            addCrime.setDisable(true);
+            addCriminal.setDisable(true);
+            System.out.println("Viewer permissions only");
+        }else{
+            permissions.setText("AdminView");
+            addCrime.setDisable(false);
+            addCriminal.setDisable(false);
+            System.out.println("Admin permissions allowed");
+        }
+    }
 
     @FXML
     private void switchToMenu() throws IOException {
         App.setRoot("Menu");
     }
+    
 }
