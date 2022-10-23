@@ -5,33 +5,55 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="440.0" minWidth="640.0" prefHeight="440.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.farmingdale.csc325_groupproject.MenuController">
-   <children>
-      <MenuBar layoutX="234.0" layoutY="8.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <menus>
-            <Menu mnemonicParsing="false" text="File">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Close" />
-               </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Edit">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Delete" />
-               </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Help">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="About" />
-               </items>
-            </Menu>
-         </menus>
-      </MenuBar>
-      <Label layoutX="302.0" layoutY="68.0" text="Menu" />
-      <Button layoutX="290.0" layoutY="295.0" onAction="#logout" text="Log Out" />
-      <Button layoutX="252.0" layoutY="173.0" mnemonicParsing="false" onAction="#switchToNewComplaint" text="Create New Complaint" />
-      <Button layoutX="257.0" layoutY="232.0" mnemonicParsing="false" onAction="#switchToNewCriminal" text="Create New Criminal" />
-      <Button layoutX="261.0" layoutY="115.0" mnemonicParsing="false" onAction="#switchToMainDisplay" text="View Main Display" />
-   </children>
-</AnchorPane>
+<VBox alignment="CENTER" prefHeight="388.0" prefWidth="641.0" spacing="20.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.farmingdale.csc325_groupproject.MenuController">
+    <children>
+      <AnchorPane prefHeight="367.0" prefWidth="610.0">
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+         <children>
+              <Label layoutX="63.0" layoutY="55.0" prefHeight="50.0" prefWidth="104.0" text="Menu" textFill="#0e29e5">
+               <font>
+                  <Font size="33.0" />
+               </font>
+            </Label>
+              <Button layoutX="363.0" layoutY="106.0" onAction="#logout" text="Log Out" />
+            <Button layoutX="326.0" layoutY="158.0" mnemonicParsing="false" onAction="#switchToMainDisplay" text="Criminal Management" />
+            <Button layoutX="320.0" layoutY="200.0" mnemonicParsing="false" onAction="#switchToNewComplaint" text="Complaint Management" />
+            <ImageView fx:id="menuLogo" fitHeight="150.0" fitWidth="200.0" layoutX="42.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../pics/OIP.jpg" />
+               </image></ImageView>
+            <MenuBar layoutX="9.0" layoutY="-13.0" prefHeight="26.0" prefWidth="602.0">
+              <menus>
+                <Menu mnemonicParsing="false" text="File">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Close" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Edit">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Delete" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="About" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+         </children>
+      </AnchorPane>
+    </children>
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+</VBox>
+
