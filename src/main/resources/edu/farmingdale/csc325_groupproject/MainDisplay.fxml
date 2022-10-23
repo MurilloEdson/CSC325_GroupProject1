@@ -13,16 +13,16 @@
 
 <AnchorPane id="AnchorPane" minHeight="440.0" minWidth="640.0" prefHeight="440.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.farmingdale.csc325_groupproject.MainDisplayController">
    <children>
-      <Label layoutX="247.0" layoutY="52.0" text="Crimal Records Manegement" />
+      <Label layoutX="247.0" layoutY="52.0" text="Crimal Records Management" />
       <Button layoutX="96.0" layoutY="368.0" mnemonicParsing="false" onAction="#switchToMenu" text="Back to Menu" />
       <ListView fx:id="criminalNames" layoutX="85.0" layoutY="96.0" prefHeight="200.0" prefWidth="200.0" />
       <ListView layoutX="359.0" layoutY="96.0" prefHeight="200.0" prefWidth="200.0" />
-      <ToggleButton layoutX="478.0" layoutY="48.0" mnemonicParsing="false" text="ToggleButton" />
-      <Button layoutX="112.0" layoutY="333.0" mnemonicParsing="false" text="Add New Criminal" />
+      <ToggleButton fx:id="permissions" layoutX="493.0" layoutY="48.0" mnemonicParsing="false" onAction="#testAdminOrViewer" text="ViewOnly" />
+      <Button fx:id="addCriminal" layoutX="112.0" layoutY="333.0" mnemonicParsing="false" text="Add New Criminal" />
       <Button layoutX="202.0" layoutY="368.0" mnemonicParsing="false" text="Select Criminal" />
       <TextField layoutX="403.0" layoutY="333.0" />
       <ChoiceBox fx:id="locations" layoutX="74.0" layoutY="48.0" onContextMenuRequested="#setListView" prefWidth="150.0" />
-      <Button layoutX="442.0" layoutY="368.0" mnemonicParsing="false" text="Add Crime Above" />
+      <Button fx:id="addCrime" layoutX="442.0" layoutY="368.0" mnemonicParsing="false" text="Add Crime Above" />
       <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <menus>
           <Menu mnemonicParsing="false" text="File">

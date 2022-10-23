@@ -7,7 +7,6 @@ import javafx.fxml.*;
 import java.util.*;
 import javafx.scene.control.*;
 import javafx.collections.*;
-
 import com.google.gson.reflect.TypeToken;
 import java.net.URL;
 import javafx.event.ActionEvent;
@@ -19,6 +18,10 @@ public class MainDisplayController implements Initializable {
     private ListView<String> criminalNames;
     @FXML
     private ChoiceBox<String> locations;
+    @FXML
+    private ToggleButton permissions;
+    @FXML
+    private Button addCrime,addCriminal;
 
     @Override
     public void initialize(URL url, ResourceBundle rb){
@@ -34,6 +37,8 @@ public class MainDisplayController implements Initializable {
         } catch (FileNotFoundException ex) {
         }  
         locations.setOnAction(this::setListView);
+        permissions.selectedProperty().set(true);
+        testAdminOrViewer();
     }
 
     public void setListView(ActionEvent event){
@@ -53,6 +58,19 @@ public class MainDisplayController implements Initializable {
                 criminals.add(name);
         } }
             catch (SQLException e) {
+        }
+    }
+    public void testAdminOrViewer(){
+        if(permissions.isSelected()){
+            permissions.setText("ViewOnly");
+            addCrime.setDisable(true);
+            addCriminal.setDisable(true);
+            System.out.println("Viewer permissions only");
+        }else{
+            permissions.setText("AdminView");
+            addCrime.setDisable(false);
+            addCriminal.setDisable(false);
+            System.out.println("Admin permissions allowed");
         }
     }
 
