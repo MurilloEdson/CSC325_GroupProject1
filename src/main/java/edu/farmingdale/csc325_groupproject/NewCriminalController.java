@@ -42,7 +42,7 @@ public class NewCriminalController implements Initializable {
                 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Help:");
-        alert.setContentText("Please Input the data of your complaint where you can, \n it is okay to leave fields blank.");
+        alert.setContentText("Please Input the data of the criminal here \nThe Data will then be inserted into the crime DB");
         alert.show();
     }
     

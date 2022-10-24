@@ -23,11 +23,13 @@ public class SignInController implements Initializable{
         //TODO: Switch scenes between the Authentication screen and the Menu screen
         //TODO: Read the person credentials with the Admin class
         //TODO: Correlate with the person that has the database to search for credentials in database
+        
         String username = userInput.getText();
         String password = userPassword.getText();
         boolean signedIn = false;
         Connection conn;
         String databaseURL;
+        
          try {
             databaseURL = "jdbc:ucanaccess://.//Crime Management.accdb";
             conn = DriverManager.getConnection(databaseURL);
@@ -53,6 +55,7 @@ public class SignInController implements Initializable{
             }
          }
          catch(SQLException e){   
+             System.out.println("Something went wrong");
          }    
     }
     
