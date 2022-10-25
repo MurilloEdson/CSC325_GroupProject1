@@ -54,8 +54,7 @@ public class SignInController implements Initializable{
                 System.out.println("invalid user and password");
             }
          }
-         catch(SQLException e){   
-             System.out.println("Something went wrong");
+         catch(SQLException e){
          }    
     }
     
