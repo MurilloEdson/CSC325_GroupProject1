@@ -74,6 +74,7 @@ public class PrimaryController implements Initializable{
 
     @FXML
     private void toCreateWinodw(MouseEvent event) {
+        
         try {
             App.setRoot("SignUp");
         } catch (IOException ex) {
