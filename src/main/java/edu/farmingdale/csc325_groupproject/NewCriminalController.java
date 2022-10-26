@@ -1,32 +1,26 @@
 package edu.farmingdale.csc325_groupproject;
 
-import java.io.IOException;
+import com.google.gson.*;
+import com.google.gson.reflect.TypeToken;
+import java.io.*;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.logging.*;
 import javafx.fxml.*;
-import javafx.scene.control.TextField;
 import javafx.event.ActionEvent;
-import javafx.scene.control.Alert;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+import javafx.scene.control.*;
+import javafx.scene.image.*;
 import javafx.scene.input.MouseEvent;
 
 public class NewCriminalController implements Initializable {
     
     @FXML
-    private TextField codeTxt,dateTxt,descTxt,distTxt,loc1Txt,locTxt,nameTxt,neighTxt,postTxt,timeTxt,totTxt,weapTxt;
-    
+    private TextField codeTxt,dateTxt,descTxt,distTxt,loc1Txt,locTxt,nameTxt,postTxt,timeTxt,totTxt,weapTxt;
     @FXML
-    private ImageView logoView;
-    
+    private ImageView logoView,logoViewHelp;
     @FXML
-    private ImageView logoViewHelp;
+    private ChoiceBox<String> neighTxt;
     
     private ArrayList<Criminal> comps = new ArrayList<Criminal>();
     /**
@@ -38,6 +32,17 @@ public class NewCriminalController implements Initializable {
         logoView.setImage(img);
         Image img1 = new Image("/pics/helpIMG.png");
         logoViewHelp.setImage(img1);
+        GsonBuilder builder = new GsonBuilder();
+        builder.setPrettyPrinting();
+        Gson gson = builder.create();
+        ArrayList<String> list;
+        try {
+            FileReader fr = new FileReader("Locations.json");
+            list = gson.fromJson(fr, new TypeToken<ArrayList<String>>(){}.getType());
+             for(String curr : list){
+                neighTxt.getItems().add(curr);}
+        } catch (FileNotFoundException ex) {
+        }
     } 
     
     @FXML
@@ -46,7 +51,7 @@ public class NewCriminalController implements Initializable {
                 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Help:");
-        alert.setContentText("Please Input the data of your complaint where you can, \n it is okay to leave fields blank.");
+        alert.setContentText("Please Input the data of the criminal here \nThe Data will then be inserted into the crime DB");
         alert.show();
     }
     
@@ -62,7 +67,7 @@ public class NewCriminalController implements Initializable {
         b.CrimeWeap = weapTxt.getText();
         b.CrimePost = Integer.parseInt(postTxt.getText());
         b.CrimeDist = distTxt.getText();
-        b.Neighborhood = neighTxt.getText();
+        b.Neighborhood = neighTxt.getValue();
         b.CrimeLoc1 = loc1Txt.getText();
         b.CrimeTot = Integer.parseInt(totTxt.getText());
         b.CrimeName = nameTxt.getText();
@@ -70,6 +75,7 @@ public class NewCriminalController implements Initializable {
         
         String databaseURL = "";
         Connection conn = null;
+        
         try {
             databaseURL = "jdbc:ucanaccess://.//Crime Management.accdb";
             conn = DriverManager.getConnection(databaseURL);
@@ -93,11 +99,9 @@ public class NewCriminalController implements Initializable {
             if (row > 0) {
                 System.out.println("Row inserted");
             }
-    
         } catch (SQLException ex) {
             Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
     }
     
     @FXML
