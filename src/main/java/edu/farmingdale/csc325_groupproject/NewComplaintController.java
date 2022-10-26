@@ -27,19 +27,14 @@ public class NewComplaintController implements Initializable {
     
     @FXML
     private ImageView logoView;
-    
     @FXML
     private ImageView logoViewHelp;
-    
     @FXML
     private TextArea txtArea;
-    
     @FXML
     private ChoiceBox<String> neighTxt;
-
     @FXML
     private TextField timeTxt;
-        
     @FXML
     private DatePicker date2;
     

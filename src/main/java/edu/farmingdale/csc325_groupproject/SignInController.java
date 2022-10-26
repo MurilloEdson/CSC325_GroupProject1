@@ -20,9 +20,7 @@ public class SignInController implements Initializable{
     
     @FXML
     private void verifyCredentials() throws IOException {
-        //TODO: Switch scenes between the Authentication screen and the Menu screen
         //TODO: Read the person credentials with the Admin class
-        //TODO: Correlate with the person that has the database to search for credentials in database
         
         String username = userInput.getText();
         String password = userPassword.getText();
@@ -50,7 +48,10 @@ public class SignInController implements Initializable{
                 }
             }
             if(signedIn == false){
-                System.out.println("invalid user and password");
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("WRONG INFO");
+                alert.setContentText("You have entered an invalid username and/or password");
+                alert.show();
             }
          }
          catch(SQLException e){

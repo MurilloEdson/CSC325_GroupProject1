@@ -75,6 +75,7 @@ public class NewCriminalController implements Initializable {
         
         String databaseURL = "";
         Connection conn = null;
+        
         try {
             databaseURL = "jdbc:ucanaccess://.//Crime Management.accdb";
             conn = DriverManager.getConnection(databaseURL);
