@@ -42,13 +42,12 @@ public class SignInController implements Initializable{
                 String pw = result.getString("password");
                 if (user.equals(username) && pw.equals(password)){
                     App.setRoot("Menu");  
-                    System.out.println("Hello "+ user+", Welcome");
+                    System.out.println("Hello "+ username+", Welcome");
                     signedIn = true;
                     result.afterLast();
                 }else {
-                    App.setRoot("Menu");
-                }    
-                //System.out.printf("%s %s", user, pw);  
+                    //App.setRoot("Menu");
+                }
             }
             if(signedIn == false){
                 System.out.println("invalid user and password");

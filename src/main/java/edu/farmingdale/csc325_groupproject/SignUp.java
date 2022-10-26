@@ -1,46 +1,58 @@
+
 package edu.farmingdale.csc325_groupproject;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.*;
-import java.util.ResourceBundle;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.fxml.Initializable;
+
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
 /**
- * FXML Controller class
  *
  * @author quint
  */
-public class SignUpController implements Initializable {
-
-    @FXML
-    private TextField fName,lName,userPW,confirmPW,UserInput;
+public class SignUp {
+    
     @FXML
     private TextField Email;
+
+    @FXML
+    private TextField UserInput;
+
+    @FXML
+    private TextField confirmPW;
+
     @FXML
     private Button createBtn;
 
-    private int securityLvl = 1; 
     @FXML
     private Label errorMessage;
-    User newUser;
-    /**
-     * Initializes the controller class.
-     */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }
+
+    @FXML
+    private TextField fName;
     
     @FXML
+    private TextField lName;
+
+    @FXML
+    private TextField userPW;
+    private int securityLvl = 1;
+    User newUser;
+
+    @FXML
     void createAccount(ActionEvent event) throws IOException {
-        
         String firstName = fName.getText();
         String lastName = lName.getText();
         String email = Email.getText();
@@ -74,6 +86,7 @@ public class SignUpController implements Initializable {
             System.out.println("Creating Account Please wait....");
             newUser = new User(username,password,firstName,lastName,email,securityLvl);
         }
+           
         
         Connection conn;
         String databaseURL;
@@ -82,7 +95,7 @@ public class SignUpController implements Initializable {
             conn = DriverManager.getConnection(databaseURL);
             String tableName = "Users";
             
-            String sql = "INSERT INTO Users (username, password, firstName, lastName, email, securityLevel) VALUES(?,?,?,?,?,?)";
+            String sql = "INSERT INTO Users (username, password, firstName, lastName, email, securitylevel) VALUES(?,?,?,?,?,?)";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, newUser.getUsername());
             ps.setString(2, newUser.getPassword());
@@ -97,18 +110,21 @@ public class SignUpController implements Initializable {
                 System.out.println(newUser.getFirstName() + " " + newUser.getLastName()+ " " + newUser.getEmail()+ " " + newUser.getUsername()+ " " 
                         + newUser.getPassword()+ " " + newUser.getSecurityLevel());
             }
+         
         } catch (SQLException ex) {
             System.err.println("An error has apppeared while creating account");
         }
+
     }
 
     @FXML
-    private void returnLoginIn(MouseEvent event) {
+    void returnLoginIn(MouseEvent event) {
         try {
-            App.setRoot("SignIn");
+            App.setRoot("Authentication");
         } catch (IOException ex) {
-            System.out.println("Window can't be loaded");
+            System.out.println("Can't load window");
         }
+
     }
     
 }

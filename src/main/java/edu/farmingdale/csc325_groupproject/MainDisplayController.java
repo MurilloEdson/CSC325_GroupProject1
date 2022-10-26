@@ -11,7 +11,6 @@ import com.google.gson.reflect.TypeToken;
 import java.net.URL;
 import javafx.event.ActionEvent;
 
-
 public class MainDisplayController implements Initializable {
 
     @FXML
