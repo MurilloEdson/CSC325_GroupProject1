@@ -7,7 +7,6 @@ edu\farmingdale\csc325_groupproject\User.class
 edu\farmingdale\csc325_groupproject\SignUpController.class
 edu\farmingdale\csc325_groupproject\NewCriminalController.class
 edu\farmingdale\csc325_groupproject\SignInController.class
-edu\farmingdale\csc325_groupproject\SignUp.class
 module-info.class
 edu\farmingdale\csc325_groupproject\NewComplaintController.class
 edu\farmingdale\csc325_groupproject\Criminal.class

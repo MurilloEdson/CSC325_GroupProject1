@@ -97,6 +97,7 @@ public class SignUpController implements Initializable {
                 System.out.println(newUser.getFirstName() + " " + newUser.getLastName()+ " " + newUser.getEmail()+ " " + newUser.getUsername()+ " " 
                         + newUser.getPassword()+ " " + newUser.getSecurityLevel());
             }
+            App.setRoot("SignIn");
         } catch (SQLException ex) {
             System.err.println("An error has apppeared while creating account");
         }
