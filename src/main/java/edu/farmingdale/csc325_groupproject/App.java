@@ -1,5 +1,6 @@
 package edu.farmingdale.csc325_groupproject;
 
+import com.google.cloud.firestore.Firestore;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -12,11 +13,13 @@ import java.io.IOException;
  * JavaFX App
  */
 public class App extends Application {
-
+    public static Firestore fstore;
+    private final FirestoreContext contxtFirebase = new FirestoreContext();
     private static Scene scene;
 
     @Override
     public void start(Stage stage) throws IOException {
+        fstore = contxtFirebase.firebase();
         scene = new Scene(loadFXML("SignIn"), 640, 440);
         stage.setScene(scene);
         stage.setTitle("Crime Records Management System");

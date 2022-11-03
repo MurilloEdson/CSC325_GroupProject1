@@ -1,5 +1,6 @@
 package edu.farmingdale.csc325_groupproject;
 
+import Models.Criminal;
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
 import java.io.*;

@@ -1,5 +1,6 @@
 package edu.farmingdale.csc325_groupproject;
 
+import Models.Complaint;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;

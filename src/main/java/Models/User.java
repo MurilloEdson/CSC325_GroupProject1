@@ -1,4 +1,4 @@
-package edu.farmingdale.csc325_groupproject;
+package Models;
 
 public class User 
 {   
@@ -12,6 +12,12 @@ public class User
     
 
     public User() {
+        this.username = null;
+        this.password = null;
+        this.firstName = null;
+        this.lastName = null;
+        this.email = null;
+        this.securityLvl = 0;
     }
 
     public User(String username, String password,String firstName, String lastName, String email,int securityLvl) {

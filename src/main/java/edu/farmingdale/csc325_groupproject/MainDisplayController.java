@@ -1,14 +1,16 @@
 package edu.farmingdale.csc325_groupproject;
 
+import com.google.api.core.ApiFuture;
+import com.google.cloud.firestore.*;
 import com.google.gson.*;
 import java.io.*;
-import java.sql.*;
 import javafx.fxml.*;
 import java.util.*;
 import javafx.scene.control.*;
 import javafx.collections.*;
 import com.google.gson.reflect.TypeToken;
 import java.net.URL;
+import java.util.concurrent.ExecutionException;
 import javafx.event.ActionEvent;
 
 public class MainDisplayController implements Initializable {
@@ -21,6 +23,7 @@ public class MainDisplayController implements Initializable {
     private ToggleButton permissions;
     @FXML
     private Button addCrime,addCriminal;
+    Boolean Admin = false;
 
     @Override
     public void initialize(URL url, ResourceBundle rb){
@@ -28,6 +31,12 @@ public class MainDisplayController implements Initializable {
         builder.setPrettyPrinting();
         Gson gson = builder.create();
         ArrayList<String> list;
+        if(SignInController.currUser.getSecurityLevel()>1){
+            permissions.selectedProperty().set(true);
+            Admin = true;
+        }else{
+            permissions.selectedProperty().set(false);
+        }
         try {
             FileReader fr = new FileReader("Locations.json");
             list = gson.fromJson(fr, new TypeToken<ArrayList<String>>(){}.getType());
@@ -36,31 +45,42 @@ public class MainDisplayController implements Initializable {
         } catch (FileNotFoundException ex) {
         }  
         locations.setOnAction(this::setListView);
-        permissions.selectedProperty().set(true);
         testAdminOrViewer();
     }
 
     public void setListView(ActionEvent event){
+        
         ObservableList<String> criminals = (ObservableList<String>) criminalNames.getItems();
-        String databaseURL;
-        Connection conn;
-        String place = locations.getValue();
-        try {
-            criminals.clear();
-            databaseURL = "jdbc:ucanaccess://.//Crime Management.accdb";
-            conn = DriverManager.getConnection(databaseURL);
-            String tableName = "Criminal";
-            Statement stmt = conn.createStatement();
-            ResultSet result = stmt.executeQuery("select * from " + tableName+" where Neighborhood = '" + place+"'");
-            while (result.next()) {
-                String name = result.getString("Full Name"); 
-                criminals.add(name);
-        } }
-            catch (SQLException e) {
+        criminals.clear();
+        //asynchronously retrieve all documents
+        ApiFuture<QuerySnapshot> future =  App.fstore.collection("Criminals").get();
+        // future.get() blocks on response
+        List<QueryDocumentSnapshot> documents;
+        try 
+        {
+            documents = future.get().getDocuments();
+            if(!documents.isEmpty())
+            {
+                for (QueryDocumentSnapshot document : documents) 
+                {
+                    String name = ""+document.getData().get("Name");
+                    if(document.getData().get("Neighborhood").equals(locations.getValue())){
+                        criminals.add(name);
+                    }
+                }
+            }
+            else
+            {
+               System.out.println("No data"); 
+            }
+        }
+        catch (InterruptedException | ExecutionException ex ) 
+        {
         }
     }
     public void testAdminOrViewer(){
-        if(permissions.isSelected()){
+        if(Admin){
+            if(permissions.isSelected()){
             permissions.setText("ViewOnly");
             addCrime.setDisable(true);
             addCriminal.setDisable(true);
@@ -70,6 +90,9 @@ public class MainDisplayController implements Initializable {
             addCrime.setDisable(false);
             addCriminal.setDisable(false);
             System.out.println("Admin permissions allowed");
+        }
+        }else{
+            permissions.disableProperty();
         }
     }
 
