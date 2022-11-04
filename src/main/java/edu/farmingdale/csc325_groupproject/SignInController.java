@@ -6,7 +6,6 @@ import com.google.cloud.firestore.QueryDocumentSnapshot;
 import com.google.cloud.firestore.QuerySnapshot;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.*;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.concurrent.ExecutionException;
@@ -42,9 +41,7 @@ public class SignInController implements Initializable{
                 for (QueryDocumentSnapshot document : documents) 
                 {
                     String docUser = document.getData().get("username").toString();
-                    System.out.println(docUser);
                     String docPass = document.getData().get("password").toString();
-                    System.out.println(docPass);
                     if(username.equals(docUser) && password.equals(docPass)){
                         //currUser
                         currUser = DBtoObject(docUser, docPass, document);
@@ -81,7 +78,6 @@ public class SignInController implements Initializable{
             App.setRoot("SignUp");
         } catch (IOException ex) {
             System.out.println("Can't load window");
-            
         }
     }
     private User DBtoObject(String uN,String pW,QueryDocumentSnapshot doc){

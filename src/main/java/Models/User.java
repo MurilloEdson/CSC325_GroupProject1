@@ -4,12 +4,10 @@ public class User
 {   
     private String username;
     private String password;
-    private int security;
     private String firstName;
     private String lastName;
     private String email;
     private int securityLvl;
-    
 
     public User() {
         this.username = null;
@@ -69,13 +67,6 @@ public class User
     }
     public void setSecurityLvl(int securityLvl) {
         this.securityLvl = securityLvl;
-    }
-    
-    public int getSecurityLevel() {
-        return securityLvl;
-    }
-    public void setSecurityLevel(int securityLevel) {
-        this.securityLvl = securityLevel;
     }
 
     @Override
