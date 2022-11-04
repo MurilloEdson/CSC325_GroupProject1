@@ -90,13 +90,13 @@ public class SignUpController implements Initializable {
             ps.setString(3,newUser.getFirstName());
             ps.setString(4, newUser.getLastName());
             ps.setString(5, newUser.getEmail());
-            ps.setInt(6, newUser.getSecurityLevel());
+            ps.setInt(6, newUser.getSecurityLvl());
             
             int row = ps.executeUpdate();
             if(row > 0) {
                 System.out.println("Account Created");
                 System.out.println(newUser.getFirstName() + " " + newUser.getLastName()+ " " + newUser.getEmail()+ " " + newUser.getUsername()+ " " 
-                        + newUser.getPassword()+ " " + newUser.getSecurityLevel());
+                        + newUser.getPassword()+ " " + newUser.getSecurityLvl());
             }
             App.setRoot("SignIn");
         } catch (SQLException ex) {
