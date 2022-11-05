@@ -12,7 +12,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="440.0" minWidth="640.0" prefHeight="440.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.farmingdale.csc325_groupproject.MenuController">
    <children>
       <Label layoutX="138.0" layoutY="101.0" prefHeight="50.0" prefWidth="104.0" text="Menu" textFill="#0e29e5">
@@ -51,12 +50,12 @@
                   <Insets bottom="15.0" />
                </VBox.margin>
             </Button>
-            <Button mnemonicParsing="false" onAction="#switchToNewCriminal" text="Register New Criminal">
+            <Button fx:id="newCriminal" mnemonicParsing="false" onAction="#switchToNewCriminal" text="Register New Criminal">
                <VBox.margin>
                   <Insets bottom="15.0" top="15.0" />
                </VBox.margin>
             </Button>
-            <Button mnemonicParsing="false" onAction="#switchToNewComplaint" text="Create New Complaint">
+            <Button fx:id="newComplaint" mnemonicParsing="false" onAction="#switchToNewComplaint" text="Create New Complaint">
                <VBox.margin>
                   <Insets bottom="15.0" top="15.0" />
                </VBox.margin>

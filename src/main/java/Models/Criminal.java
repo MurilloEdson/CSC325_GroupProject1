@@ -41,14 +41,12 @@ public class Criminal {
         this.CrimeDate = CrimeDate;
     }
 
-
     public String getNeighborhood() {
         return Neighborhood;
     }public void setNeighborhood(String Neighborhood) {
         this.Neighborhood = Neighborhood;
     }
 
-   
     @Override
     public String toString(){
        return this.getAddress()+this.getCrimeDate()+this.getDescription()+this.getName()+this.getNeighborhood()+this.getPost();

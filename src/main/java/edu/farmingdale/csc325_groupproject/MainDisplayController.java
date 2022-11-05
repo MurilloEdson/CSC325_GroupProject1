@@ -31,13 +31,10 @@ public class MainDisplayController implements Initializable {
         builder.setPrettyPrinting();
         Gson gson = builder.create();
         ArrayList<String> list;
-        
-        if(SignInController.currUser.getSecurityLvl()>1){
-            permissions.selectedProperty().set(true);
-            Admin = true;
-        }else{
+        permissions.selectedProperty().set(true);
+        if(!SignInController.currUser.isAdmin()){
             permissions.selectedProperty().set(false);
-            Admin = false;
+            permissions.disableProperty().set(true);
         }
         
         try {
@@ -83,21 +80,16 @@ public class MainDisplayController implements Initializable {
         }
     }
     public void testAdminOrViewer(){
-        if(Admin){
-            if(permissions.isSelected()){
-                permissions.setText("ViewOnly");
-                addCrime.setDisable(false);
-                addCriminal.setDisable(false);
-                System.out.println("Viewer permissions only");
-            }else{
-                permissions.setText("AdminView");
-                addCrime.setDisable(true);
-                addCriminal.setDisable(true);
-                System.out.println("Admin permissions allowed");
-            }
+        if(permissions.isSelected()){
+            permissions.setText("AdminView");
+            addCrime.setDisable(false);
+            addCriminal.setDisable(false);
+            System.out.println("Admin permissions allowed");
         }else{
-            permissions.disableProperty();
-            
+            permissions.setText("ViewOnly");
+            addCrime.setDisable(true);
+            addCriminal.setDisable(true);
+            System.out.println("Viewer permissions only");
         }
     }
 

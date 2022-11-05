@@ -6,6 +6,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -13,6 +14,9 @@ public class MenuController implements Initializable {
     
     @FXML
     private ImageView menuLogo;
+    
+    @FXML
+    private Button newComplaint,newCriminal;
     
     @FXML
     private void logout() throws IOException {
@@ -34,5 +38,9 @@ public class MenuController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         Image img = new Image("/pics/OIP.jpg");
         menuLogo.setImage(img);
+        if(!SignInController.currUser.isAdmin()){
+            newComplaint.setDisable(true);
+            newCriminal.setDisable(true);
+        }
     }
 }
