@@ -31,7 +31,6 @@ public class MainDisplayController implements Initializable {
         builder.setPrettyPrinting();
         Gson gson = builder.create();
         ArrayList<String> list;
-        
         if(SignInController.currUser.getSecurityLvl()>1){
             permissions.selectedProperty().set(true);
             Admin = true;
