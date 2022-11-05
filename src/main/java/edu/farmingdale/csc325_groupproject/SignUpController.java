@@ -70,7 +70,6 @@ public class SignUpController implements Initializable {
     
     public boolean verifyAllTextfields(){
         boolean clear = false;
-        
         if(!fName.getText().isBlank()){
             if(!lName.getText().isBlank()){
                 if(!Email.getText().isBlank()){

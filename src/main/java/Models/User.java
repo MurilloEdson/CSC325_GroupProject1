@@ -1,5 +1,7 @@
 package Models;
 
+import com.google.cloud.firestore.QueryDocumentSnapshot;
+
 public class User 
 {   
     private String username;
@@ -72,6 +74,16 @@ public class User
     @Override
     public String toString() {
         return "User{" + "username=" + username + ", password=" + password + ", securityLevel=" + securityLvl + '}';
+    }
+    
+    public User DBtoObject(String uN,String pW,QueryDocumentSnapshot doc){
+        String fname =  doc.getData().get("firstName").toString();
+        String lname =  doc.getData().get("lastName").toString();
+        String email =  doc.getData().get("email").toString();
+        int lvl =  Integer.parseInt(doc.getData().get("securityLevel").toString());
+        
+        User client = new User(uN,pW,fname,lname,email,lvl);
+        return client;
     }
     
 }

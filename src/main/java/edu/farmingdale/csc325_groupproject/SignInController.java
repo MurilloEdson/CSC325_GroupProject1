@@ -44,7 +44,7 @@ public class SignInController implements Initializable{
                     String docPass = document.getData().get("password").toString();
                     if(username.equals(docUser) && password.equals(docPass)){
                         //currUser
-                        currUser = DBtoObject(docUser, docPass, document);
+                        currUser = currUser.DBtoObject(docUser, docPass, document);
                         signedIn = true;
                         App.setRoot("Menu");
                         System.out.println("Hello "+ currUser.getFirstName()+", Welcome");
@@ -69,7 +69,7 @@ public class SignInController implements Initializable{
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        Image img = new Image("/pics/OIP.jpg");
+        Image img = new Image("/Aesthetics/OIP.jpg");
         logoView.setImage(img);
     }
     @FXML
@@ -80,13 +80,5 @@ public class SignInController implements Initializable{
             System.out.println("Can't load window");
         }
     }
-    private User DBtoObject(String uN,String pW,QueryDocumentSnapshot doc){
-        String fname =  doc.getData().get("firstName").toString();
-        String lname =  doc.getData().get("lastName").toString();
-        String email =  doc.getData().get("email").toString();
-        int lvl =  Integer.parseInt(doc.getData().get("securityLevel").toString());
-        
-        User client = new User(uN,pW,fname,lname,email,lvl);
-        return client;
-    }
+    
 }
