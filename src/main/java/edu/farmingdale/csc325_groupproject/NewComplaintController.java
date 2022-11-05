@@ -1,6 +1,9 @@
 package edu.farmingdale.csc325_groupproject;
 
 import Models.Complaint;
+import com.google.api.core.ApiFuture;
+import com.google.cloud.firestore.DocumentReference;
+import com.google.cloud.firestore.WriteResult;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -71,25 +74,14 @@ public class NewComplaintController implements Initializable {
     
     @FXML
     void InputData(ActionEvent event) {
-        String databaseURL = "";
-        Connection conn = null;
-        try {
-            databaseURL = "jdbc:ucanaccess://.//Crime Management.accdb";
-            conn = DriverManager.getConnection(databaseURL);
-            String sql = "INSERT INTO Complaint (CrimeDate, CrimeTime, Description, Neighborhood) VALUES (?,?,?,?)";
-            PreparedStatement preparedStatement = conn.prepareStatement(sql);
-            //preparedStatement.setDate(1, date2.getValue());
-            preparedStatement.setString(2, timeTxt.getText());
-            preparedStatement.setString(3, txtArea.getText());
-            preparedStatement.setString(4, neighTxt.getValue());
-            
-            int row = preparedStatement.executeUpdate();
-            if (row > 0) {
-                System.out.println("Row inserted");
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        DocumentReference docRef = App.fstore.collection("Users").document(UUID.randomUUID().toString());
+        // Add document data  with id "alovelace" using a hashmap
+        Map<String, Object> data = new HashMap<>();
+        data.put("Date", date2.getValue());
+        data.put("Description", txtArea.getText());
+        data.put("Neighborhood", neighTxt.getValue());
+        //asynchronously write data
+        ApiFuture<WriteResult> result = docRef.set(data);
         timeTxt.clear();
         txtArea.clear();
     }

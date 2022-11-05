@@ -1,10 +1,15 @@
 package edu.farmingdale.csc325_groupproject;
 
 import Models.User;
+import com.google.api.core.ApiFuture;
+import com.google.cloud.firestore.DocumentReference;
+import com.google.cloud.firestore.WriteResult;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.*;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
+import java.util.UUID;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -21,12 +26,9 @@ import javafx.scene.input.MouseEvent;
 public class SignUpController implements Initializable {
 
     @FXML
-    private TextField fName,lName,userPW,confirmPW,UserInput;
-    @FXML
-    private TextField Email;
+    private TextField fName,lName,userPW,confirmPW,UserInput,Email;
     @FXML
     private Button createBtn;
-
     private int securityLvl = 1; 
     @FXML
     private Label errorMessage;
@@ -49,59 +51,45 @@ public class SignUpController implements Initializable {
         String password = userPW.getText();
         String cfPassword = confirmPW.getText();
         
-        if(firstName.equals("")){
-            errorMessage.setText("first name field is empty");
-            errorMessage.setVisible(true);
-        }else if (lastName.equals("")){
-            errorMessage.setText("last name field is empty");
-            errorMessage.setVisible(true);
-        }else if (email.equals("")){
-            errorMessage.setText("email field is empty");
-            errorMessage.setVisible(true);
-        }else if (username.equals("")){
-            errorMessage.setText("username field is empty");
-            errorMessage.setVisible(true);
-        }else if (password.equals("")){
-            errorMessage.setText("password field is empty");
-            errorMessage.setVisible(true);
-        }else if (cfPassword.equals("")){
-            errorMessage.setText("must confirm password field is empty");
-            errorMessage.setVisible(true);
-        }else if (!password.equals(cfPassword)){
-            errorMessage.setText("Passwords do not match");
-            errorMessage.setVisible(true);
-        }else{
-            errorMessage.setVisible(false);
-            System.out.println("Creating Account Please wait....");
-            newUser = new User(username,password,firstName,lastName,email,securityLvl);
-        }
-        
-        Connection conn;
-        String databaseURL;
-        try{
-            databaseURL = "jdbc:ucanaccess://.//Crime Management.accdb";
-            conn = DriverManager.getConnection(databaseURL);
-            String tableName = "Users";
-            
-            String sql = "INSERT INTO Users (username, password, firstName, lastName, email, securityLevel) VALUES(?,?,?,?,?,?)";
-            PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setString(1, newUser.getUsername());
-            ps.setString(2, newUser.getPassword());
-            ps.setString(3,newUser.getFirstName());
-            ps.setString(4, newUser.getLastName());
-            ps.setString(5, newUser.getEmail());
-            ps.setInt(6, newUser.getSecurityLvl());
-            
-            int row = ps.executeUpdate();
-            if(row > 0) {
-                System.out.println("Account Created");
-                System.out.println(newUser.getFirstName() + " " + newUser.getLastName()+ " " + newUser.getEmail()+ " " + newUser.getUsername()+ " " 
-                        + newUser.getPassword()+ " " + newUser.getSecurityLvl());
-            }
+        if(verifyAllTextfields() && cfPassword.equals(password)){
+            DocumentReference docRef = App.fstore.collection("Users").document(UUID.randomUUID().toString());
+            // Add document data  with id "alovelace" using a hashmap
+            Map<String, Object> data = new HashMap<>();
+            data.put("username", UserInput.getText());
+            data.put("password", userPW.getText());
+            data.put("firstName", fName.getText());
+            data.put("lastName", lName.getText());
+            data.put("email", Email.getText());
+            data.put("securityLevel", 1);
+            //asynchronously write data
+            ApiFuture<WriteResult> result = docRef.set(data);
+            clearText();
             App.setRoot("SignIn");
-        } catch (SQLException ex) {
-            System.err.println("An error has apppeared while creating account");
         }
+    }
+    
+    public boolean verifyAllTextfields(){
+        boolean clear = false;
+        if(!fName.getText().isBlank()){
+            if(!lName.getText().isBlank()){
+                if(!Email.getText().isBlank()){
+                    if(!UserInput.getText().isBlank()){
+                        if(!userPW.getText().isBlank()){
+                            clear = true;
+                        }
+                    }
+                }
+            }
+        }
+        return clear;
+    }
+    public void clearText(){
+        fName.clear();
+        lName.clear();
+        Email.clear();
+        UserInput.clear();
+        userPW.clear();
+        confirmPW.clear();
     }
 
     @FXML

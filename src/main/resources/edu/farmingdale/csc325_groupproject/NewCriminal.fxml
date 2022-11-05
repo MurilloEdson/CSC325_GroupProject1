@@ -20,27 +20,12 @@
             <Insets />
          </opaqueInsets>
       </TextField>
-      <TextField fx:id="totTxt" layoutX="406.0" layoutY="300.0">
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-      </TextField>
-      <TextField fx:id="loc1Txt" layoutX="86.0" layoutY="300.0">
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-      </TextField>
-      <TextField fx:id="distTxt" layoutX="246.0" layoutY="254.0">
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-      </TextField>
       <TextField fx:id="postTxt" layoutX="86.0" layoutY="254.0">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
       </TextField>
-      <TextField fx:id="locTxt" layoutX="86.0" layoutY="204.0">
+      <TextField fx:id="addyTxt" layoutX="86.0" layoutY="204.0">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
@@ -50,38 +35,23 @@
             <Insets />
          </opaqueInsets>
       </TextField>
-      <TextField fx:id="weapTxt" layoutX="406.0" layoutY="204.0">
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-      </TextField>
-      <TextField fx:id="codeTxt" layoutX="406.0" layoutY="155.0">
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-      </TextField>
       <TextField fx:id="timeTxt" layoutX="246.0" layoutY="156.0">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
       </TextField>
-      <Label layoutX="406.0" layoutY="280.0" text="Total Incidents" />
-      <Label layoutX="86.0" layoutY="280.0" text="Location 1" />
-      <Label layoutX="406.0" layoutY="186.0" text="Weapon" />
-      <Label layoutX="406.0" layoutY="236.0" text="Neighborhood" />
-      <Label layoutX="246.0" layoutY="236.0" text="District" />
+      <Label layoutX="410.0" layoutY="186.0" text="Neighborhood" />
       <Label layoutX="86.0" layoutY="236.0" text="Post" />
       <Label layoutX="246.0" layoutY="186.0" text="Description" />
-      <Label layoutX="86.0" layoutY="186.0" text="Location" />
-      <Label layoutX="406.0" layoutY="137.0" text="Crime Code" />
+      <Label layoutX="86.0" layoutY="186.0" text="Address" />
       <Label layoutX="246.0" layoutY="137.0" text="Crime Time" />
       <Label layoutX="86.0" layoutY="137.0" text="Crime Date" />
-      <TextField fx:id="nameTxt" layoutX="246.0" layoutY="300.0">
+      <TextField fx:id="nameTxt" layoutX="406.0" layoutY="156.0">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
       </TextField>
-      <Label layoutX="248.0" layoutY="280.0" text="Criminal Name" />
+      <Label layoutX="406.0" layoutY="137.0" text="Criminal Name" />
       <MenuBar layoutY="2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <menus>
           <Menu mnemonicParsing="false" text="File">
@@ -104,7 +74,7 @@
       <Button layoutX="88.0" layoutY="356.0" mnemonicParsing="false" onAction="#switchToMenu" text="Back to Menu" />
       <ImageView fx:id="logoView" fitHeight="100.0" fitWidth="140.0" layoutX="11.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="logoViewHelp" fitHeight="50.0" fitWidth="55.0" layoutX="552.0" layoutY="31.0" onMouseClicked="#helpWindow" pickOnBounds="true" preserveRatio="true" />
-      <ChoiceBox fx:id="neighTxt" layoutX="406.0" layoutY="254.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="neighTxt" layoutX="410.0" layoutY="204.0" prefWidth="150.0" />
    </children>
    <opaqueInsets>
       <Insets />

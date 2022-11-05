@@ -1,13 +1,14 @@
 package edu.farmingdale.csc325_groupproject;
 
 import Models.Criminal;
+import com.google.api.core.ApiFuture;
+import com.google.cloud.firestore.DocumentReference;
+import com.google.cloud.firestore.WriteResult;
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
 import java.io.*;
 import java.net.URL;
-import java.sql.*;
 import java.util.*;
-import java.util.logging.*;
 import javafx.fxml.*;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
@@ -17,7 +18,7 @@ import javafx.scene.input.MouseEvent;
 public class NewCriminalController implements Initializable {
     
     @FXML
-    private TextField codeTxt,dateTxt,descTxt,distTxt,loc1Txt,locTxt,nameTxt,postTxt,timeTxt,totTxt,weapTxt;
+    private TextField dateTxt,timeTxt,nameTxt,addyTxt,descTxt,postTxt;
     @FXML
     private ImageView logoView,logoViewHelp;
     @FXML
@@ -49,7 +50,6 @@ public class NewCriminalController implements Initializable {
     @FXML
     void helpWindow(MouseEvent event) {
         System.out.println("pressed");
-                
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Help:");
         alert.setContentText("Please Input the data of the criminal here \nThe Data will then be inserted into the crime DB");
@@ -60,49 +60,28 @@ public class NewCriminalController implements Initializable {
     void InputData(ActionEvent event) {
 
         Criminal b = new Criminal();
-        b.CrimeDate = dateTxt.getText();
-        b.CrimeTime = timeTxt.getText();
-        b.CrimeCode = codeTxt.getText();
-        b.CrimeLoc = locTxt.getText();
-        b.CrimeDesc = descTxt.getText();
-        b.CrimeWeap = weapTxt.getText();
-        b.CrimePost = Integer.parseInt(postTxt.getText());
-        b.CrimeDist = distTxt.getText();
+        
+        b.CrimeDate = dateTxt.getText()+ timeTxt.getText();
         b.Neighborhood = neighTxt.getValue();
-        b.CrimeLoc1 = loc1Txt.getText();
-        b.CrimeTot = Integer.parseInt(totTxt.getText());
-        b.CrimeName = nameTxt.getText();
+        b.Post = Integer.parseInt(postTxt.getText());
+        b.Name = nameTxt.getText();
+        b.Address = addyTxt.getText();
+        b.Description = descTxt.getText();
+        
         comps.add(b);
         
-        String databaseURL = "";
-        Connection conn = null;
+        DocumentReference docRef = App.fstore.collection("Criminals").document(UUID.randomUUID().toString());
+            // Add document data  with id "alovelace" using a hashmap
+            Map<String, Object> data = new HashMap<>();
+            data.put("crimeDate", b.CrimeDate);
+            data.put("Address", b.Address);
+            data.put("Name", b.Name);
+            data.put("Neighborhood", b.Neighborhood);
+            data.put("Description", b.Description);
+            data.put("Post", b.Post);
+            //asynchronously write data
+            ApiFuture<WriteResult> result = docRef.set(data);
         
-        try {
-            databaseURL = "jdbc:ucanaccess://.//Crime Management.accdb";
-            conn = DriverManager.getConnection(databaseURL);
-            
-            String sql = "INSERT INTO Complaint (CrimeDate, CrimeTime, CrimeCode, Location, Description, Weapon, Post, District, Neighborhood, "
-                    + "Location 1, Total Incidents, Full Name) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-            PreparedStatement preparedStatement = conn.prepareStatement(sql);
-            preparedStatement.setString(1, b.getCrimeDate());
-            preparedStatement.setString(2, b.getCrimeTime());
-            preparedStatement.setString(3, b.getCrimeCode());
-            preparedStatement.setString(4, b.getCrimeLoc());
-            preparedStatement.setString(5, b.getCrimeDesc());
-            preparedStatement.setString(6, b.getCrimeWeap());
-            preparedStatement.setInt(7, b.getCrimePost());
-            preparedStatement.setString(8, b.getCrimeDist());
-            preparedStatement.setString(9, b.getNeighborhood());
-            preparedStatement.setString(10, b.getCrimeLoc1());
-            preparedStatement.setInt(11, b.getCrimeTot());
-            preparedStatement.setString(12, b.getCrimeName());
-            int row = preparedStatement.executeUpdate();
-            if (row > 0) {
-                System.out.println("Row inserted");
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
     
     @FXML

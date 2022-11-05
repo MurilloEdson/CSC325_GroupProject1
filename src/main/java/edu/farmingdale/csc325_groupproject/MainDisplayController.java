@@ -23,7 +23,7 @@ public class MainDisplayController implements Initializable {
     private ToggleButton permissions;
     @FXML
     private Button addCrime,addCriminal;
-    Boolean Admin = false;
+    Boolean Admin;
 
     @Override
     public void initialize(URL url, ResourceBundle rb){
@@ -36,7 +36,9 @@ public class MainDisplayController implements Initializable {
             Admin = true;
         }else{
             permissions.selectedProperty().set(false);
+            Admin = false;
         }
+        
         try {
             FileReader fr = new FileReader("Locations.json");
             list = gson.fromJson(fr, new TypeToken<ArrayList<String>>(){}.getType());
@@ -53,7 +55,8 @@ public class MainDisplayController implements Initializable {
         ObservableList<String> criminals = (ObservableList<String>) criminalNames.getItems();
         criminals.clear();
         //asynchronously retrieve all documents
-        ApiFuture<QuerySnapshot> future =  App.fstore.collection("Criminals").get();
+        ApiFuture<QuerySnapshot> future;
+        future = App.fstore.collection("Criminals").get();
         // future.get() blocks on response
         List<QueryDocumentSnapshot> documents;
         try 
@@ -81,18 +84,19 @@ public class MainDisplayController implements Initializable {
     public void testAdminOrViewer(){
         if(Admin){
             if(permissions.isSelected()){
-            permissions.setText("ViewOnly");
-            addCrime.setDisable(true);
-            addCriminal.setDisable(true);
-            System.out.println("Viewer permissions only");
-        }else{
-            permissions.setText("AdminView");
-            addCrime.setDisable(false);
-            addCriminal.setDisable(false);
-            System.out.println("Admin permissions allowed");
-        }
+                permissions.setText("ViewOnly");
+                addCrime.setDisable(false);
+                addCriminal.setDisable(false);
+                System.out.println("Viewer permissions only");
+            }else{
+                permissions.setText("AdminView");
+                addCrime.setDisable(true);
+                addCriminal.setDisable(true);
+                System.out.println("Admin permissions allowed");
+            }
         }else{
             permissions.disableProperty();
+            
         }
     }
 

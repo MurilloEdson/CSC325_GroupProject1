@@ -10,7 +10,6 @@ public class User
     private String lastName;
     private String email;
     private int securityLvl;
-    
 
     public User() {
         this.username = null;
@@ -71,7 +70,6 @@ public class User
     public void setSecurityLvl(int securityLvl) {
         this.securityLvl = securityLvl;
     }
-    
 
     @Override
     public String toString() {
