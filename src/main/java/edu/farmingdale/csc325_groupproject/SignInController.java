@@ -6,7 +6,6 @@ import com.google.cloud.firestore.QueryDocumentSnapshot;
 import com.google.cloud.firestore.QuerySnapshot;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.*;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.concurrent.ExecutionException;
@@ -23,7 +22,9 @@ public class SignInController implements Initializable{
     @FXML
     private ImageView logoView;
     @FXML
-    private TextField userInput,userPassword;
+    private TextField userInput;
+    @FXML     
+    private PasswordField userPassword;
     
     @FXML
     private void verifyCredentials() throws IOException {
@@ -48,6 +49,7 @@ public class SignInController implements Initializable{
                     if(username.equals(docUser) && password.equals(docPass)){
                         //currUser
                         currUser = DBtoObject(docUser, docPass, document);
+                        currUser.setProfilePic("OIP.jpg");
                         signedIn = true;
                         App.setRoot("Menu");
                         System.out.println("Hello "+ currUser.getFirstName()+", Welcome");
@@ -72,7 +74,7 @@ public class SignInController implements Initializable{
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        Image img = new Image("/pics/OIP.jpg");
+        Image img = new Image("/Aesthetics/OIP.jpg");
         logoView.setImage(img);
     }
     @FXML

@@ -5,13 +5,14 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="440.0" minWidth="640.0" prefHeight="440.0" prefWidth="640.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.farmingdale.csc325_groupproject.SignInController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="440.0" minWidth="640.0" prefHeight="440.0" prefWidth="640.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.farmingdale.csc325_groupproject.SignInController">
    <children>
       <Button fx:id="loginButton" layoutX="283.0" layoutY="306.0" onAction="#verifyCredentials" prefHeight="30.0" prefWidth="100.0" text="LOGIN">
          <font>
@@ -22,18 +23,7 @@
          <image>
             <Image url="@../../../pics/OIP.jpg" />
          </image></ImageView>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="219.0" layoutY="222.0" prefHeight="20.0" prefWidth="70.0" text="Username:">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="219.0" layoutY="266.0" prefHeight="20.0" prefWidth="70.0" text="Password:">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <TextField fx:id="userInput" layoutX="289.0" layoutY="220.0" translateX="5.0" />
-      <TextField fx:id="userPassword" layoutX="289.0" layoutY="264.0" translateX="5.0" />
+      <TextField fx:id="userInput" layoutX="254.0" layoutY="220.0" promptText="Username" translateX="5.0" />
       <MenuBar layoutY="1.0" prefHeight="26.0" prefWidth="590.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <menus>
           <Menu mnemonicParsing="false" text="File">
@@ -55,5 +45,6 @@
       </MenuBar>
       <Label layoutX="226.0" layoutY="366.0" text="Need an Account? " />
       <Label layoutX="326.0" layoutY="366.0" onMouseClicked="#toCreateWinodw" text="Click here to Sign-Up" textFill="#006aff" />
+      <PasswordField fx:id="userPassword" layoutX="260.0" layoutY="261.0" promptText="Password" />
    </children>
 </AnchorPane>

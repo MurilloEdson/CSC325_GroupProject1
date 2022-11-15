@@ -1,5 +1,7 @@
 package Models;
 
+import javafx.scene.image.Image;
+
 public class User 
 {   
     private String username;
@@ -9,6 +11,7 @@ public class User
     private String lastName;
     private String email;
     private int securityLvl;
+    private Image profilePic;
     
 
     public User() {
@@ -76,6 +79,13 @@ public class User
     }
     public void setSecurityLevel(int securityLevel) {
         this.securityLvl = securityLevel;
+    }
+
+    public Image getProfilePic() {
+        return profilePic;
+    }
+    public void setProfilePic(String name) {
+        this.profilePic = new Image("/Aesthetics/"+name);
     }
 
     @Override

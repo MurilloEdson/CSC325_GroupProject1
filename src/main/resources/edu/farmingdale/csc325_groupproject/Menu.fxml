@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="432.0" prefWidth="626.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.farmingdale.csc325_groupproject.MenuController">
+<AnchorPane prefHeight="432.0" prefWidth="626.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.farmingdale.csc325_groupproject.MenuController">
    <children>
       <Label layoutX="138.0" layoutY="101.0" prefHeight="50.0" prefWidth="104.0" text="Menu" textFill="#0e29e5">
          <font>
@@ -70,8 +70,13 @@
       </VBox>
       <AnchorPane layoutX="549.0" prefHeight="22.0" prefWidth="85.0">
          <children>
-            <SplitMenuButton mnemonicParsing="false" prefHeight="21.0" prefWidth="85.0" text="Profile">
+            <SplitMenuButton fx:id="profile" mnemonicParsing="false" prefHeight="21.0" prefWidth="85.0" text="Profile">
               <items>
+                  <MenuItem fx:id="username" mnemonicParsing="false" text="Name">
+                     <graphic>
+                        <ImageView fx:id="profPic" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                  </MenuItem>
                 <MenuItem mnemonicParsing="false" text="Settings" />
                 <MenuItem mnemonicParsing="false" onAction="#logout" text="LogOut" />
               </items>

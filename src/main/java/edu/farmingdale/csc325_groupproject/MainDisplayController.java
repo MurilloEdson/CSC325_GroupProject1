@@ -12,6 +12,7 @@ import com.google.gson.reflect.TypeToken;
 import java.net.URL;
 import java.util.concurrent.ExecutionException;
 import javafx.event.ActionEvent;
+import javafx.scene.image.ImageView;
 
 public class MainDisplayController implements Initializable {
 
@@ -24,6 +25,10 @@ public class MainDisplayController implements Initializable {
     @FXML
     private Button addCrime,addCriminal;
     Boolean Admin = false;
+    @FXML
+    private MenuItem username;
+    @FXML
+    private ImageView profPic;
 
     @Override
     public void initialize(URL url, ResourceBundle rb){
@@ -31,6 +36,8 @@ public class MainDisplayController implements Initializable {
         builder.setPrettyPrinting();
         Gson gson = builder.create();
         ArrayList<String> list;
+        //profPic.setImage(SignInController.currUser.getProfilePic());
+        //username.setText(SignInController.currUser.getUsername());
         if(SignInController.currUser.getSecurityLevel()>1){
             permissions.selectedProperty().set(true);
             Admin = true;
