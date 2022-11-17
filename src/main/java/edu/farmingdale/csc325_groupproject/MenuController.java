@@ -35,7 +35,7 @@ public class MenuController implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        Image img = new Image("/Aesthetics/OIP.jpg");
+        Image img = new Image("/Aesthetics/logo.png");
         menuLogo.setImage(img);
         welcomeLabel.setText("Welcome, " + SignInController.currUser.getFirstName());
         

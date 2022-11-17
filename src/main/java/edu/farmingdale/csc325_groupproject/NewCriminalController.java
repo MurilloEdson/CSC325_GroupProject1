@@ -30,9 +30,9 @@ public class NewCriminalController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        Image img = new Image("/pics/OIP.jpg");
+        Image img = new Image("/Aesthetics/logo.png");
         logoView.setImage(img);
-        Image img1 = new Image("/pics/helpIMG.png");
+        Image img1 = new Image("/Aesthetics/helpIMG.png");
         logoViewHelp.setImage(img1);
         GsonBuilder builder = new GsonBuilder();
         builder.setPrettyPrinting();

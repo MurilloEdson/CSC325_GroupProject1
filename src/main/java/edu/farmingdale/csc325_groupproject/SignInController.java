@@ -18,11 +18,13 @@ import javafx.scene.input.MouseEvent;
 public class SignInController implements Initializable{
     static User currUser = new User();
     @FXML
-    private Button primaryButton;
+    private Button loginBtn;
     @FXML
     private ImageView logoView;
     @FXML
-    private TextField userInput,userPassword;
+    private TextField userInput;
+    @FXML       
+    private PasswordField userPassword;
     
     @FXML
     private void verifyCredentials() throws IOException {
@@ -69,13 +71,15 @@ public class SignInController implements Initializable{
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        Image img = new Image("/Aesthetics/OIP.jpg");
+        Image img = new Image("/Aesthetics/logo.png");
         logoView.setImage(img);
+        
     }
     @FXML
     private void toCreateWinodw(MouseEvent event) {
         try {
             App.setRoot("SignUp");
+             
         } catch (IOException ex) {
             System.out.println("Can't load window");
         }

@@ -47,7 +47,7 @@ public class NewComplaintController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        Image img = new Image("/Aesthetics/OIP.jpg");
+        Image img = new Image("/Aesthetics/logo.png");
         logoView.setImage(img);
         Image img1 = new Image("/Aesthetics/helpIMG.png");
         logoViewHelp.setImage(img1);

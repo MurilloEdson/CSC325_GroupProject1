@@ -21,7 +21,7 @@
       </Label>
       <ImageView fx:id="menuLogo" fitHeight="150.0" fitWidth="200.0" layoutX="117.0" layoutY="171.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../pics/OIP.jpg" />
+            <Image url="@../../../Aesthetics/OIP.jpg" />
          </image>
       </ImageView>
       <MenuBar layoutX="199.0" layoutY="2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
