@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import javafx.scene.image.Image;
 
 /**
  * JavaFX App
@@ -21,6 +22,9 @@ public class App extends Application {
     public void start(Stage stage) throws IOException {
         fstore = contxtFirebase.firebase();
         scene = new Scene(loadFXML("SignIn"), 640, 440);
+        String css = this.getClass().getResource("Project.css").toExternalForm();
+        scene.getStylesheets().add(css);
+        stage.getIcons().add(new Image("/Aesthetics/DB_icon.png"));
         stage.setScene(scene);
         stage.setTitle("Crime Records Management System");
         stage.show();

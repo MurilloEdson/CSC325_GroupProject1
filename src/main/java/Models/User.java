@@ -1,6 +1,7 @@
 package Models;
 
 import com.google.cloud.firestore.QueryDocumentSnapshot;
+import javafx.scene.image.Image;
 
 public class User 
 {   
@@ -11,6 +12,7 @@ public class User
     private String email;
     private int securityLvl;
     private boolean Admin;
+    public Image profilePic;
 
     public User() {
         this.username = null;
@@ -20,6 +22,7 @@ public class User
         this.email = null;
         this.securityLvl = 0;
         this.Admin = false;
+        this.profilePic = null;
     }
 
     public User(String username, String password,String firstName, String lastName, String email,int securityLvl) {
@@ -88,6 +91,11 @@ public class User
         int lvl =  Integer.parseInt(doc.getData().get("securityLevel").toString());
         
         User client = new User(uN,pW,fname,lname,email,lvl);
+        try {
+            client.profilePic = new Image("/Aesthetics/"+uN+".jpg");
+        } catch (Exception e) {
+            client.profilePic = new Image("/Aesthetics/logo.png");
+        }
         return client;
     }
 }

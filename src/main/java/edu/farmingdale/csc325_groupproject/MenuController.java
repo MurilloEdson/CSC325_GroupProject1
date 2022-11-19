@@ -14,9 +14,14 @@ public class MenuController implements Initializable {
     
     @FXML
     private ImageView menuLogo;
-    
+    @FXML
+    private Label welcomeLabel;
+    @FXML
+    private ImageView profilePicture;
     @FXML
     private Button newComplaint,newCriminal;
+    @FXML
+    private MenuItem userName;
     
     @FXML
     private void logout() throws IOException {
@@ -36,11 +41,18 @@ public class MenuController implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        Image img = new Image("/pics/OIP.jpg");
+        Image img = new Image("/Aesthetics/logo.png");
         menuLogo.setImage(img);
+        profilePicture.setImage(SignInController.currUser.profilePic);
+        userName.setText(SignInController.currUser.getFirstName());
+        
         if(!SignInController.currUser.isAdmin()){
             newComplaint.setDisable(true);
             newCriminal.setDisable(true);
         }
+    }
+    @FXML
+    private void close() throws IOException {
+        System.exit(0);
     }
 }

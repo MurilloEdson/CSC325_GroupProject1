@@ -109,4 +109,5 @@
             </plugin>
         </plugins>
     </build>
+    <name>CSC325_GroupProject</name>
 </project>

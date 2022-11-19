@@ -32,15 +32,21 @@ public class NewComplaintController implements Initializable {
     private TextField timeTxt;
     @FXML
     private DatePicker date2;
+    @FXML
+    private ImageView profilePicture;
+    @FXML
+    private MenuItem userName;
     
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        Image img = new Image("/pics/OIP.jpg");
+        profilePicture.setImage(SignInController.currUser.profilePic);
+        userName.setText(SignInController.currUser.getFirstName());
+        Image img = new Image("/Aesthetics/logo.png");
         logoView.setImage(img);
-        Image img1 = new Image("/pics/helpIMG.png");
+        Image img1 = new Image("/Aesthetics/helpIMG.png");
         logoViewHelp.setImage(img1);
         GsonBuilder builder = new GsonBuilder();
         builder.setPrettyPrinting();
@@ -81,4 +87,9 @@ public class NewComplaintController implements Initializable {
     private void switchToMenu() throws IOException {
         App.setRoot("Menu");
     }
+    @FXML
+    private void close() throws IOException {
+        System.exit(0);
+    }
 }
+
