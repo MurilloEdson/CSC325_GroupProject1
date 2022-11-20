@@ -2,25 +2,16 @@ package edu.farmingdale.csc325_groupproject;
 
 import Models.Complaint;
 import com.google.api.core.ApiFuture;
-import com.google.cloud.firestore.DocumentReference;
-import com.google.cloud.firestore.WriteResult;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import com.google.cloud.firestore.*;
+import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
-import java.sql.*;
 import java.util.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.fxml.*;
 import javafx.scene.control.*;
 import javafx.event.ActionEvent;
-import javafx.scene.control.Alert;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -41,13 +32,19 @@ public class NewComplaintController implements Initializable {
     private TextField timeTxt;
     @FXML
     private DatePicker date2;
+    @FXML
+    private ImageView profilePicture;
+    @FXML
+    private MenuItem userName;
     
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        Image img = new Image("/Aesthetics/OIP.jpg");
+        profilePicture.setImage(SignInController.currUser.profilePic);
+        userName.setText(SignInController.currUser.getFirstName());
+        Image img = new Image("/Aesthetics/logo.png");
         logoView.setImage(img);
         Image img1 = new Image("/Aesthetics/helpIMG.png");
         logoViewHelp.setImage(img1);
@@ -90,4 +87,9 @@ public class NewComplaintController implements Initializable {
     private void switchToMenu() throws IOException {
         App.setRoot("Menu");
     }
+    @FXML
+    private void close() throws IOException {
+        System.exit(0);
+    }
 }
+

@@ -12,23 +12,34 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="440.0" minWidth="640.0" prefHeight="440.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.farmingdale.csc325_groupproject.MenuController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="440.0" minWidth="640.0" prefHeight="440.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.farmingdale.csc325_groupproject.MenuController">
    <children>
-      <Label layoutX="138.0" layoutY="101.0" prefHeight="50.0" prefWidth="104.0" text="Menu" textFill="#0e29e5">
+      <Label alignment="CENTER" layoutX="138.0" layoutY="108.0" prefHeight="29.0" prefWidth="68.0" text="Menu" textFill="#0e29e5">
          <font>
-            <Font size="33.0" />
+            <Font size="5.0" />
          </font>
       </Label>
-      <ImageView fx:id="menuLogo" fitHeight="150.0" fitWidth="200.0" layoutX="117.0" layoutY="171.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="menuLogo" fitHeight="203.0" fitWidth="192.0" layoutX="81.0" layoutY="137.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../pics/OIP.jpg" />
+            <Image url="@../../../Aesthetics/logo.png" />
          </image>
       </ImageView>
       <MenuBar layoutX="199.0" layoutY="2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <menus>
+            <Menu mnemonicParsing="false" text="Profile">
+              <items>
+                  <MenuItem fx:id="userName" mnemonicParsing="false" text="Name">
+                     <graphic>
+                        <ImageView fx:id="profilePicture" fitHeight="50.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                  </MenuItem>
+                  <MenuItem mnemonicParsing="false" text="Settings" />
+                <MenuItem mnemonicParsing="false" text="Log out" />
+              </items>
+            </Menu>
           <Menu mnemonicParsing="false" text="File">
             <items>
-              <MenuItem mnemonicParsing="false" text="Close" />
+              <MenuItem mnemonicParsing="false" onAction="#close" text="Close" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Edit">
@@ -43,19 +54,20 @@
           </Menu>
         </menus>
       </MenuBar>
-      <VBox alignment="CENTER" layoutX="343.0" layoutY="101.0" prefHeight="225.0" prefWidth="200.0">
+      <Label fx:id="welcomeLabel" layoutX="46.0" layoutY="57.0" />
+      <VBox alignment="CENTER" layoutX="349.0" layoutY="95.0" prefHeight="250.0" prefWidth="200.0">
          <children>
             <Button mnemonicParsing="false" onAction="#switchToMainDisplay" text="View Main Display">
                <VBox.margin>
                   <Insets bottom="15.0" />
                </VBox.margin>
             </Button>
-            <Button mnemonicParsing="false" onAction="#switchToNewCriminal" text="Register New Criminal">
+            <Button fx:id="newCriminal" mnemonicParsing="false" onAction="#switchToNewCriminal" text="Register New Criminal">
                <VBox.margin>
                   <Insets bottom="15.0" top="15.0" />
                </VBox.margin>
             </Button>
-            <Button mnemonicParsing="false" onAction="#switchToNewComplaint" text="Create New Complaint">
+            <Button fx:id="newComplaint" mnemonicParsing="false" onAction="#switchToNewComplaint" text="Create New Complaint">
                <VBox.margin>
                   <Insets bottom="15.0" top="15.0" />
                </VBox.margin>
@@ -67,10 +79,5 @@
             </Button>
          </children>
       </VBox>
-      <Label fx:id="welcomeLabel" layoutX="14.0" layoutY="30.0" prefHeight="54.0" prefWidth="310.0">
-         <font>
-            <Font size="24.0" />
-         </font></Label>
-      <Label fx:id="welcomeLabel" layoutX="46.0" layoutY="57.0" />
    </children>
 </AnchorPane>

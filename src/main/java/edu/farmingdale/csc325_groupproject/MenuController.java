@@ -6,7 +6,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -16,6 +16,12 @@ public class MenuController implements Initializable {
     private ImageView menuLogo;
     @FXML
     private Label welcomeLabel;
+    @FXML
+    private ImageView profilePicture;
+    @FXML
+    private Button newComplaint,newCriminal;
+    @FXML
+    private MenuItem userName;
     
     @FXML
     private void logout() throws IOException {
@@ -35,9 +41,18 @@ public class MenuController implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        Image img = new Image("/Aesthetics/OIP.jpg");
+        Image img = new Image("/Aesthetics/logo.png");
         menuLogo.setImage(img);
-        welcomeLabel.setText("Welcome, " + SignInController.currUser.getFirstName());
+        profilePicture.setImage(SignInController.currUser.profilePic);
+        userName.setText(SignInController.currUser.getFirstName());
         
+        if(!SignInController.currUser.isAdmin()){
+            newComplaint.setDisable(true);
+            newCriminal.setDisable(true);
+        }
+    }
+    @FXML
+    private void close() throws IOException {
+        System.exit(0);
     }
 }

@@ -22,12 +22,13 @@ public class SignInController implements Initializable{
     @FXML
     private ImageView logoView;
     @FXML
-    private TextField userInput,userPassword;
+    private TextField userInput;
+    @FXML
+    private PasswordField userPassword;
     
     @FXML
     private void verifyCredentials() throws IOException {
         //TODO: Read the person credentials with the Admin class
-        
         String username = userInput.getText();
         String password = userPassword.getText();
         boolean signedIn = false;
@@ -65,12 +66,19 @@ public class SignInController implements Initializable{
         }
         catch (InterruptedException | ExecutionException ex ) {
         }
+        //SignUpController.newUsername = null;
+        //SignUpController.newPassword = null;
     }
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        Image img = new Image("/Aesthetics/OIP.jpg");
+        Image img = new Image("/Aesthetics/logo.png");
         logoView.setImage(img);
+        try {
+            //userInput.setText(SignUpController.newUsername);
+            //userPassword.setText(SignUpController.newPassword);
+        } catch (NullPointerException e) {
+        }
     }
     @FXML
     private void toCreateWinodw(MouseEvent event) {
@@ -80,5 +88,4 @@ public class SignInController implements Initializable{
             System.out.println("Can't load window");
         }
     }
-    
 }

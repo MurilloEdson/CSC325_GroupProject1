@@ -11,92 +11,93 @@ import javafx.collections.*;
 import com.google.gson.reflect.TypeToken;
 import java.net.URL;
 import java.util.concurrent.ExecutionException;
+import java.util.logging.*;
 import javafx.event.ActionEvent;
+import javafx.scene.image.ImageView;
 
 public class MainDisplayController implements Initializable {
 
     @FXML
-    private ListView<String> criminalNames;
+    private ListView<String> criminalNames = new ListView<>();
+    @FXML
+    private ListView<String> complaintDesc = new ListView<>();
     @FXML
     private ChoiceBox<String> locations;
     @FXML
     private ToggleButton permissions;
     @FXML
-    private Button addCrime,addCriminal;
-    Boolean Admin;
+    private Button addCrime, addCriminal;
+    @FXML
+    private ImageView profilePicture;
+    @FXML
+    private MenuItem userName;
 
     @Override
-    public void initialize(URL url, ResourceBundle rb){
+    public void initialize(URL url, ResourceBundle rb) {
+        profilePicture.setImage(SignInController.currUser.profilePic);
+        userName.setText(SignInController.currUser.getFirstName());
         GsonBuilder builder = new GsonBuilder();
         builder.setPrettyPrinting();
         Gson gson = builder.create();
         ArrayList<String> list;
-        if(SignInController.currUser.getSecurityLvl()>1){
-            permissions.selectedProperty().set(true);
-            Admin = true;
-        }else{
+        permissions.selectedProperty().set(true);
+        if (!SignInController.currUser.isAdmin()) {
             permissions.selectedProperty().set(false);
-            Admin = false;
+            permissions.disableProperty().set(true);
         }
-        
+
         try {
             FileReader fr = new FileReader("Locations.json");
-            list = gson.fromJson(fr, new TypeToken<ArrayList<String>>(){}.getType());
-             for(String curr : list){
-                locations.getItems().add(curr);}
+            list = gson.fromJson(fr, new TypeToken<ArrayList<String>>() {
+            }.getType());
+            for (String curr : list) {
+                locations.getItems().add(curr);
+            }
         } catch (FileNotFoundException ex) {
-        }  
+        }
         locations.setOnAction(this::setListView);
         testAdminOrViewer();
     }
 
-    public void setListView(ActionEvent event){
-        
-        ObservableList<String> criminals = (ObservableList<String>) criminalNames.getItems();
-        criminals.clear();
-        //asynchronously retrieve all documents
-        ApiFuture<QuerySnapshot> future;
-        future = App.fstore.collection("Criminals").get();
-        // future.get() blocks on response
-        List<QueryDocumentSnapshot> documents;
-        try 
-        {
-            documents = future.get().getDocuments();
-            if(!documents.isEmpty())
-            {
-                for (QueryDocumentSnapshot document : documents) 
-                {
-                    String name = ""+document.getData().get("Name");
-                    if(document.getData().get("Neighborhood").equals(locations.getValue())){
-                        criminals.add(name);
-                    }
-                }
+    public void setListView(ActionEvent event) {
+        try {
+            ObservableList<String> criminals = (ObservableList<String>) criminalNames.getItems();
+            ObservableList<String> complaints = (ObservableList<String>) complaintDesc.getItems();
+            criminals.clear();
+            complaints.clear();
+            String target = locations.getValue();
+            // Create a reference to the cities collection
+            CollectionReference crimeTable = App.fstore.collection("Criminals");
+            CollectionReference compTable = App.fstore.collection("Complaints");
+            // Create a query against the collection.
+            Query query = crimeTable.whereEqualTo("Neighborhood", target);
+            Query query2 = compTable.whereEqualTo("Neighborhood", target);
+            // retrieve  query results asynchronously using query.get()
+            ApiFuture<QuerySnapshot> querySnapshot = query.get();
+            ApiFuture<QuerySnapshot> querySnapshot2 = query2.get();
+            
+            for (DocumentSnapshot document : querySnapshot.get().getDocuments()) {
+                String name = document.get("Name").toString();
+                criminals.add(name);
             }
-            else
-            {
-               System.out.println("No data"); 
+            for (DocumentSnapshot document2 : querySnapshot2.get().getDocuments()) {
+                String desc = document2.get("Description").toString();
+                criminals.add(desc);
             }
-        }
-        catch (InterruptedException | ExecutionException ex ) 
-        {
+        } catch (InterruptedException | ExecutionException ex) {
+            Logger.getLogger(MainDisplayController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    public void testAdminOrViewer(){
-        if(Admin){
-            if(permissions.isSelected()){
-                permissions.setText("ViewOnly");
-                addCrime.setDisable(false);
-                addCriminal.setDisable(false);
-                System.out.println("Viewer permissions only");
-            }else{
-                permissions.setText("AdminView");
-                addCrime.setDisable(true);
-                addCriminal.setDisable(true);
-                System.out.println("Admin permissions allowed");
-            }
-        }else{
-            permissions.disableProperty();
-            
+
+    public void testAdminOrViewer() {
+        if (permissions.isSelected()) {
+            permissions.setText("AdminView");
+            addCrime.setDisable(false);
+            addCriminal.setDisable(false);
+        } else {
+            permissions.setText("ViewOnly");
+            addCrime.setDisable(true);
+            addCriminal.setDisable(true);
         }
     }
 
@@ -104,5 +105,19 @@ public class MainDisplayController implements Initializable {
     private void switchToMenu() throws IOException {
         App.setRoot("Menu");
     }
-    
+
+    @FXML
+    private void close() throws IOException {
+        System.exit(0);
+    }
+
+    @FXML
+    private void newCriminal() throws IOException {
+        App.setRoot("NewCriminal");
+    }
+
+    @FXML
+    private void newComplaint() throws IOException {
+        App.setRoot("NewComplaint");
+    }
 }

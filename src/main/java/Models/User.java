@@ -1,6 +1,7 @@
 package Models;
 
 import com.google.cloud.firestore.QueryDocumentSnapshot;
+import javafx.scene.image.Image;
 
 public class User 
 {   
@@ -10,6 +11,8 @@ public class User
     private String lastName;
     private String email;
     private int securityLvl;
+    private boolean Admin;
+    public Image profilePic;
 
     public User() {
         this.username = null;
@@ -18,6 +21,8 @@ public class User
         this.lastName = null;
         this.email = null;
         this.securityLvl = 0;
+        this.Admin = false;
+        this.profilePic = null;
     }
 
     public User(String username, String password,String firstName, String lastName, String email,int securityLvl) {
@@ -27,47 +32,50 @@ public class User
         this.lastName = lastName;
         this.email = email;
         this.securityLvl = securityLvl;
+        if(this.securityLvl>1){
+            this.Admin = true;
+        }
+    }
+
+    public boolean isAdmin() {
+        return Admin;
+    }public void setAdmin(boolean Admin) {
+        this.Admin = Admin;
     }
     
     public String getUsername() {
         return username;
-    }
-    public void setUsername(String username) {
+    }public void setUsername(String username) {
         this.username = username;
     }
 
     public String getPassword() {
         return password;
-    }
-    public void setPassword(String password) {
+    }public void setPassword(String password) {
         this.password = password;
     }
 
     public String getFirstName() {
         return firstName;
-    }
-    public void setFirstName(String firstName) {
+    }public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
     public String getLastName() {
         return lastName;
-    }
-    public void setLastName(String lastName) {
+    }public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
     public String getEmail() {
         return email;
-    }
-    public void setEmail(String email) {
+    }public void setEmail(String email) {
         this.email = email;
     }
 
     public int getSecurityLvl() {
         return securityLvl;
-    }
-    public void setSecurityLvl(int securityLvl) {
+    }public void setSecurityLvl(int securityLvl) {
         this.securityLvl = securityLvl;
     }
 
@@ -83,7 +91,11 @@ public class User
         int lvl =  Integer.parseInt(doc.getData().get("securityLevel").toString());
         
         User client = new User(uN,pW,fname,lname,email,lvl);
+        try {
+            client.profilePic = new Image("/Aesthetics/"+uN+".jpg");
+        } catch (Exception e) {
+            client.profilePic = new Image("/Aesthetics/logo.png");
+        }
         return client;
     }
-    
 }

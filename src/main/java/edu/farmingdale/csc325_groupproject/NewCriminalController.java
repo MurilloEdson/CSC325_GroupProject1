@@ -23,6 +23,10 @@ public class NewCriminalController implements Initializable {
     private ImageView logoView,logoViewHelp;
     @FXML
     private ChoiceBox<String> neighTxt;
+    @FXML
+    private ImageView profilePicture;
+    @FXML
+    private MenuItem userName;
     
     private ArrayList<Criminal> comps = new ArrayList<Criminal>();
     /**
@@ -30,9 +34,11 @@ public class NewCriminalController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        Image img = new Image("/pics/OIP.jpg");
+        profilePicture.setImage(SignInController.currUser.profilePic);
+        userName.setText(SignInController.currUser.getFirstName());
+        Image img = new Image("/Aesthetics/logo.png");
         logoView.setImage(img);
-        Image img1 = new Image("/pics/helpIMG.png");
+        Image img1 = new Image("/Aesthetics/helpIMG.png");
         logoViewHelp.setImage(img1);
         GsonBuilder builder = new GsonBuilder();
         builder.setPrettyPrinting();
@@ -60,7 +66,6 @@ public class NewCriminalController implements Initializable {
     void InputData(ActionEvent event) {
 
         Criminal b = new Criminal();
-        
         b.CrimeDate = dateTxt.getText()+ timeTxt.getText();
         b.Neighborhood = neighTxt.getValue();
         b.Post = Integer.parseInt(postTxt.getText());
@@ -81,12 +86,14 @@ public class NewCriminalController implements Initializable {
             data.put("Post", b.Post);
             //asynchronously write data
             ApiFuture<WriteResult> result = docRef.set(data);
-        
     }
     
     @FXML
     private void switchToMenu() throws IOException {
         App.setRoot("Menu");
     }
+    @FXML
+    private void close() throws IOException {
+        System.exit(0);
+    }
 }
-
