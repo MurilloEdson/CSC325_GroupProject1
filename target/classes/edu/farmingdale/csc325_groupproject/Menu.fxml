@@ -12,7 +12,8 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="440.0" minWidth="640.0" prefHeight="440.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.farmingdale.csc325_groupproject.MenuController">
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="440.0" minWidth="640.0" prefHeight="440.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.farmingdale.csc325_groupproject.MenuController">
    <children>
       <Label layoutX="138.0" layoutY="101.0" prefHeight="50.0" prefWidth="104.0" text="Menu" textFill="#0e29e5">
          <font>
@@ -21,7 +22,7 @@
       </Label>
       <ImageView fx:id="menuLogo" fitHeight="150.0" fitWidth="200.0" layoutX="117.0" layoutY="171.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../Aesthetics/OIP.jpg" />
+            <Image url="@../../../pics/OIP.jpg" />
          </image>
       </ImageView>
       <MenuBar layoutX="199.0" layoutY="2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -67,10 +68,5 @@
             </Button>
          </children>
       </VBox>
-      <Label fx:id="welcomeLabel" layoutX="14.0" layoutY="30.0" prefHeight="54.0" prefWidth="310.0">
-         <font>
-            <Font size="24.0" />
-         </font></Label>
-      <Label fx:id="welcomeLabel" layoutX="46.0" layoutY="57.0" />
    </children>
 </AnchorPane>

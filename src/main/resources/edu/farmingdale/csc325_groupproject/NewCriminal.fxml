@@ -11,70 +11,81 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" minHeight="440.0" minWidth="640.0" prefHeight="440.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.farmingdale.csc325_groupproject.NewCriminalController">
+<AnchorPane id="AnchorPane" fx:id="rootPane" minHeight="440.0" minWidth="640.0" prefHeight="440.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.farmingdale.csc325_groupproject.NewCriminalController">
    <children>
-      <Label layoutX="248.0" layoutY="81.0" text="New Criminal Input" />
+      <Label layoutX="229.0" layoutY="114.0" text="New Criminal Input" />
       <Button layoutX="481.0" layoutY="356.0" mnemonicParsing="false" onAction="#InputData" text="Input Data" />
-      <TextField fx:id="dateTxt" layoutX="86.0" layoutY="155.0">
+      <TextField fx:id="dateTxt" layoutX="95.0" layoutY="197.0">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
       </TextField>
-      <TextField fx:id="postTxt" layoutX="86.0" layoutY="254.0">
+      <TextField fx:id="postTxt" layoutX="415.0" layoutY="266.0">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
       </TextField>
-      <TextField fx:id="addyTxt" layoutX="86.0" layoutY="204.0">
+      <TextField fx:id="addyTxt" layoutX="95.0" layoutY="266.0">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
       </TextField>
-      <TextField fx:id="descTxt" layoutX="246.0" layoutY="204.0">
+      <TextField fx:id="descTxt" layoutX="255.0" layoutY="266.0">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
       </TextField>
-      <TextField fx:id="timeTxt" layoutX="246.0" layoutY="156.0">
+      <TextField fx:id="timeTxt" layoutX="255.0" layoutY="198.0">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
       </TextField>
-      <Label layoutX="410.0" layoutY="186.0" text="Neighborhood" />
-      <Label layoutX="86.0" layoutY="236.0" text="Post" />
-      <Label layoutX="246.0" layoutY="186.0" text="Description" />
-      <Label layoutX="86.0" layoutY="186.0" text="Address" />
-      <Label layoutX="246.0" layoutY="137.0" text="Crime Time" />
-      <Label layoutX="86.0" layoutY="137.0" text="Crime Date" />
-      <TextField fx:id="nameTxt" layoutX="406.0" layoutY="156.0">
+      <Label layoutX="387.0" layoutY="93.0" text="Neighborhood" />
+      <Label layoutX="425.0" layoutY="248.0" text="Post" />
+      <Label layoutX="255.0" layoutY="248.0" text="Description" />
+      <Label layoutX="95.0" layoutY="248.0" text="Address" />
+      <Label layoutX="255.0" layoutY="179.0" text="Crime Time" />
+      <Label layoutX="95.0" layoutY="179.0" text="Crime Date" />
+      <TextField fx:id="nameTxt" layoutX="415.0" layoutY="198.0">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
       </TextField>
-      <Label layoutX="406.0" layoutY="137.0" text="Criminal Name" />
-      <MenuBar layoutY="2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <menus>
-          <Menu mnemonicParsing="false" text="File">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Close" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Help">
-            <items>
-              <MenuItem mnemonicParsing="false" text="About" />
-            </items>
-          </Menu>
-        </menus>
-      </MenuBar>
+      <Label layoutX="415.0" layoutY="179.0" text="Criminal Name" />
       <Button layoutX="88.0" layoutY="356.0" mnemonicParsing="false" onAction="#switchToMenu" text="Back to Menu" />
-      <ImageView fx:id="logoView" fitHeight="100.0" fitWidth="140.0" layoutX="11.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="logoView" fitHeight="100.0" fitWidth="140.0" layoutX="44.0" layoutY="61.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="logoViewHelp" fitHeight="50.0" fitWidth="55.0" layoutX="552.0" layoutY="31.0" onMouseClicked="#helpWindow" pickOnBounds="true" preserveRatio="true" />
-      <ChoiceBox fx:id="neighTxt" layoutX="410.0" layoutY="204.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="neighTxt" layoutX="387.0" layoutY="111.0" prefWidth="150.0" />
+      <MenuBar layoutX="209.0" layoutY="12.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <menus>
+            <Menu mnemonicParsing="false" text="Profile">
+               <items>
+                  <MenuItem fx:id="userName" mnemonicParsing="false" text="Name">
+                     <graphic>
+                        <ImageView fx:id="profilePicture" fitHeight="50.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                  </MenuItem>
+                  <MenuItem mnemonicParsing="false" text="Settings" />
+                  <MenuItem mnemonicParsing="false" text="Log Out" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="File">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#close" text="Close" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Edit">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Delete" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Help">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="About" />
+               </items>
+            </Menu>
+         </menus>
+      </MenuBar>
    </children>
    <opaqueInsets>
       <Insets />

@@ -12,28 +12,9 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" minHeight="440.0" minWidth="640.0" prefHeight="440.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.farmingdale.csc325_groupproject.NewComplaintController">
+<AnchorPane id="AnchorPane" fx:id="rootPane" minHeight="440.0" minWidth="640.0" prefHeight="440.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.farmingdale.csc325_groupproject.NewComplaintController">
    <children>
       <Label layoutX="279.0" layoutY="60.0" text="Complaint Interface" />
-      <MenuBar layoutX="215.0" layoutY="14.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <menus>
-          <Menu mnemonicParsing="false" text="File">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Close" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Help">
-            <items>
-              <MenuItem mnemonicParsing="false" text="About" />
-            </items>
-          </Menu>
-        </menus>
-      </MenuBar>
       <Button layoutX="496.0" layoutY="388.0" mnemonicParsing="false" onAction="#InputData" text="Add Complaint" />
       <Button layoutX="45.0" layoutY="388.0" mnemonicParsing="false" onAction="#switchToMenu" text="Back to Menu" />
       <ImageView fx:id="logoView" fitHeight="120.0" fitWidth="140.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true" />
@@ -46,5 +27,35 @@
       <Label layoutX="450.0" layoutY="146.0" prefHeight="18.0" prefWidth="82.0" text="Neighborhood" />
       <DatePicker fx:id="date2" layoutX="41.0" layoutY="168.0" />
       <ChoiceBox fx:id="neighTxt" layoutX="450.0" layoutY="169.0" prefWidth="150.0" />
+      <MenuBar layoutX="209.0" layoutY="12.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <menus>
+            <Menu mnemonicParsing="false" text="Profile">
+               <items>
+                  <MenuItem fx:id="userName" mnemonicParsing="false" text="Name">
+                     <graphic>
+                        <ImageView fx:id="profilePicture" fitHeight="50.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                  </MenuItem>
+                  <MenuItem mnemonicParsing="false" text="Settings" />
+                  <MenuItem mnemonicParsing="false" text="Log Out" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="File">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#close" text="Close" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Edit">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Delete" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Help">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="About" />
+               </items>
+            </Menu>
+         </menus>
+      </MenuBar>
    </children>
 </AnchorPane>
