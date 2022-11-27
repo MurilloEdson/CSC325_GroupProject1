@@ -1,30 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="440.0" minWidth="640.0" prefHeight="440.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.farmingdale.csc325_groupproject.MenuController">
+<AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="440.0" minWidth="640.0" prefHeight="440.0" prefWidth="640.0" stylesheets="@Project.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.farmingdale.csc325_groupproject.MenuController">
    <children>
-      <Label alignment="CENTER" layoutX="138.0" layoutY="108.0" prefHeight="29.0" prefWidth="68.0" text="Menu" textFill="#0e29e5">
+      <Label fx:id="menuLabel" alignment="CENTER" layoutX="167.0" layoutY="59.0" prefHeight="43.0" prefWidth="305.0" text="Navigation Menu" textFill="#0e29e5">
          <font>
             <Font size="5.0" />
          </font>
       </Label>
-      <ImageView fx:id="menuLogo" fitHeight="203.0" fitWidth="192.0" layoutX="81.0" layoutY="137.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../Aesthetics/logo.png" />
-         </image>
-      </ImageView>
-      <MenuBar layoutX="199.0" layoutY="2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <MenuBar layoutY="-1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-1.0">
         <menus>
             <Menu mnemonicParsing="false" text="Profile">
               <items>
@@ -37,16 +32,6 @@
                 <MenuItem mnemonicParsing="false" text="Log out" />
               </items>
             </Menu>
-          <Menu mnemonicParsing="false" text="File">
-            <items>
-              <MenuItem mnemonicParsing="false" onAction="#close" text="Close" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
-            </items>
-          </Menu>
           <Menu mnemonicParsing="false" text="Help">
             <items>
               <MenuItem mnemonicParsing="false" text="About" />
@@ -54,30 +39,61 @@
           </Menu>
         </menus>
       </MenuBar>
-      <Label fx:id="welcomeLabel" layoutX="46.0" layoutY="57.0" />
-      <VBox alignment="CENTER" layoutX="349.0" layoutY="95.0" prefHeight="250.0" prefWidth="200.0">
+      <HBox layoutX="166.0" layoutY="151.0" prefHeight="100.0" prefWidth="200.0" spacing="25.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#switchToMainDisplay" text="View Main Display">
-               <VBox.margin>
-                  <Insets bottom="15.0" />
-               </VBox.margin>
+            <Button mnemonicParsing="false" onAction="#logout" prefHeight="105.0" prefWidth="151.0">
+               <tooltip>
+                  <Tooltip text="Log-Out" />
+               </tooltip>
+               <graphic>
+                  <ImageView blendMode="DARKEN" fitHeight="94.0" fitWidth="104.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../Aesthetics/Logout.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </Button>
-            <Button fx:id="newCriminal" mnemonicParsing="false" onAction="#switchToNewCriminal" text="Register New Criminal">
-               <VBox.margin>
-                  <Insets bottom="15.0" top="15.0" />
-               </VBox.margin>
-            </Button>
-            <Button fx:id="newComplaint" mnemonicParsing="false" onAction="#switchToNewComplaint" text="Create New Complaint">
-               <VBox.margin>
-                  <Insets bottom="15.0" top="15.0" />
-               </VBox.margin>
-            </Button>
-            <Button onAction="#logout" text="Log Out">
-               <VBox.margin>
-                  <Insets top="15.0" />
-               </VBox.margin>
+            <Button mnemonicParsing="false" onAction="#switchToMainDisplay" prefHeight="109.0" prefWidth="164.0">
+               <graphic>
+                  <ImageView blendMode="DARKEN" fitHeight="91.0" fitWidth="93.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../Aesthetics/MainDisplay.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <tooltip>
+                  <Tooltip text="View Main Display" />
+               </tooltip>
             </Button>
          </children>
-      </VBox>
+      </HBox>
+      <HBox alignment="CENTER" layoutX="166.0" layoutY="278.0" prefHeight="100.0" prefWidth="200.0" spacing="25.0">
+         <children>
+            <Button fx:id="newComplaintBtn" mnemonicParsing="false" onAction="#switchToNewComplaint" prefHeight="110.0" prefWidth="151.0">
+               <graphic>
+                  <ImageView blendMode="DARKEN" fitHeight="101.0" fitWidth="94.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../Aesthetics/complaint.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <tooltip>
+                  <Tooltip text="Create Complaint" />
+               </tooltip>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#switchToNewCriminal" prefHeight="111.0" prefWidth="147.0">
+               <graphic>
+                  <ImageView blendMode="DARKEN" fitHeight="92.0" fitWidth="99.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../Aesthetics/register.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <tooltip>
+                  <Tooltip text="Register Criminal" />
+               </tooltip>
+            </Button>
+         </children>
+      </HBox>
    </children>
 </AnchorPane>

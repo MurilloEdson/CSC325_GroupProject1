@@ -94,8 +94,24 @@
     -fx-background-color: #373e43;
 }
 #signUpLabel{
-    -fx-text-fill:#1e74c6;
-    
+    -fx-text-fill: #00cccc
 }
+
+#menuLabel{
+    -fx-font-weight: bold;
+    -fx-font-style: italic;
+    -fx-font-size: 36;
+}
+
+#returnToLoginLabel{
+    -fx-text-fill: #00cccc
+}
+
+#createAccountLabel{
+    -fx-font-weight: bold;
+    -fx-font-style: italic;
+    -fx-font-size: 36;
+}
+
 
 

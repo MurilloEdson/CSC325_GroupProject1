@@ -99,12 +99,7 @@ public class NewComplaintController implements Initializable {
         fadeOut("Menu");
 
     }
-
-    @FXML
-    private void close() throws IOException {
-        System.exit(0);
-    }
-
+    
     public void fadeIn() {
         rootPane.setOpacity(0);
         fade.setDelay(Duration.millis(1000));

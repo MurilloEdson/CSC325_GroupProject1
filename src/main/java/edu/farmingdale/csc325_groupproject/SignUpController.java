@@ -22,14 +22,13 @@ public class SignUpController implements Initializable {
     @FXML
     private Button createBtn;
     @FXML
-    private Label errorMessage;
-
-    static String newUsername;
-    static String newPassword;
+    private Label errorMessage,returnToLoginLabel,createAccountLabel;
     @FXML
     private AnchorPane rootPane;
-
+    static String newUsername;
+    static String newPassword;
     FadeTransition fade = new FadeTransition();
+   
 
     @FXML
     void createAccount(ActionEvent event) throws IOException {

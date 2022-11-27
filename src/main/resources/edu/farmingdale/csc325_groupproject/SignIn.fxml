@@ -28,7 +28,7 @@
       <HBox alignment="CENTER" layoutX="199.0" layoutY="361.0" prefHeight="32.0" prefWidth="268.0">
          <children>
             <Label text="Need an Account? " />
-            <Label fx:id="signUpLabel" onMouseClicked="#toCreateWinodw" stylesheets="@Project.css" text="Click here to Sign-Up" />
+            <Label fx:id="signUpLabel" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#toCreateWinodw" stylesheets="@Project.css" text="Click here to Sign-Up" />
          </children>
       </HBox>
    </children>

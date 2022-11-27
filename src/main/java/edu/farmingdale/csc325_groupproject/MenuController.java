@@ -15,20 +15,21 @@ import javafx.util.Duration;
 
 public class MenuController implements Initializable {
 
-    @FXML
-    private ImageView menuLogo;
-    @FXML
-    private Label welcomeLabel;
+    //@FXML
+    //private ImageView menuLogo;
     @FXML
     private ImageView profilePicture;
-    @FXML
-    private Button newComplaint, newCriminal;
+    private Button newComplaint;
+    private Button newCriminal;
     @FXML
     private MenuItem userName;
-
     FadeTransition fade = new FadeTransition();
     @FXML
     private AnchorPane rootPane;
+    @FXML
+    private Label menuLabel;
+    @FXML
+    private Button newComplaintBtn;
 
     @FXML
     private void logout() throws IOException {
@@ -56,8 +57,8 @@ public class MenuController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        Image img = new Image("/Aesthetics/logo.png");
-        menuLogo.setImage(img);
+        //Image img = new Image("/Aesthetics/logo.png");
+        //menuLogo.setImage(img);
         profilePicture.setImage(SignInController.currUser.profilePic);
         userName.setText(SignInController.currUser.getFirstName());
 
@@ -66,11 +67,6 @@ public class MenuController implements Initializable {
             newCriminal.setDisable(true);
         }
         fadeIn();
-    }
-
-    @FXML
-    private void close() throws IOException {
-        System.exit(0);
     }
 
     public void fadeIn() {
