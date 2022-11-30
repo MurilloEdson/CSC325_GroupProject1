@@ -1,6 +1,5 @@
 package edu.farmingdale.csc325_groupproject;
 
-import Models.User;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -15,8 +14,8 @@ import javafx.util.Duration;
 
 public class MenuController implements Initializable {
 
-    //@FXML
-    //private ImageView menuLogo;
+    @FXML
+    private ImageView menuLogo;
     @FXML
     private ImageView profilePicture;
     private Button newComplaint;
@@ -34,35 +33,31 @@ public class MenuController implements Initializable {
     @FXML
     private void logout() throws IOException {
         fadeOut("SignIn");
-
     }
 
     @FXML
     private void switchToMainDisplay() throws IOException {
         fadeOut("MainDisplay");
-
     }
 
     @FXML
     private void switchToNewComplaint() throws IOException {
         fadeOut("NewComplaint");
-
     }
 
     @FXML
     private void switchToNewCriminal() throws IOException {
         fadeOut("NewCriminal");
-
     }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        //Image img = new Image("/Aesthetics/logo.png");
+        Image img = new Image("/Aesthetics/logo.png");
         //menuLogo.setImage(img);
-        profilePicture.setImage(SignInController.currUser.profilePic);
-        userName.setText(SignInController.currUser.getFirstName());
+        profilePicture.setImage(SignInController.UA.current.profilePic);
+        userName.setText(SignInController.UA.current.getFirstName());
 
-        if (!SignInController.currUser.isAdmin()) {
+        if (!SignInController.UA.current.isAdmin()) {
             newComplaint.setDisable(true);
             newCriminal.setDisable(true);
         }
@@ -71,7 +66,7 @@ public class MenuController implements Initializable {
 
     public void fadeIn() {
         rootPane.setOpacity(0);
-        fade.setDelay(Duration.millis(1000));
+        fade.setDelay(Duration.millis(500));
         fade.setNode(rootPane);
         fade.setFromValue(0);
         fade.setToValue(1);
@@ -79,14 +74,13 @@ public class MenuController implements Initializable {
     }
 
     public void fadeOut(String scene) {
-        fade.setDuration(Duration.millis(1000));
+        fade.setDuration(Duration.millis(500));
         fade.setNode(rootPane);
         fade.setFromValue(1);
         fade.setToValue(0);
         fade.setOnFinished((t) -> {
             try {
                 App.setRoot(scene);
-
             } catch (IOException ex) {
                 System.out.println("Can't load window");
             }

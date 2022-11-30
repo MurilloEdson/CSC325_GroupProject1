@@ -1,19 +1,14 @@
 package edu.farmingdale.csc325_groupproject;
 
-import Models.User;
+import Models.*;
 import com.google.api.core.ApiFuture;
-import com.google.cloud.firestore.QueryDocumentSnapshot;
-import com.google.cloud.firestore.QuerySnapshot;
+import com.google.cloud.firestore.*;
 import java.io.IOException;
 import java.net.URL;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 import java.util.concurrent.ExecutionException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.animation.FadeTransition;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
+import javafx.fxml.*;
 import javafx.scene.control.*;
 import javafx.scene.image.*;
 import javafx.scene.input.MouseEvent;
@@ -22,7 +17,7 @@ import javafx.util.Duration;
 
 public class SignInController implements Initializable {
 
-    static User currUser = new User();
+    static UserActivities UA = new UserActivities();
     @FXML
     private ImageView logoView;
     @FXML
@@ -54,10 +49,10 @@ public class SignInController implements Initializable {
                     String docPass = document.getData().get("password").toString();
                     if (username.equals(docUser) && password.equals(docPass)) {
                         //currUser
-                        currUser = currUser.DBtoObject(docUser, docPass, document);
+                        UA.current = UA.current.DBtoObject(docUser, docPass, document);
                         signedIn = true;
                         fadeOut("Menu");
-                        System.out.println("Hello " + currUser.getFirstName() + ", Welcome");
+                        System.out.println("Hello " + UA.current.getFirstName() + ", Welcome");
                         break;
                     }
                 }
@@ -81,18 +76,16 @@ public class SignInController implements Initializable {
         Image img = new Image("/Aesthetics/logo.png");
         logoView.setImage(img);
         fadeIn();
-
     }
 
     @FXML
     private void toCreateWinodw(MouseEvent event) {
         fadeOut("SignUp");
-
     }
 
     public void fadeIn() {
         rootPane.setOpacity(0);
-        fade.setDelay(Duration.millis(1000));
+        fade.setDelay(Duration.millis(500));
         fade.setNode(rootPane);
         fade.setFromValue(0);
         fade.setToValue(1);
@@ -100,7 +93,7 @@ public class SignInController implements Initializable {
     }
 
     public void fadeOut(String scene) {
-        fade.setDuration(Duration.millis(1000));
+        fade.setDuration(Duration.millis(500));
         fade.setNode(rootPane);
         fade.setFromValue(1);
         fade.setToValue(0);
@@ -111,7 +104,6 @@ public class SignInController implements Initializable {
             } catch (IOException ex) {
                 System.out.println("Can't load window");
             }
-
         });
         fade.play();
 

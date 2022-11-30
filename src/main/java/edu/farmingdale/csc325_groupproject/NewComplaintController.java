@@ -1,6 +1,6 @@
 package edu.farmingdale.csc325_groupproject;
 
-import Models.Complaint;
+import Models.*;
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.*;
 import com.google.gson.*;
@@ -12,7 +12,6 @@ import javafx.animation.FadeTransition;
 import javafx.fxml.*;
 import javafx.scene.control.*;
 import javafx.event.ActionEvent;
-import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -49,8 +48,9 @@ public class NewComplaintController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        profilePicture.setImage(SignInController.currUser.profilePic);
-        userName.setText(SignInController.currUser.getFirstName());
+        clearAll();
+        profilePicture.setImage(SignInController.UA.current.profilePic);
+        userName.setText(SignInController.UA.current.getFirstName());
         Image img = new Image("/Aesthetics/logo.png");
         logoView.setImage(img);
         Image img1 = new Image("/Aesthetics/helpIMG.png");
@@ -68,7 +68,10 @@ public class NewComplaintController implements Initializable {
             }
         } catch (FileNotFoundException ex) {
         }
-
+        if(SignInController.UA.isEditting()){
+            setEditText(SignInController.UA.complaintUpdate);
+            
+        }
         fadeIn();
     }
 
@@ -97,7 +100,7 @@ public class NewComplaintController implements Initializable {
     @FXML
     private void switchToMenu() throws IOException {
         fadeOut("Menu");
-
+        SignInController.UA.setEditting(false);
     }
     
     public void fadeIn() {
@@ -125,5 +128,17 @@ public class NewComplaintController implements Initializable {
         });
         fade.play();
 
+    }
+    private void clearAll(){
+        timeTxt.clear();
+        neighTxt.setValue(null);
+        txtArea.clear();
+    }
+    private void setEditText(Complaint cp) {
+        if (cp != null) {
+            timeTxt.setText(cp.CrimeTime);
+            neighTxt.setValue(cp.Neighborhood);
+            txtArea.setText(cp.CrimeDesc);
+        }
     }
 }
