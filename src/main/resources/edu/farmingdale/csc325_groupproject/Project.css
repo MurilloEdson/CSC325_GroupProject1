@@ -113,5 +113,20 @@
     -fx-font-size: 36;
 }
 
+#criminalTitleLabel{
+    -fx-font-weight: bold;
+    -fx-font-style: italic;
+    -fx-font-size: 24;
+}
 
+#complaintTitleLabel{
+    -fx-font-weight: bold;
+    -fx-font-style: italic;
+    -fx-font-size: 24;
+}
 
+#displayTitleLabel{
+    -fx-font-weight: bold;
+    -fx-font-style: italic;
+    -fx-font-size: 24;
+}

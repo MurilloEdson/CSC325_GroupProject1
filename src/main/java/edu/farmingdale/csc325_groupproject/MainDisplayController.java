@@ -37,7 +37,9 @@ public class MainDisplayController implements Initializable {
     private MenuItem userName;
     @FXML
     private AnchorPane rootPane;
-
+    @FXML
+    private Label displayTitleLabel;
+    
     FadeTransition fade = new FadeTransition();
 
     @Override
@@ -117,7 +119,6 @@ public class MainDisplayController implements Initializable {
         fadeOut("Menu");
     }
 
-    @FXML
     private void close() throws IOException {
         System.exit(0);
     }
@@ -138,7 +139,7 @@ public class MainDisplayController implements Initializable {
 
     public void fadeIn() {
         rootPane.setOpacity(0);
-        fade.setDelay(Duration.millis(1000));
+        fade.setDelay(Duration.millis(200));
         fade.setNode(rootPane);
         fade.setFromValue(0);
         fade.setToValue(1);
@@ -146,7 +147,7 @@ public class MainDisplayController implements Initializable {
     }
 
     public void fadeOut(String scene) {
-        fade.setDuration(Duration.millis(1000));
+        fade.setDuration(Duration.millis(100));
         fade.setNode(rootPane);
         fade.setFromValue(1);
         fade.setToValue(0);

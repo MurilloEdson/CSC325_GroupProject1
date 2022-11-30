@@ -9,31 +9,31 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane id="AnchorPane" fx:id="rootPane" minHeight="440.0" minWidth="640.0" prefHeight="440.0" prefWidth="640.0" stylesheets="@Project.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.farmingdale.csc325_groupproject.NewComplaintController">
    <children>
-      <Label layoutX="279.0" layoutY="60.0" text="Complaint Interface" />
-      <Button layoutX="496.0" layoutY="388.0" mnemonicParsing="false" onAction="#InputData" text="Add Complaint" />
-      <Button layoutX="45.0" layoutY="388.0" mnemonicParsing="false" onAction="#switchToMenu" text="Back to Menu" />
-      <ImageView fx:id="logoView" fitHeight="75.0" fitWidth="89.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+      <Label fx:id="complaintTitleLabel" layoutX="208.0" layoutY="40.0" text="Complaint Interface" />
+      <Button layoutX="489.0" layoutY="393.0" mnemonicParsing="false" onAction="#InputData" text="Add Complaint" />
+      <ImageView fx:id="logoView" fitHeight="57.0" fitWidth="75.0" layoutX="572.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../Aesthetics/logo.png" />
          </image></ImageView>
-      <ImageView fx:id="logoViewHelp" fitHeight="75.0" fitWidth="75.0" layoutX="566.0" layoutY="26.0" onMouseClicked="#helpWindow" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="logoViewHelp" fitHeight="49.0" fitWidth="49.0" layoutX="440.0" layoutY="393.0" onMouseClicked="#helpWindow" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../Aesthetics/helpIMG.png" />
          </image></ImageView>
-      <TextArea fx:id="txtArea" layoutX="46.0" layoutY="220.0" prefHeight="163.0" prefWidth="547.0" />
-      <TextField fx:id="timeTxt" layoutX="274.0" layoutY="168.0" prefHeight="26.0" prefWidth="140.0" />
-      <Label layoutX="49.0" layoutY="147.0" text="Date of Event" />
-      <Label layoutX="278.0" layoutY="146.0" prefHeight="18.0" prefWidth="75.0" text="Time of Event" />
-      <Label layoutX="45.0" layoutY="202.0" text="Event Details" />
-      <Label layoutX="450.0" layoutY="146.0" prefHeight="18.0" prefWidth="82.0" text="Neighborhood" />
-      <DatePicker fx:id="date2" layoutX="41.0" layoutY="168.0" />
-      <ChoiceBox fx:id="neighTxt" layoutX="450.0" layoutY="169.0" prefWidth="150.0" />
+      <TextArea fx:id="txtArea" layoutX="41.0" layoutY="209.0" prefHeight="163.0" prefWidth="558.0" />
+      <TextField fx:id="timeTxt" layoutX="256.0" layoutY="139.0" prefHeight="33.0" prefWidth="140.0" />
+      <Label layoutX="43.0" layoutY="117.0" text="Date of Event" />
+      <Label layoutX="256.0" layoutY="117.0" prefHeight="19.0" prefWidth="99.0" text="Time of Event" />
+      <Label layoutX="45.0" layoutY="182.0" text="Event Details" />
+      <Label layoutX="448.0" layoutY="117.0" prefHeight="19.0" prefWidth="115.0" text="Neighborhood" />
+      <DatePicker fx:id="date2" layoutX="40.0" layoutY="139.0" />
+      <ChoiceBox fx:id="neighTxt" layoutX="448.0" layoutY="139.0" prefWidth="150.0" />
       <MenuBar layoutX="209.0" layoutY="12.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <menus>
             <Menu mnemonicParsing="false" text="Profile">
@@ -54,5 +54,15 @@
             </Menu>
          </menus>
       </MenuBar>
+      <ImageView blendMode="DARKEN" fitHeight="56.0" fitWidth="50.0" layoutY="30.0" onMouseClicked="#switchToMenu" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../Aesthetics/BackArrow.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="4.0" layoutY="36.0" onMouseClicked="#switchToMenu" prefHeight="38.0" prefWidth="42.0">
+         <tooltip>
+            <Tooltip text="Return to Menu" />
+         </tooltip>
+      </Label>
    </children>
 </AnchorPane>

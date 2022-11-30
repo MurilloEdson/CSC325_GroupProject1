@@ -9,17 +9,19 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 
-<AnchorPane id="AnchorPane" fx:id="rootPane" minHeight="440.0" minWidth="640.0" prefHeight="440.0" prefWidth="640.0" stylesheets="@Project.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.farmingdale.csc325_groupproject.MainDisplayController">
+<AnchorPane id="AnchorPane" fx:id="rootPane" minHeight="435.0" minWidth="626.0" prefHeight="435.0" prefWidth="626.0" stylesheets="@Project.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.farmingdale.csc325_groupproject.MainDisplayController">
    <children>
-      <Label layoutX="247.0" layoutY="52.0" text="Crimal Records Management" />
-      <ListView fx:id="criminalNames" layoutX="83.0" layoutY="113.0" prefHeight="200.0" prefWidth="200.0" />
-      <ListView fx:id="complaintDesc" layoutX="357.0" layoutY="113.0" prefHeight="200.0" prefWidth="200.0" />
-      <ToggleButton fx:id="permissions" layoutX="493.0" layoutY="48.0" mnemonicParsing="false" onAction="#testAdminOrViewer" text="ViewOnly" />
-      <ChoiceBox fx:id="locations" layoutX="74.0" layoutY="48.0" onContextMenuRequested="#setListView" prefWidth="150.0" />
+      <Label fx:id="displayTitleLabel" layoutX="134.0" layoutY="37.0" text="Criminal Records Management" />
+      <ListView fx:id="criminalNames" layoutX="83.0" layoutY="155.0" prefHeight="200.0" prefWidth="200.0" />
+      <ListView fx:id="complaintDesc" layoutX="359.0" layoutY="155.0" prefHeight="200.0" prefWidth="200.0" />
+      <ToggleButton fx:id="permissions" layoutX="545.0" layoutY="46.0" mnemonicParsing="false" onAction="#testAdminOrViewer" text="ViewOnly" />
+      <ChoiceBox fx:id="locations" layoutX="75.0" layoutY="94.0" onContextMenuRequested="#setListView" prefWidth="150.0" />
       <MenuBar layoutX="209.0" layoutY="12.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <menus>
             <Menu mnemonicParsing="false" text="Profile">
@@ -40,24 +42,49 @@
             </Menu>
          </menus>
       </MenuBar>
-      <HBox alignment="CENTER" layoutX="83.0" layoutY="341.0" prefHeight="53.0" prefWidth="474.0">
+      <HBox alignment="CENTER" layoutX="396.0" layoutY="370.0" prefHeight="56.0" prefWidth="229.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#switchToMenu" text="Back to Menu">
-               <HBox.margin>
-                  <Insets right="8.0" />
-               </HBox.margin>
-            </Button>
-            <Button fx:id="addCriminal" mnemonicParsing="false" onAction="#newCriminal" text="Add New Criminal">
+            <Button fx:id="addCriminal" mnemonicParsing="false" onAction="#newCriminal" prefHeight="39.0" prefWidth="54.0">
                <HBox.margin>
                   <Insets left="8.0" right="8.0" />
                </HBox.margin>
+               <graphic>
+                  <ImageView blendMode="DARKEN" fitHeight="40.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../Aesthetics/register.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <tooltip>
+                  <Tooltip text="Register New Criminal" />
+               </tooltip>
             </Button>
-            <Button fx:id="addCrime" mnemonicParsing="false" onAction="#newComplaint" text="Add Complaint">
+            <Button fx:id="addCrime" mnemonicParsing="false" onAction="#newComplaint" prefHeight="34.0" prefWidth="52.0">
                <HBox.margin>
                   <Insets left="8.0" />
                </HBox.margin>
+               <graphic>
+                  <ImageView blendMode="DARKEN" fitHeight="30.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../Aesthetics/complaint.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <tooltip>
+                  <Tooltip text="Create New Complaint" />
+               </tooltip>
             </Button>
          </children>
       </HBox>
+      <ImageView blendMode="DARKEN" fitHeight="56.0" fitWidth="50.0" layoutY="30.0" onMouseClicked="#switchToMenu" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../Aesthetics/BackArrow.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="4.0" layoutY="36.0" onMouseClicked="#switchToMenu" prefHeight="38.0" prefWidth="42.0">
+         <tooltip>
+            <Tooltip text="Return to Menu" />
+         </tooltip>
+      </Label>
    </children>
 </AnchorPane>

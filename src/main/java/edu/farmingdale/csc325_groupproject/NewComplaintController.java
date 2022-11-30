@@ -41,12 +41,11 @@ public class NewComplaintController implements Initializable {
     private MenuItem userName;
     @FXML
     private AnchorPane rootPane;
-
+    @FXML
+    private Label complaintTitleLabel;
+    
     FadeTransition fade = new FadeTransition();
-
-    /**
-     * Initializes the controller class.
-     */
+  
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         profilePicture.setImage(SignInController.currUser.profilePic);
@@ -68,7 +67,7 @@ public class NewComplaintController implements Initializable {
             }
         } catch (FileNotFoundException ex) {
         }
-
+        
         fadeIn();
     }
 
@@ -102,7 +101,7 @@ public class NewComplaintController implements Initializable {
     
     public void fadeIn() {
         rootPane.setOpacity(0);
-        fade.setDelay(Duration.millis(1000));
+        fade.setDelay(Duration.millis(200));
         fade.setNode(rootPane);
         fade.setFromValue(0);
         fade.setToValue(1);
@@ -110,7 +109,7 @@ public class NewComplaintController implements Initializable {
     }
 
     public void fadeOut(String scene) {
-        fade.setDuration(Duration.millis(1000));
+        fade.setDuration(Duration.millis(100));
         fade.setNode(rootPane);
         fade.setFromValue(1);
         fade.setToValue(0);

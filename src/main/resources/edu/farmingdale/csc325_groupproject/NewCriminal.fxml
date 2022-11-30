@@ -9,61 +9,61 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane id="AnchorPane" fx:id="rootPane" minHeight="440.0" minWidth="640.0" prefHeight="440.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.farmingdale.csc325_groupproject.NewCriminalController">
    <children>
-      <Label layoutX="229.0" layoutY="114.0" text="New Criminal Input" />
-      <Button layoutX="481.0" layoutY="356.0" mnemonicParsing="false" onAction="#InputData" text="Input Data" />
-      <TextField fx:id="dateTxt" layoutX="95.0" layoutY="197.0">
+      <Label fx:id="criminalTitleLabel" layoutX="209.0" layoutY="40.0" text="New Criminal Input" />
+      <Button layoutX="503.0" layoutY="373.0" mnemonicParsing="false" onAction="#InputData" text="Input Data" />
+      <TextField fx:id="dateTxt" layoutX="92.0" layoutY="204.0">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
       </TextField>
-      <TextField fx:id="postTxt" layoutX="415.0" layoutY="266.0">
+      <TextField fx:id="postTxt" layoutX="415.0" layoutY="299.0">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
       </TextField>
-      <TextField fx:id="addyTxt" layoutX="95.0" layoutY="266.0">
+      <TextField fx:id="addyTxt" layoutX="92.0" layoutY="299.0">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
       </TextField>
-      <TextField fx:id="descTxt" layoutX="255.0" layoutY="266.0">
+      <TextField fx:id="descTxt" layoutX="254.0" layoutY="299.0">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
       </TextField>
-      <TextField fx:id="timeTxt" layoutX="255.0" layoutY="198.0">
+      <TextField fx:id="timeTxt" layoutX="254.0" layoutY="204.0">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
       </TextField>
-      <Label layoutX="387.0" layoutY="93.0" text="Neighborhood" />
-      <Label layoutX="425.0" layoutY="248.0" text="Post" />
-      <Label layoutX="255.0" layoutY="248.0" text="Description" />
-      <Label layoutX="95.0" layoutY="248.0" text="Address" />
+      <Label layoutX="308.0" layoutY="121.0" text="Neighborhood" />
+      <Label layoutX="421.0" layoutY="272.0" text="Post" />
+      <Label layoutX="254.0" layoutY="272.0" text="Description" />
+      <Label layoutX="95.0" layoutY="272.0" text="Address" />
       <Label layoutX="255.0" layoutY="179.0" text="Crime Time" />
       <Label layoutX="95.0" layoutY="179.0" text="Crime Date" />
-      <TextField fx:id="nameTxt" layoutX="415.0" layoutY="198.0">
+      <TextField fx:id="nameTxt" layoutX="415.0" layoutY="204.0">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
       </TextField>
       <Label layoutX="415.0" layoutY="179.0" text="Criminal Name" />
-      <Button layoutX="88.0" layoutY="356.0" mnemonicParsing="false" onAction="#switchToMenu" text="Back to Menu" />
-      <ImageView fx:id="logoView" fitHeight="84.0" fitWidth="88.0" layoutX="14.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="logoView" fitHeight="67.0" fitWidth="58.0" layoutX="574.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../Aesthetics/logo.png" />
          </image></ImageView>
-      <ImageView fx:id="logoViewHelp" fitHeight="50.0" fitWidth="52.0" layoutX="555.0" layoutY="31.0" onMouseClicked="#helpWindow" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="logoViewHelp" fitHeight="50.0" fitWidth="52.0" layoutX="454.0" layoutY="372.0" onMouseClicked="#helpWindow" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../Aesthetics/helpIMG.png" />
          </image></ImageView>
-      <ChoiceBox fx:id="neighTxt" layoutX="387.0" layoutY="111.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="neighTxt" layoutX="415.0" layoutY="109.0" prefWidth="150.0" />
       <MenuBar layoutX="209.0" layoutY="12.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <menus>
             <Menu mnemonicParsing="false" text="Profile">
@@ -84,6 +84,16 @@
             </Menu>
          </menus>
       </MenuBar>
+      <ImageView blendMode="DARKEN" fitHeight="56.0" fitWidth="50.0" layoutY="30.0" onMouseClicked="#switchToMenu" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../Aesthetics/BackArrow.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="4.0" layoutY="36.0" onMouseClicked="#switchToMenu" prefHeight="38.0" prefWidth="42.0">
+         <tooltip>
+            <Tooltip text="Return to Menu" />
+         </tooltip>
+      </Label>
    </children>
    <opaqueInsets>
       <Insets />
