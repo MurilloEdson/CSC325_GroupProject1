@@ -1,9 +1,8 @@
 package edu.farmingdale.csc325_groupproject;
 
-import Models.Criminal;
+import Models.*;
 import com.google.api.core.ApiFuture;
-import com.google.cloud.firestore.DocumentReference;
-import com.google.cloud.firestore.WriteResult;
+import com.google.cloud.firestore.*;
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
 import java.io.*;
@@ -42,8 +41,9 @@ public class NewCriminalController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        profilePicture.setImage(SignInController.currUser.profilePic);
-        userName.setText(SignInController.currUser.getFirstName());
+        clearAll();
+        profilePicture.setImage(SignInController.UA.current.profilePic);
+        userName.setText(SignInController.UA.current.getFirstName());
         Image img = new Image("/Aesthetics/logo.png");
         logoView.setImage(img);
         Image img1 = new Image("/Aesthetics/helpIMG.png");
@@ -61,6 +61,9 @@ public class NewCriminalController implements Initializable {
             }
         } catch (FileNotFoundException ex) {
         }
+        if(SignInController.UA.isEditting()){
+            setEditText(SignInController.UA.criminalUpdate);
+        }
         fadeIn();
     }
 
@@ -75,7 +78,6 @@ public class NewCriminalController implements Initializable {
 
     @FXML
     void InputData(ActionEvent event) {
-
         Criminal b = new Criminal();
         b.CrimeDate = dateTxt.getText() + timeTxt.getText();
         b.Neighborhood = neighTxt.getValue();
@@ -83,7 +85,6 @@ public class NewCriminalController implements Initializable {
         b.Name = nameTxt.getText();
         b.Address = addyTxt.getText();
         b.Description = descTxt.getText();
-
         comps.add(b);
 
         DocumentReference docRef = App.fstore.collection("Criminals").document(UUID.randomUUID().toString());
@@ -102,7 +103,7 @@ public class NewCriminalController implements Initializable {
     @FXML
     private void switchToMenu() throws IOException {
         fadeOut("Menu");
-        //App.setRoot("Menu");
+        SignInController.UA.setEditting(false);
     }
 
     public void fadeIn() {
@@ -130,5 +131,26 @@ public class NewCriminalController implements Initializable {
         });
         fade.play();
 
+    }
+    private void clearAll() {
+        dateTxt.clear();
+        timeTxt.clear();
+        nameTxt.clear();
+        addyTxt.clear();
+        descTxt.clear();
+        postTxt.clear();
+        neighTxt.setValue(null);
+    }
+
+    public void setEditText(Criminal cr) {
+        if (cr != null) {
+            dateTxt.setText(cr.CrimeDate);
+            timeTxt.setText(cr.CrimeTime);
+            nameTxt.setText(cr.Name);
+            addyTxt.setText(cr.Address);
+            descTxt.setText(cr.Description);
+            postTxt.setText("" + cr.Post);
+            neighTxt.setValue(cr.Neighborhood);
+        }
     }
 }
