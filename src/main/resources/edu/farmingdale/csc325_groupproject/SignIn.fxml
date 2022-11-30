@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="440.0" minWidth="640.0" prefHeight="440.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.farmingdale.csc325_groupproject.SignInController">
+<AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="440.0" minWidth="640.0" prefHeight="440.0" prefWidth="640.0" stylesheets="@Project.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.farmingdale.csc325_groupproject.SignInController">
    <children>
       <Pane layoutX="173.0" layoutY="11.0" opacity="0.5" prefHeight="403.0" prefWidth="319.0" style="-fx-background-color: Grey; -fx-background-radius: 30;" />
       <Button fx:id="loginButton" layoutX="283.0" layoutY="317.0" onAction="#verifyCredentials" prefHeight="30.0" prefWidth="100.0" text="LOGIN">
@@ -28,7 +28,7 @@
       <HBox alignment="CENTER" layoutX="199.0" layoutY="361.0" prefHeight="32.0" prefWidth="268.0">
          <children>
             <Label text="Need an Account? " />
-            <Label fx:id="signUpLabel" onMouseClicked="#toCreateWinodw" text="Click here to Sign-Up" />
+            <Label fx:id="signUpLabel" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#toCreateWinodw" stylesheets="@Project.css" text="Click here to Sign-Up" />
          </children>
       </HBox>
    </children>

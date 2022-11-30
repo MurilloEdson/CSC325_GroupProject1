@@ -8,6 +8,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.*;
 import java.net.URL;
 import java.util.*;
+import javafx.animation.FadeTransition;
 import javafx.fxml.*;
 import javafx.scene.control.*;
 import javafx.event.ActionEvent;
@@ -15,11 +16,13 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.util.Duration;
 
 public class NewComplaintController implements Initializable {
 
     private ArrayList<Complaint> comps = new ArrayList<Complaint>();
-    
+
     @FXML
     private ImageView logoView;
     @FXML
@@ -36,7 +39,11 @@ public class NewComplaintController implements Initializable {
     private ImageView profilePicture;
     @FXML
     private MenuItem userName;
-    
+    @FXML
+    private AnchorPane rootPane;
+
+    FadeTransition fade = new FadeTransition();
+
     /**
      * Initializes the controller class.
      */
@@ -54,13 +61,17 @@ public class NewComplaintController implements Initializable {
         ArrayList<String> list;
         try {
             FileReader fr = new FileReader("Locations.json");
-            list = gson.fromJson(fr, new TypeToken<ArrayList<String>>(){}.getType());
-             for(String curr : list){
-                neighTxt.getItems().add(curr);}
+            list = gson.fromJson(fr, new TypeToken<ArrayList<String>>() {
+            }.getType());
+            for (String curr : list) {
+                neighTxt.getItems().add(curr);
+            }
         } catch (FileNotFoundException ex) {
         }
-    } 
-    
+
+        fadeIn();
+    }
+
     @FXML
     void helpWindow(MouseEvent event) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -68,7 +79,7 @@ public class NewComplaintController implements Initializable {
         alert.setContentText("Please input whatever information you can remember about the event\nThe data will be sent for manual review.");
         alert.show();
     }
-    
+
     @FXML
     void InputData(ActionEvent event) {
         DocumentReference docRef = App.fstore.collection("Users").document(UUID.randomUUID().toString());
@@ -82,14 +93,37 @@ public class NewComplaintController implements Initializable {
         timeTxt.clear();
         txtArea.clear();
     }
-    
+
     @FXML
     private void switchToMenu() throws IOException {
-        App.setRoot("Menu");
+        fadeOut("Menu");
+
     }
-    @FXML
-    private void close() throws IOException {
-        System.exit(0);
+    
+    public void fadeIn() {
+        rootPane.setOpacity(0);
+        fade.setDelay(Duration.millis(1000));
+        fade.setNode(rootPane);
+        fade.setFromValue(0);
+        fade.setToValue(1);
+        fade.play();
+    }
+
+    public void fadeOut(String scene) {
+        fade.setDuration(Duration.millis(1000));
+        fade.setNode(rootPane);
+        fade.setFromValue(1);
+        fade.setToValue(0);
+        fade.setOnFinished((t) -> {
+            try {
+                App.setRoot(scene);
+
+            } catch (IOException ex) {
+                System.out.println("Can't load window");
+            }
+
+        });
+        fade.play();
+
     }
 }
-

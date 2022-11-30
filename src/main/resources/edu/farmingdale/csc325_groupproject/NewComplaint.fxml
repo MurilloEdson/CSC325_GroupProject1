@@ -9,16 +9,23 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" minHeight="440.0" minWidth="640.0" prefHeight="440.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.farmingdale.csc325_groupproject.NewComplaintController">
+<AnchorPane id="AnchorPane" fx:id="rootPane" minHeight="440.0" minWidth="640.0" prefHeight="440.0" prefWidth="640.0" stylesheets="@Project.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.farmingdale.csc325_groupproject.NewComplaintController">
    <children>
       <Label layoutX="279.0" layoutY="60.0" text="Complaint Interface" />
       <Button layoutX="496.0" layoutY="388.0" mnemonicParsing="false" onAction="#InputData" text="Add Complaint" />
       <Button layoutX="45.0" layoutY="388.0" mnemonicParsing="false" onAction="#switchToMenu" text="Back to Menu" />
-      <ImageView fx:id="logoView" fitHeight="120.0" fitWidth="140.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="logoViewHelp" fitHeight="75.0" fitWidth="75.0" layoutX="566.0" layoutY="26.0" onMouseClicked="#helpWindow" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="logoView" fitHeight="75.0" fitWidth="89.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../Aesthetics/logo.png" />
+         </image></ImageView>
+      <ImageView fx:id="logoViewHelp" fitHeight="75.0" fitWidth="75.0" layoutX="566.0" layoutY="26.0" onMouseClicked="#helpWindow" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../Aesthetics/helpIMG.png" />
+         </image></ImageView>
       <TextArea fx:id="txtArea" layoutX="46.0" layoutY="220.0" prefHeight="163.0" prefWidth="547.0" />
       <TextField fx:id="timeTxt" layoutX="274.0" layoutY="168.0" prefHeight="26.0" prefWidth="140.0" />
       <Label layoutX="49.0" layoutY="147.0" text="Date of Event" />
@@ -38,16 +45,6 @@
                   </MenuItem>
                   <MenuItem mnemonicParsing="false" text="Settings" />
                   <MenuItem mnemonicParsing="false" text="Log Out" />
-               </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="File">
-               <items>
-                  <MenuItem mnemonicParsing="false" onAction="#close" text="Close" />
-               </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Edit">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Delete" />
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Help">

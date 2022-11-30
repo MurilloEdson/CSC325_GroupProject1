@@ -12,8 +12,12 @@ import com.google.gson.reflect.TypeToken;
 import java.net.URL;
 import java.util.concurrent.ExecutionException;
 import java.util.logging.*;
+import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.ContextMenuEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.util.Duration;
 
 public class MainDisplayController implements Initializable {
 
@@ -31,6 +35,10 @@ public class MainDisplayController implements Initializable {
     private ImageView profilePicture;
     @FXML
     private MenuItem userName;
+    @FXML
+    private AnchorPane rootPane;
+
+    FadeTransition fade = new FadeTransition();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -57,6 +65,8 @@ public class MainDisplayController implements Initializable {
         }
         locations.setOnAction(this::setListView);
         testAdminOrViewer();
+
+        fadeIn();
     }
 
     public void setListView(ActionEvent event) {
@@ -75,7 +85,7 @@ public class MainDisplayController implements Initializable {
             // retrieve  query results asynchronously using query.get()
             ApiFuture<QuerySnapshot> querySnapshot = query.get();
             ApiFuture<QuerySnapshot> querySnapshot2 = query2.get();
-            
+
             for (DocumentSnapshot document : querySnapshot.get().getDocuments()) {
                 String name = document.get("Name").toString();
                 criminals.add(name);
@@ -89,6 +99,7 @@ public class MainDisplayController implements Initializable {
         }
     }
 
+    @FXML
     public void testAdminOrViewer() {
         if (permissions.isSelected()) {
             permissions.setText("AdminView");
@@ -103,7 +114,7 @@ public class MainDisplayController implements Initializable {
 
     @FXML
     private void switchToMenu() throws IOException {
-        App.setRoot("Menu");
+        fadeOut("Menu");
     }
 
     @FXML
@@ -113,11 +124,43 @@ public class MainDisplayController implements Initializable {
 
     @FXML
     private void newCriminal() throws IOException {
-        App.setRoot("NewCriminal");
+        fadeOut("NewCriminal");
     }
 
     @FXML
     private void newComplaint() throws IOException {
-        App.setRoot("NewComplaint");
+        fadeOut("NewComplaint");
     }
+
+    @FXML
+    private void setListView(ContextMenuEvent event) {
+    }
+
+    public void fadeIn() {
+        rootPane.setOpacity(0);
+        fade.setDelay(Duration.millis(1000));
+        fade.setNode(rootPane);
+        fade.setFromValue(0);
+        fade.setToValue(1);
+        fade.play();
+    }
+
+    public void fadeOut(String scene) {
+        fade.setDuration(Duration.millis(1000));
+        fade.setNode(rootPane);
+        fade.setFromValue(1);
+        fade.setToValue(0);
+        fade.setOnFinished((t) -> {
+            try {
+                App.setRoot(scene);
+
+            } catch (IOException ex) {
+                System.out.println("Can't load window");
+            }
+
+        });
+        fade.play();
+
+    }
+
 }
