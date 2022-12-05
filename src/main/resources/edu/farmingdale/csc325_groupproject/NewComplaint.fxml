@@ -13,10 +13,10 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" fx:id="rootPane" minHeight="440.0" minWidth="640.0" prefHeight="440.0" prefWidth="640.0" stylesheets="@Project.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.farmingdale.csc325_groupproject.NewComplaintController">
+<AnchorPane id="AnchorPane" fx:id="rootPane" minHeight="440.0" minWidth="640.0" prefHeight="440.0" prefWidth="640.0" stylesheets="@Project.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.farmingdale.csc325_groupproject.NewComplaintController">
    <children>
       <Label layoutX="279.0" layoutY="60.0" text="Complaint Interface" />
-      <Button layoutX="496.0" layoutY="388.0" mnemonicParsing="false" onAction="#InputData" text="Add Complaint" />
+      <Button fx:id="addInput" layoutX="496.0" layoutY="388.0" mnemonicParsing="false" onAction="#InputData" text="Add Complaint" />
       <Button layoutX="45.0" layoutY="388.0" mnemonicParsing="false" onAction="#switchToMenu" text="Back to Menu" />
       <ImageView fx:id="logoView" fitHeight="75.0" fitWidth="89.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -54,5 +54,6 @@
             </Menu>
          </menus>
       </MenuBar>
+      <Button fx:id="update" layoutX="279.0" layoutY="388.0" mnemonicParsing="false" onAction="#update" text="Update" visible="false" />
    </children>
 </AnchorPane>

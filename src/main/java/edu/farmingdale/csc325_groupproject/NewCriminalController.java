@@ -29,13 +29,14 @@ public class NewCriminalController implements Initializable {
     private ImageView profilePicture;
     @FXML
     private MenuItem userName;
+    @FXML
+    private Button update,addInput;
 
     private ArrayList<Criminal> comps = new ArrayList<Criminal>();
     @FXML
     private AnchorPane rootPane;
 
     FadeTransition fade = new FadeTransition();
-
     /**
      * Initializes the controller class.
      */
@@ -63,6 +64,8 @@ public class NewCriminalController implements Initializable {
         }
         if(SignInController.UA.isEditting()){
             setEditText(SignInController.UA.criminalUpdate);
+            update.setVisible(true);
+            addInput.setDisable(true);
         }
         fadeIn();
     }
@@ -123,7 +126,8 @@ public class NewCriminalController implements Initializable {
         fade.setOnFinished((t) -> {
             try {
                 App.setRoot(scene);
-
+                update.setVisible(false);
+                addInput.setDisable(false);
             } catch (IOException ex) {
                 System.out.println("Can't load window");
             }
@@ -152,5 +156,8 @@ public class NewCriminalController implements Initializable {
             postTxt.setText("" + cr.Post);
             neighTxt.setValue(cr.Neighborhood);
         }
+    }
+    public void update(){
+        
     }
 }

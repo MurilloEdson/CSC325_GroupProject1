@@ -21,7 +21,6 @@ import javafx.util.Duration;
 public class NewComplaintController implements Initializable {
 
     private ArrayList<Complaint> comps = new ArrayList<Complaint>();
-
     @FXML
     private ImageView logoView;
     @FXML
@@ -38,6 +37,8 @@ public class NewComplaintController implements Initializable {
     private ImageView profilePicture;
     @FXML
     private MenuItem userName;
+    @FXML
+    private Button update,addInput;
     @FXML
     private AnchorPane rootPane;
 
@@ -70,7 +71,8 @@ public class NewComplaintController implements Initializable {
         }
         if(SignInController.UA.isEditting()){
             setEditText(SignInController.UA.complaintUpdate);
-            
+            update.setVisible(true);
+            addInput.setDisable(true);
         }
         fadeIn();
     }
@@ -120,7 +122,8 @@ public class NewComplaintController implements Initializable {
         fade.setOnFinished((t) -> {
             try {
                 App.setRoot(scene);
-
+                update.setVisible(false);
+                addInput.setDisable(false);
             } catch (IOException ex) {
                 System.out.println("Can't load window");
             }
@@ -140,5 +143,8 @@ public class NewComplaintController implements Initializable {
             neighTxt.setValue(cp.Neighborhood);
             txtArea.setText(cp.CrimeDesc);
         }
+    }
+    public void update(){
+        
     }
 }

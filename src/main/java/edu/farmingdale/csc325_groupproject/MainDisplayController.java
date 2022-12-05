@@ -125,10 +125,6 @@ public class MainDisplayController implements Initializable {
         fadeOut("NewComplaint");
     }
 
-    @FXML
-    private void setListView(ContextMenuEvent event) {
-    }
-
     public void fadeIn() {
         rootPane.setOpacity(0);
         fade.setDelay(Duration.millis(500));
@@ -153,7 +149,8 @@ public class MainDisplayController implements Initializable {
         });
         fade.play();
     }
-        public void editCriminal(MouseEvent arg0) throws IOException {
+    
+    public void editCriminal(MouseEvent arg0) throws IOException {
         Criminal selectedCriminal = new Criminal();
         if (!criminalNames.getItems().isEmpty() && arg0.getClickCount() == 2 && permissions.isSelected()) {
             selectedCriminal = (Criminal)selectedObject(criminalNames);
@@ -166,10 +163,8 @@ public class MainDisplayController implements Initializable {
         Complaint selectedComplaint = new Complaint();
         if (!complaintDesc.getItems().isEmpty() && arg0.getClickCount() == 2 && permissions.isSelected()) {
             selectedComplaint = (Complaint)selectedObject(complaintDesc);
-            queryForComplaint("Description", selectedComplaint.CrimeDesc);
             SignInController.UA.setEdittingComplaint(selectedComplaint);
             App.setRoot("NewComplaint");
-
         }
     }
 
