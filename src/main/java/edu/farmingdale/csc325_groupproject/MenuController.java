@@ -4,11 +4,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.animation.FadeTransition;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
+import javafx.fxml.*;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+import javafx.scene.image.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 
@@ -87,6 +85,9 @@ public class MenuController implements Initializable {
 
         });
         fade.play();
-
+    }
+    public void settings(){
+        SignInController.UA.setEdittingUser(SignInController.UA.current);
+        fadeOut("SignUp");
     }
 }

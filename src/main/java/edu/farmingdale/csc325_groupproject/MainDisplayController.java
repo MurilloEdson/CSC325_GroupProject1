@@ -201,5 +201,8 @@ public class MainDisplayController implements Initializable {
         Object ob = lv.getSelectionModel().getSelectedItem();
         return ob;
     }
-
+    public void settings(){
+        SignInController.UA.setEdittingUser(SignInController.UA.current);
+        fadeOut("SignUp");
+    }
 }

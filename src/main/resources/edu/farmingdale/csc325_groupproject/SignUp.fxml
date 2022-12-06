@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="rootPane" prefHeight="440.0" prefWidth="640.0" stylesheets="@Project.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.farmingdale.csc325_groupproject.SignUpController">
+<AnchorPane id="AnchorPane" fx:id="rootPane" prefHeight="440.0" prefWidth="640.0" stylesheets="@Project.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.farmingdale.csc325_groupproject.SignUpController">
    <children>
       <TextField fx:id="fName" layoutX="171.0" layoutY="112.0" />
       <TextField fx:id="lName" layoutX="450.0" layoutY="112.0" prefHeight="26.0" prefWidth="150.0" />
@@ -39,5 +39,10 @@
             <Image url="@../../../Aesthetics/logo.png" />
          </image>
       </ImageView>
+      <Button fx:id="update" layoutX="425.0" layoutY="338.0" mnemonicParsing="false" onAction="#update" prefHeight="50.0" prefWidth="106.0" text="Update" visible="false">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

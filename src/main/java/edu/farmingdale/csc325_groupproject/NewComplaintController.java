@@ -8,6 +8,9 @@ import com.google.gson.reflect.TypeToken;
 import java.io.*;
 import java.net.URL;
 import java.util.*;
+import java.util.concurrent.ExecutionException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.animation.FadeTransition;
 import javafx.fxml.*;
 import javafx.scene.control.*;
@@ -145,6 +148,25 @@ public class NewComplaintController implements Initializable {
         }
     }
     public void update(){
-        
+        //Query chainedQuery1 = cities.whereEqualTo("state", "CO").whereEqualTo("name", "Denver");
+        Complaint c = SignInController.UA.complaintUpdate;
+        String docID = "";
+        try {
+            CollectionReference criminals = App.fstore.collection("Complaint");
+            Query query = criminals.whereEqualTo("Neighborhood", c.getNeighborhood());
+            ApiFuture<QuerySnapshot> querySnapshot = query.get();
+            DocumentReference docRef = (DocumentReference) querySnapshot.get().getDocuments();
+            
+            ApiFuture<WriteResult> futureUpdate = null;// = docRef.update();
+            // ...
+            WriteResult result = futureUpdate.get();
+            //System.out.println("Write result: " + result);
+        } catch (InterruptedException | ExecutionException ex) {
+            Logger.getLogger(NewComplaintController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public void settings(){
+        SignInController.UA.setEdittingUser(SignInController.UA.current);
+        fadeOut("SignUp");
     }
 }

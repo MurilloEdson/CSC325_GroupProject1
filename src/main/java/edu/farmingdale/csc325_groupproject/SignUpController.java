@@ -1,18 +1,20 @@
 package edu.farmingdale.csc325_groupproject;
 
-import Models.User;
+import Models.*;
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.*;
+import java.util.concurrent.ExecutionException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
+import javafx.fxml.*;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.*;
 import javafx.util.Duration;
 
 public class SignUpController implements Initializable {
@@ -20,11 +22,12 @@ public class SignUpController implements Initializable {
     @FXML
     private TextField fName, lName, userPW, confirmPW, UserInput, Email;
     @FXML
-    private Button createBtn;
+    private Button createBtn,update;
     @FXML
     private Label errorMessage,returnToLoginLabel,createAccountLabel;
     @FXML
     private AnchorPane rootPane;
+    
     static String newUsername;
     static String newPassword;
     FadeTransition fade = new FadeTransition();
@@ -89,12 +92,19 @@ public class SignUpController implements Initializable {
     private void returnLoginIn(MouseEvent event) {
         //FadeTransition fade = new FadeTransition();
         fadeOut();
+        SignInController.UA.setEditting(false);
     }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         //FadeTransition fade = new FadeTransition();
+        clearText();
         fadeIn();
+        if(SignInController.UA.isEditting()){
+            setEditText(SignInController.UA.userUpdate);
+            update.setVisible(true);
+            createBtn.setDisable(true);
+        }
     }
     
     public void fadeIn(){
@@ -115,12 +125,40 @@ public class SignUpController implements Initializable {
 
             try {
                 App.setRoot("SignIn");
+                update.setVisible(false);
+                createBtn.setDisable(false);
             } catch (IOException ex) {
                 System.out.println("Window can't be loaded");
             }
 
         });
         fade.play();
-        
+    }
+    public void update(){
+        String docID = "";
+        try {
+            ApiFuture<QuerySnapshot> future = App.fstore.collection("Users").get();
+            List<QueryDocumentSnapshot> documents = future.get().getDocuments();
+            for (QueryDocumentSnapshot document : documents) {
+            }
+            // Update an existing document
+            DocumentReference docRef = App.fstore.collection("Users").document(docID);
+            // (async) Update one field
+            ApiFuture<WriteResult> futureUpdate = null;// = docRef.update();
+            // ...
+            WriteResult result = futureUpdate.get();
+            //System.out.println("Write result: " + result);
+        } catch (InterruptedException | ExecutionException ex) {
+            Logger.getLogger(SignInController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void setEditText(User userUpdate) {
+        fName.setText(userUpdate.getFirstName());
+        lName.setText(userUpdate.getLastName());
+        userPW.setText(userUpdate.getPassword());
+
+        UserInput.setText(userUpdate.getUsername());
+        Email.setText(userUpdate.getEmail());
     }
 }

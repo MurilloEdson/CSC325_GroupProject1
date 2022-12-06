@@ -43,7 +43,7 @@
                         <ImageView fx:id="profilePicture" fitHeight="50.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </MenuItem>
-                  <MenuItem mnemonicParsing="false" text="Settings" />
+                  <MenuItem mnemonicParsing="false" onAction="#settings" text="Settings" />
                   <MenuItem mnemonicParsing="false" text="Log Out" />
                </items>
             </Menu>
