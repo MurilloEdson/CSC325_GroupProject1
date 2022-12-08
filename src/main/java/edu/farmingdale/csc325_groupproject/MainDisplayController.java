@@ -48,6 +48,7 @@ public class MainDisplayController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        MenuController.lastPage.add("MainDisplay");
         profilePicture.setImage(SignInController.UA.current.profilePic);
         userName.setText(SignInController.UA.current.getFirstName());
         GsonBuilder builder = new GsonBuilder();

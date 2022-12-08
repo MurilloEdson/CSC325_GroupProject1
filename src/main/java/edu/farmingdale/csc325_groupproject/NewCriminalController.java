@@ -9,8 +9,7 @@ import java.io.*;
 import java.net.URL;
 import java.util.*;
 import java.util.concurrent.ExecutionException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.logging.*;
 import javafx.animation.FadeTransition;
 import javafx.fxml.*;
 import javafx.event.ActionEvent;
@@ -58,8 +57,7 @@ public class NewCriminalController implements Initializable {
         ArrayList<String> list;
         try {
             FileReader fr = new FileReader("Locations.json");
-            list = gson.fromJson(fr, new TypeToken<ArrayList<String>>() {
-            }.getType());
+            list = gson.fromJson(fr, new TypeToken<ArrayList<String>>() {}.getType());
             for (String curr : list) {
                 neighTxt.getItems().add(curr);
             }
@@ -108,7 +106,8 @@ public class NewCriminalController implements Initializable {
 
     @FXML
     private void switchToMenu() throws IOException {
-        fadeOut("Menu");
+        String fxml = MenuController.lastPage.pop();
+        fadeOut(fxml);
         SignInController.UA.setEditting(false);
     }
 
@@ -139,6 +138,7 @@ public class NewCriminalController implements Initializable {
         fade.play();
 
     }
+    
     private void clearAll() {
         dateTxt.clear();
         timeTxt.clear();
@@ -160,6 +160,7 @@ public class NewCriminalController implements Initializable {
             neighTxt.setValue(cr.Neighborhood);
         }
     }
+    
     public void update(){
         Criminal c = SignInController.UA.criminalUpdate;
         String docID = "";
@@ -167,11 +168,25 @@ public class NewCriminalController implements Initializable {
             CollectionReference criminals = App.fstore.collection("Criminals");
             Query query = criminals.whereEqualTo("Name", c.getName());
             ApiFuture<QuerySnapshot> querySnapshot = query.get();
-            DocumentReference docRef = (DocumentReference) querySnapshot.get().getDocuments();
-
-            ApiFuture<WriteResult> futureUpdate = null;// = docRef.update();
-            // ...
-            WriteResult result = futureUpdate.get();
+            List<QueryDocumentSnapshot> docRefList = querySnapshot.get().getDocuments();
+            DocumentReference docRef = null;
+            
+            Map<String, Object> updates = new HashMap<>();
+            updates.put("Name", nameTxt.getText());
+            updates.put("Address", addyTxt.getText());
+            updates.put("Description", descTxt.getText());
+            updates.put("Neighborhood", neighTxt.getValue());
+            updates.put("Post", postTxt.getText());
+            updates.put("crimeDate", dateTxt.getText());
+            updates.put("crimeTime", timeTxt.getText());
+            
+            for (QueryDocumentSnapshot curr : docRefList) {
+                docRef = curr.getReference();
+            }
+            if(docRef != null){
+                ApiFuture<WriteResult> futureUpdate = docRef.update(updates);
+                WriteResult result = futureUpdate.get();
+            }
             //System.out.println("Write result: " + result);
         } catch (InterruptedException | ExecutionException ex) {
             Logger.getLogger(NewCriminalController.class.getName()).log(Level.SEVERE, null, ex);

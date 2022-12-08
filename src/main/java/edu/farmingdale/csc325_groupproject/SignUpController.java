@@ -7,8 +7,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.*;
 import java.util.concurrent.ExecutionException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.logging.*;
 import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.*;
@@ -55,6 +54,7 @@ public class SignUpController implements Initializable {
             data.put("securityLevel", 1);
             //asynchronously write data
             ApiFuture<WriteResult> result = docRef.set(data);
+            SignInController.UA.setFirstTimeUser(true);
             clearText();
             newUsername = (String) data.get("username");
             newPassword = (String) data.get("password");

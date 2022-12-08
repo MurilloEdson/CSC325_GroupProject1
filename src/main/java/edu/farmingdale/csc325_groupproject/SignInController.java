@@ -3,7 +3,7 @@ package edu.farmingdale.csc325_groupproject;
 import Models.*;
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.*;
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
 import java.util.*;
 import java.util.concurrent.ExecutionException;
@@ -74,6 +74,10 @@ public class SignInController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         Image img = new Image("/Aesthetics/logo.png");
+        if(UA.isFirstTimeUser()){
+            userInput.setText(UA.firstSignIn.getUsername());
+            userPassword.setText(UA.firstSignIn.getPassword());
+        }
         logoView.setImage(img);
         fadeIn();
     }
@@ -100,7 +104,7 @@ public class SignInController implements Initializable {
         fade.setOnFinished((t) -> {
             try {
                 App.setRoot(scene);
-
+                UA.setFirstTimeUser(false);
             } catch (IOException ex) {
                 System.out.println("Can't load window");
             }

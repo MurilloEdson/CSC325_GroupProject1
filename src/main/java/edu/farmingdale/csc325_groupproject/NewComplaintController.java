@@ -91,6 +91,7 @@ public class NewComplaintController implements Initializable {
     @FXML
     void InputData(ActionEvent event) {
         DocumentReference docRef = App.fstore.collection("Users").document(UUID.randomUUID().toString());
+        
         // Add document data  with id "alovelace" using a hashmap
         Map<String, Object> data = new HashMap<>();
         data.put("Date", date2.getValue());
@@ -104,7 +105,8 @@ public class NewComplaintController implements Initializable {
 
     @FXML
     private void switchToMenu() throws IOException {
-        fadeOut("Menu");
+        String fxml = MenuController.lastPage.pop();
+        fadeOut(fxml);
         SignInController.UA.setEditting(false);
     }
     
@@ -130,7 +132,6 @@ public class NewComplaintController implements Initializable {
             } catch (IOException ex) {
                 System.out.println("Can't load window");
             }
-
         });
         fade.play();
 
@@ -140,6 +141,7 @@ public class NewComplaintController implements Initializable {
         neighTxt.setValue(null);
         txtArea.clear();
     }
+    
     private void setEditText(Complaint cp) {
         if (cp != null) {
             timeTxt.setText(cp.CrimeTime);
@@ -147,6 +149,7 @@ public class NewComplaintController implements Initializable {
             txtArea.setText(cp.CrimeDesc);
         }
     }
+    
     public void update(){
         //Query chainedQuery1 = cities.whereEqualTo("state", "CO").whereEqualTo("name", "Denver");
         Complaint c = SignInController.UA.complaintUpdate;
@@ -155,11 +158,22 @@ public class NewComplaintController implements Initializable {
             CollectionReference criminals = App.fstore.collection("Complaint");
             Query query = criminals.whereEqualTo("Neighborhood", c.getNeighborhood());
             ApiFuture<QuerySnapshot> querySnapshot = query.get();
-            DocumentReference docRef = (DocumentReference) querySnapshot.get().getDocuments();
-            
-            ApiFuture<WriteResult> futureUpdate = null;// = docRef.update();
-            // ...
-            WriteResult result = futureUpdate.get();
+            List<QueryDocumentSnapshot> docRefList = querySnapshot.get().getDocuments();
+            DocumentReference docRef = null;
+
+            Map<String, Object> updates = new HashMap<>();
+            updates.put("Description", txtArea.getText());
+            updates.put("Neighborhood", neighTxt.getValue());
+            updates.put("crimeDate", date2.getValue());
+            updates.put("crimeTime", timeTxt.getText());
+
+            for (QueryDocumentSnapshot curr : docRefList) {
+                docRef = curr.getReference();
+            }
+            if(docRef != null){
+                ApiFuture<WriteResult> futureUpdate = docRef.update(updates);
+                WriteResult result = futureUpdate.get();
+            }
             //System.out.println("Write result: " + result);
         } catch (InterruptedException | ExecutionException ex) {
             Logger.getLogger(NewComplaintController.class.getName()).log(Level.SEVERE, null, ex);
