@@ -109,7 +109,7 @@ public class SignUpController implements Initializable {
     
     public void fadeIn(){
         rootPane.setOpacity(0);
-        fade.setDelay(Duration.millis(1000));
+        fade.setDelay(Duration.millis(200));
         fade.setNode(rootPane);
         fade.setFromValue(0);
         fade.setToValue(1);
@@ -117,7 +117,7 @@ public class SignUpController implements Initializable {
     }
     
     public void fadeOut(){
-        fade.setDuration(Duration.millis(1000));
+        fade.setDuration(Duration.millis(180));
         fade.setNode(rootPane);
         fade.setFromValue(1);
         fade.setToValue(0);

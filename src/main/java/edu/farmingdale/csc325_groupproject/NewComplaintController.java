@@ -44,12 +44,11 @@ public class NewComplaintController implements Initializable {
     private Button update,addInput;
     @FXML
     private AnchorPane rootPane;
-
+    @FXML
+    private Label complaintTitleLabel;
+    
     FadeTransition fade = new FadeTransition();
-
-    /**
-     * Initializes the controller class.
-     */
+  
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         clearAll();
@@ -72,6 +71,7 @@ public class NewComplaintController implements Initializable {
             }
         } catch (FileNotFoundException ex) {
         }
+
         if(SignInController.UA.isEditting()){
             setEditText(SignInController.UA.complaintUpdate);
             update.setVisible(true);
@@ -112,7 +112,7 @@ public class NewComplaintController implements Initializable {
     
     public void fadeIn() {
         rootPane.setOpacity(0);
-        fade.setDelay(Duration.millis(1000));
+        fade.setDelay(Duration.millis(200));
         fade.setNode(rootPane);
         fade.setFromValue(0);
         fade.setToValue(1);
@@ -120,7 +120,7 @@ public class NewComplaintController implements Initializable {
     }
 
     public void fadeOut(String scene) {
-        fade.setDuration(Duration.millis(1000));
+        fade.setDuration(Duration.millis(180));
         fade.setNode(rootPane);
         fade.setFromValue(1);
         fade.setToValue(0);

@@ -14,7 +14,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" fx:id="rootPane" minHeight="440.0" minWidth="640.0" prefHeight="440.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.farmingdale.csc325_groupproject.NewCriminalController">
+<AnchorPane id="AnchorPane" fx:id="rootPane" minHeight="440.0" minWidth="640.0" prefHeight="440.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.farmingdale.csc325_groupproject.NewCriminalController">
    <children>
       <Label fx:id="criminalTitleLabel" layoutX="209.0" layoutY="40.0" text="New Criminal Input" />
       <Button layoutX="503.0" layoutY="373.0" mnemonicParsing="false" onAction="#InputData" text="Input Data" />
@@ -73,7 +73,7 @@
                         <ImageView fx:id="profilePicture" fitHeight="50.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </MenuItem>
-                  <MenuItem mnemonicParsing="false" onAction="#settings" text="Settings" />
+                  <MenuItem mnemonicParsing="false" text="Settings" />
                   <MenuItem mnemonicParsing="false" text="Log Out" />
                </items>
             </Menu>

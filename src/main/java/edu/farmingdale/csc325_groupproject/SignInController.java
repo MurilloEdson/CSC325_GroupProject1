@@ -89,7 +89,7 @@ public class SignInController implements Initializable {
 
     public void fadeIn() {
         rootPane.setOpacity(0);
-        fade.setDelay(Duration.millis(500));
+        fade.setDelay(Duration.millis(200));
         fade.setNode(rootPane);
         fade.setFromValue(0);
         fade.setToValue(1);
@@ -97,7 +97,8 @@ public class SignInController implements Initializable {
     }
 
     public void fadeOut(String scene) {
-        fade.setDuration(Duration.millis(500));
+        fade.setDuration(Duration.millis(180));
+
         fade.setNode(rootPane);
         fade.setFromValue(1);
         fade.setToValue(0);

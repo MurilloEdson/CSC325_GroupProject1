@@ -18,6 +18,8 @@ import javafx.scene.image.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
+import java.util.Stack;
+
 
 public class NewCriminalController implements Initializable {
 
@@ -35,13 +37,13 @@ public class NewCriminalController implements Initializable {
     private Button update,addInput;
 
     private ArrayList<Criminal> comps = new ArrayList<Criminal>();
+
     @FXML
     private AnchorPane rootPane;
-
+    @FXML
+    private Label criminalTitleLabel;
+    private ArrayList<Criminal> comps = new ArrayList<Criminal>();
     FadeTransition fade = new FadeTransition();
-    /**
-     * Initializes the controller class.
-     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         clearAll();
@@ -50,7 +52,8 @@ public class NewCriminalController implements Initializable {
         Image img = new Image("/Aesthetics/logo.png");
         logoView.setImage(img);
         Image img1 = new Image("/Aesthetics/helpIMG.png");
-        logoViewHelp.setImage(img1);
+        logoViewHelp.setImage(img1);  
+       
         GsonBuilder builder = new GsonBuilder();
         builder.setPrettyPrinting();
         Gson gson = builder.create();
@@ -69,6 +72,7 @@ public class NewCriminalController implements Initializable {
             addInput.setDisable(true);
         }
         fadeIn();
+
     }
 
     @FXML
@@ -109,11 +113,12 @@ public class NewCriminalController implements Initializable {
         String fxml = MenuController.lastPage.pop();
         fadeOut(fxml);
         SignInController.UA.setEditting(false);
+
     }
 
     public void fadeIn() {
         rootPane.setOpacity(0);
-        fade.setDelay(Duration.millis(1000));
+        fade.setDelay(Duration.millis(200));
         fade.setNode(rootPane);
         fade.setFromValue(0);
         fade.setToValue(1);
@@ -121,7 +126,7 @@ public class NewCriminalController implements Initializable {
     }
 
     public void fadeOut(String scene) {
-        fade.setDuration(Duration.millis(1000));
+        fade.setDuration(Duration.millis(180));
         fade.setNode(rootPane);
         fade.setFromValue(1);
         fade.setToValue(0);

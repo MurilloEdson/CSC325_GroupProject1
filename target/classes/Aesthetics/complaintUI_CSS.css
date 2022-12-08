@@ -1,12 +1,23 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Nov 1, 2022, 9:06:27 PM
+    Author     : jonat
+*/
+
 .root{
-    
+
     -fx-focus-color: #1e74c6;
     -fx-base: #373e43;
-    -fx-background-color: #9d9ea3;
     -fx-control-inner-background: derive(-fx-base, 35%);
     -fx-control-inner-background-alt: -fx-control-inner-background ;
-    -fx-background-color:#373e43;
+
+
 }
+
 
 .button {
     -fx-padding: 5 22 5 22;
@@ -67,15 +78,12 @@
     -fx-padding: 5 22 5 22;
     -fx-border-color: #e2e2e2;
     -fx-border-width: 2;
-    -fx-pref-width: 150;
-    -fx-background-radius: 30;
+    -fx-background-radius: 0;
     -fx-background-color: #373e43;
     -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
-    -fx-font-size: 10pt;
+    -fx-font-size: 11pt;
     -fx-text-fill: #d8d8d8;
     -fx-background-insets: 0 0 0 0, 0, 1, 2;
-    -fx-prompt-text-fill: #808080;
-    -fx-border-radius: 30;
 }
 
 .text-area {
@@ -93,40 +101,5 @@
 .text-area .content{
     -fx-background-color: #373e43;
 }
-#signUpLabel{
-    -fx-text-fill: #00cccc
-}
 
-#menuLabel{
-    -fx-font-weight: bold;
-    -fx-font-style: italic;
-    -fx-font-size: 36;
-}
 
-#returnToLoginLabel{
-    -fx-text-fill: #00cccc
-}
-
-#createAccountLabel{
-    -fx-font-weight: bold;
-    -fx-font-style: italic;
-    -fx-font-size: 36;
-}
-
-#criminalTitleLabel{
-    -fx-font-weight: bold;
-    -fx-font-style: italic;
-    -fx-font-size: 24;
-}
-
-#complaintTitleLabel{
-    -fx-font-weight: bold;
-    -fx-font-style: italic;
-    -fx-font-size: 24;
-}
-
-#displayTitleLabel{
-    -fx-font-weight: bold;
-    -fx-font-style: italic;
-    -fx-font-size: 24;
-}

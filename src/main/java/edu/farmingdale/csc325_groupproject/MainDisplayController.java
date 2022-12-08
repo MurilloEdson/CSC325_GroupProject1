@@ -20,6 +20,7 @@ import javafx.event.ActionEvent;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
+import java.util.Stack;
 
 public class MainDisplayController implements Initializable {
 
@@ -39,6 +40,9 @@ public class MainDisplayController implements Initializable {
     private MenuItem userName;
     @FXML
     private AnchorPane rootPane;
+    @FXML
+    private Label displayTitleLabel;
+
     FadeTransition fade = new FadeTransition();
     
     private ObservableList<Criminal> criminals;
@@ -108,10 +112,10 @@ public class MainDisplayController implements Initializable {
 
     @FXML
     private void switchToMenu() throws IOException {
-        fadeOut("Menu");
+        String fxml = MenuController.st.pop();
+        fadeOut(fxml);
     }
 
-    @FXML
     private void close() throws IOException {
         System.exit(0);
     }
@@ -119,16 +123,19 @@ public class MainDisplayController implements Initializable {
     @FXML
     private void newCriminal() throws IOException {
         fadeOut("NewCriminal");
+        MenuController.st.add("MainDisplay");
     }
 
     @FXML
     private void newComplaint() throws IOException {
         fadeOut("NewComplaint");
+        MenuController.st.add("MainDisplay");
+
     }
 
     public void fadeIn() {
         rootPane.setOpacity(0);
-        fade.setDelay(Duration.millis(500));
+        fade.setDelay(Duration.millis(200));
         fade.setNode(rootPane);
         fade.setFromValue(0);
         fade.setToValue(1);
@@ -136,7 +143,9 @@ public class MainDisplayController implements Initializable {
     }
 
     public void fadeOut(String scene) {
+        fade.setDuration(Duration.millis(180));
         fade.setDuration(Duration.millis(500));
+
         fade.setNode(rootPane);
         fade.setFromValue(1);
         fade.setToValue(0);
