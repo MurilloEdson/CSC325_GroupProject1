@@ -32,7 +32,7 @@
                      </graphic>
                   </MenuItem>
                   <MenuItem mnemonicParsing="false" text="Log Out" />
-                  <MenuItem mnemonicParsing="false" text="Settings" />
+                  <MenuItem mnemonicParsing="false" onAction="#settings" text="Settings" />
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Help">

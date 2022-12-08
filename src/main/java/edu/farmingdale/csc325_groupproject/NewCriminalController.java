@@ -1,14 +1,15 @@
 package edu.farmingdale.csc325_groupproject;
 
-import Models.Criminal;
+import Models.*;
 import com.google.api.core.ApiFuture;
-import com.google.cloud.firestore.DocumentReference;
-import com.google.cloud.firestore.WriteResult;
+import com.google.cloud.firestore.*;
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
 import java.io.*;
 import java.net.URL;
 import java.util.*;
+import java.util.concurrent.ExecutionException;
+import java.util.logging.*;
 import javafx.animation.FadeTransition;
 import javafx.fxml.*;
 import javafx.event.ActionEvent;
@@ -33,16 +34,21 @@ public class NewCriminalController implements Initializable {
     @FXML
     private MenuItem userName;
     @FXML
+    private Button update,addInput;
+
+    private ArrayList<Criminal> comps = new ArrayList<Criminal>();
+
+    @FXML
     private AnchorPane rootPane;
     @FXML
     private Label criminalTitleLabel;
     private ArrayList<Criminal> comps = new ArrayList<Criminal>();
     FadeTransition fade = new FadeTransition();
-    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        profilePicture.setImage(SignInController.currUser.profilePic);
-        userName.setText(SignInController.currUser.getFirstName());
+        clearAll();
+        profilePicture.setImage(SignInController.UA.current.profilePic);
+        userName.setText(SignInController.UA.current.getFirstName());
         Image img = new Image("/Aesthetics/logo.png");
         logoView.setImage(img);
         Image img1 = new Image("/Aesthetics/helpIMG.png");
@@ -54,14 +60,19 @@ public class NewCriminalController implements Initializable {
         ArrayList<String> list;
         try {
             FileReader fr = new FileReader("Locations.json");
-            list = gson.fromJson(fr, new TypeToken<ArrayList<String>>() {
-            }.getType());
+            list = gson.fromJson(fr, new TypeToken<ArrayList<String>>() {}.getType());
             for (String curr : list) {
                 neighTxt.getItems().add(curr);
             }
         } catch (FileNotFoundException ex) {
         }
-       fadeIn();
+        if(SignInController.UA.isEditting()){
+            setEditText(SignInController.UA.criminalUpdate);
+            update.setVisible(true);
+            addInput.setDisable(true);
+        }
+        fadeIn();
+
     }
 
     @FXML
@@ -75,7 +86,6 @@ public class NewCriminalController implements Initializable {
 
     @FXML
     void InputData(ActionEvent event) {
-
         Criminal b = new Criminal();
         b.CrimeDate = dateTxt.getText() + timeTxt.getText();
         b.Neighborhood = neighTxt.getValue();
@@ -83,7 +93,6 @@ public class NewCriminalController implements Initializable {
         b.Name = nameTxt.getText();
         b.Address = addyTxt.getText();
         b.Description = descTxt.getText();
-
         comps.add(b);
 
         DocumentReference docRef = App.fstore.collection("Criminals").document(UUID.randomUUID().toString());
@@ -101,8 +110,10 @@ public class NewCriminalController implements Initializable {
 
     @FXML
     private void switchToMenu() throws IOException {
-        String fxml = MenuController.st.pop();
+        String fxml = MenuController.lastPage.pop();
         fadeOut(fxml);
+        SignInController.UA.setEditting(false);
+
     }
 
     public void fadeIn() {
@@ -122,7 +133,8 @@ public class NewCriminalController implements Initializable {
         fade.setOnFinished((t) -> {
             try {
                 App.setRoot(scene);
-
+                update.setVisible(false);
+                addInput.setDisable(false);
             } catch (IOException ex) {
                 System.out.println("Can't load window");
             }
@@ -130,5 +142,63 @@ public class NewCriminalController implements Initializable {
         });
         fade.play();
 
+    }
+    
+    private void clearAll() {
+        dateTxt.clear();
+        timeTxt.clear();
+        nameTxt.clear();
+        addyTxt.clear();
+        descTxt.clear();
+        postTxt.clear();
+        neighTxt.setValue(null);
+    }
+
+    public void setEditText(Criminal cr) {
+        if (cr != null) {
+            dateTxt.setText(cr.CrimeDate);
+            timeTxt.setText(cr.CrimeTime);
+            nameTxt.setText(cr.Name);
+            addyTxt.setText(cr.Address);
+            descTxt.setText(cr.Description);
+            postTxt.setText("" + cr.Post);
+            neighTxt.setValue(cr.Neighborhood);
+        }
+    }
+    
+    public void update(){
+        Criminal c = SignInController.UA.criminalUpdate;
+        String docID = "";
+        try {
+            CollectionReference criminals = App.fstore.collection("Criminals");
+            Query query = criminals.whereEqualTo("Name", c.getName());
+            ApiFuture<QuerySnapshot> querySnapshot = query.get();
+            List<QueryDocumentSnapshot> docRefList = querySnapshot.get().getDocuments();
+            DocumentReference docRef = null;
+            
+            Map<String, Object> updates = new HashMap<>();
+            updates.put("Name", nameTxt.getText());
+            updates.put("Address", addyTxt.getText());
+            updates.put("Description", descTxt.getText());
+            updates.put("Neighborhood", neighTxt.getValue());
+            updates.put("Post", postTxt.getText());
+            updates.put("crimeDate", dateTxt.getText());
+            updates.put("crimeTime", timeTxt.getText());
+            
+            for (QueryDocumentSnapshot curr : docRefList) {
+                docRef = curr.getReference();
+            }
+            if(docRef != null){
+                ApiFuture<WriteResult> futureUpdate = docRef.update(updates);
+                WriteResult result = futureUpdate.get();
+            }
+            //System.out.println("Write result: " + result);
+        } catch (InterruptedException | ExecutionException ex) {
+            Logger.getLogger(NewCriminalController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public void settings(){
+        SignInController.UA.setEdittingUser(SignInController.UA.current);
+        fadeOut("SignUp");
     }
 }

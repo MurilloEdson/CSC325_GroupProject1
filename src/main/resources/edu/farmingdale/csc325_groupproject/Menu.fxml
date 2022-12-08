@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="440.0" minWidth="640.0" prefHeight="440.0" prefWidth="640.0" stylesheets="@Project.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.farmingdale.csc325_groupproject.MenuController">
+<AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="440.0" minWidth="640.0" prefHeight="440.0" prefWidth="640.0" stylesheets="@Project.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.farmingdale.csc325_groupproject.MenuController">
    <children>
       <Label fx:id="menuLabel" alignment="CENTER" layoutX="167.0" layoutY="59.0" prefHeight="43.0" prefWidth="305.0" text="Navigation Menu" textFill="#0e29e5">
          <font>
@@ -28,7 +28,7 @@
                         <ImageView fx:id="profilePicture" fitHeight="50.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </MenuItem>
-                  <MenuItem mnemonicParsing="false" text="Settings" />
+                  <MenuItem mnemonicParsing="false" onAction="#settings" text="Settings" />
                 <MenuItem mnemonicParsing="false" text="Log out" />
               </items>
             </Menu>
