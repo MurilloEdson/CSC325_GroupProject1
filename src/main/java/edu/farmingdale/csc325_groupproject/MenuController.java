@@ -4,6 +4,7 @@ import Models.User;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.Stack;
 import javafx.animation.FadeTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -23,14 +24,16 @@ public class MenuController implements Initializable {
     private Button newCriminal;
     @FXML
     private MenuItem userName;
-    FadeTransition fade = new FadeTransition();
     @FXML
     private AnchorPane rootPane;
     @FXML
     private Label menuLabel;
     @FXML
     private Button newComplaintBtn;
-
+    
+    FadeTransition fade = new FadeTransition();
+    static Stack<String> st = new Stack<String>();
+    
     @FXML
     private void logout() throws IOException {
         fadeOut("SignIn");
@@ -40,18 +43,23 @@ public class MenuController implements Initializable {
     @FXML
     private void switchToMainDisplay() throws IOException {
         fadeOut("MainDisplay");
+        st.add("Menu");
+        //System.out.println("Top of the stack: " + st.peek());
+        
 
     }
 
     @FXML
     private void switchToNewComplaint() throws IOException {
         fadeOut("NewComplaint");
+        st.add("Menu");
 
     }
 
     @FXML
     private void switchToNewCriminal() throws IOException {
         fadeOut("NewCriminal");
+        st.add("Menu");
 
     }
 
@@ -79,7 +87,7 @@ public class MenuController implements Initializable {
     }
 
     public void fadeOut(String scene) {
-        fade.setDuration(Duration.millis(100));
+        fade.setDuration(Duration.millis(180));
         fade.setNode(rootPane);
         fade.setFromValue(1);
         fade.setToValue(0);

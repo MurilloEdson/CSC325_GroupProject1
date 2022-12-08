@@ -18,6 +18,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
+import java.util.Stack;
 
 public class MainDisplayController implements Initializable {
 
@@ -39,7 +40,7 @@ public class MainDisplayController implements Initializable {
     private AnchorPane rootPane;
     @FXML
     private Label displayTitleLabel;
-    
+
     FadeTransition fade = new FadeTransition();
 
     @Override
@@ -116,7 +117,8 @@ public class MainDisplayController implements Initializable {
 
     @FXML
     private void switchToMenu() throws IOException {
-        fadeOut("Menu");
+        String fxml = MenuController.st.pop();
+        fadeOut(fxml);
     }
 
     private void close() throws IOException {
@@ -126,11 +128,14 @@ public class MainDisplayController implements Initializable {
     @FXML
     private void newCriminal() throws IOException {
         fadeOut("NewCriminal");
+        MenuController.st.add("MainDisplay");
     }
 
     @FXML
     private void newComplaint() throws IOException {
         fadeOut("NewComplaint");
+        MenuController.st.add("MainDisplay");
+
     }
 
     @FXML
@@ -147,7 +152,7 @@ public class MainDisplayController implements Initializable {
     }
 
     public void fadeOut(String scene) {
-        fade.setDuration(Duration.millis(100));
+        fade.setDuration(Duration.millis(180));
         fade.setNode(rootPane);
         fade.setFromValue(1);
         fade.setToValue(0);

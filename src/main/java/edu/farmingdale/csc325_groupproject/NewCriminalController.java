@@ -17,6 +17,8 @@ import javafx.scene.image.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
+import java.util.Stack;
+
 
 public class NewCriminalController implements Initializable {
 
@@ -99,8 +101,8 @@ public class NewCriminalController implements Initializable {
 
     @FXML
     private void switchToMenu() throws IOException {
-        fadeOut("Menu");
-        //App.setRoot("Menu");
+        String fxml = MenuController.st.pop();
+        fadeOut(fxml);
     }
 
     public void fadeIn() {
@@ -113,7 +115,7 @@ public class NewCriminalController implements Initializable {
     }
 
     public void fadeOut(String scene) {
-        fade.setDuration(Duration.millis(100));
+        fade.setDuration(Duration.millis(180));
         fade.setNode(rootPane);
         fade.setFromValue(1);
         fade.setToValue(0);

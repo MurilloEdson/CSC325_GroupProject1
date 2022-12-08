@@ -107,7 +107,7 @@ public class SignUpController implements Initializable {
     }
     
     public void fadeOut(){
-        fade.setDuration(Duration.millis(100));
+        fade.setDuration(Duration.millis(180));
         fade.setNode(rootPane);
         fade.setFromValue(1);
         fade.setToValue(0);
